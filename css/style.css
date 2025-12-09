@@ -11,7 +11,13 @@ body {
   position: relative;
   min-height: 100vh;
 }
-
+.hero-image {
+  max-width: 320px;
+  width: 100%;
+  border-radius: 0.75rem;
+  display: block;
+  margin-top: 0.75rem;
+}
 /* Animated gradient background */
 .app-bg {
   position: fixed;
@@ -275,4 +281,5 @@ body {
     padding: 1rem;
   }
 }
+
 
