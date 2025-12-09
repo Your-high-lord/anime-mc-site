@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -18,74 +18,119 @@
   </header>
 
   <main>
+    <!-- Home section -->
     <section id="home" class="hero">
       <h2>Welcome to Anime MC Hub</h2>
       <p>Your simple directory of anime main characters, all in one place.</p>
     </section>
 
+    <!-- Characters cards -->
     <section id="characters" class="characters-section">
       <h2>Main Characters</h2>
 
       <div class="character-grid">
-        <!-- Character card 1 -->
-        <article class="character-card">
-                  <img src="images/goku.jpg" alt="Son Goku">
+        <!-- Goku card -->
+        <a href="#goku-details" class="character-link">
+          <article class="character-card">
+            <img src="images/goku.jpg" alt="Son Goku">
+            <h3>Son Goku</h3>
+            <p class="anime-name">Anime: Dragon Ball Z / Dragon Ball Super</p>
+            <p class="tags">Role: Protagonist | Power Type: Ki, Saiyan Transformations</p>
+            <p class="summary">
+              A cheerful Saiyan warrior who loves training and fighting strong opponents, constantly pushing his limits to protect Earth and his friends.
+            </p>
+          </article>
+        </a>
 
-  <h3>Son Goku</h3>
-  <p class="anime-name">Anime: Dragon Ball Z / Dragon Ball Super</p>
-  <p class="tags">Role: Protagonist | Power Type: Ki, Saiyan Transformations</p>
-  <p class="summary">
-    A cheerful Saiyan warrior who loves training and fighting strong opponents, constantly pushing his limits to protect Earth and his friends.
-  </p>
-</article>
+        <!-- Baki card -->
+        <a href="#baki-details" class="character-link">
+          <article class="character-card">
+            <img src="images/baki.jpg" alt="Baki Hanma">
+            <h3>Baki Hanma</h3>
+            <p class="anime-name">Anime: Baki the Grappler</p>
+            <p class="tags">Role: Protagonist | Power Type: MMA Fighter</p>
+            <p class="summary">
+              Baki Hanma, son of Yujiro Hanma, is a master of many deadly martial arts and fights to surpass his father.
+            </p>
+          </article>
+        </a>
 
-
-
-        <!-- Character card 2 -->
-        <article class="character-card">
-                  <img src="images/baki.jpg" alt="Baki Hanma">
-
-          <h3>Baki Hanma</h3>
-          <p class="anime-name">Anime: Baki the Grappler</p>
-          <p class="tags">Role: Protagonist | Power Type: MMA Fighter</p>
-          <p class="summary">
-  Baki Hanma, son of Yujiro Hanma, is a master of many deadly martial arts and fights to surpass his father.
-</p>
-        </article>
-
-
-       <!-- Character card 3 -->
-<article class="character-card">
-  <img src="images/Naruto.jpg" alt="Naruto Uzumaki">
-  <h3>Naruto Uzumaki</h3>
-  <p class="anime-name">Anime: Naruto / Naruto Shippuden</p>
-  <p class="tags">Role: Protagonist | Power Type: Ninjutsu, Chakra</p>
-  <p class="summary">
-    Naruto is a determined ninja who dreams of becoming Hokage and earning the respect of his village.
-  </p>
-</article>
-
+        <!-- Naruto card -->
+        <a href="#naruto-details" class="character-link">
+          <article class="character-card">
+            <img src="images/naruto.jpg" alt="Naruto Uzumaki">
+            <h3>Naruto Uzumaki</h3>
+            <p class="anime-name">Anime: Naruto / Naruto Shippuden</p>
+            <p class="tags">Role: Protagonist | Power Type: Ninjutsu, Chakra</p>
+            <p class="summary">
+              Naruto is a determined ninja who dreams of becoming Hokage and earning the respect of his village.
+            </p>
+          </article>
+        </a>
       </div>
     </section>
 
+    <!-- Detail sections -->
+    <section class="character-details">
+      <article id="goku-details" class="character-detail">
+        <h2>Son Goku – Allies & Villains</h2>
+        <h3>Allies / Heroes</h3>
+        <ul>
+          <li>Vegeta</li>
+          <li>Gohan</li>
+          <li>Piccolo</li>
+        </ul>
+        <h3>Villains</h3>
+        <ul>
+          <li>Frieza</li>
+          <li>Cell</li>
+          <li>Majin Buu</li>
+        </ul>
+      </article>
+
+      <article id="baki-details" class="character-detail">
+        <h2>Baki Hanma – Allies & Rivals</h2>
+        <h3>Allies / Heroes</h3>
+        <ul>
+          <li>Kaoru Hanayama</li>
+          <li>Doppo Orochi</li>
+        </ul>
+        <h3>Villains / Opponents</h3>
+        <ul>
+          <li>Yujiro Hanma</li>
+          <li>Spec</li>
+          <li>Dorian</li>
+        </ul>
+      </article>
+
+      <article id="naruto-details" class="character-detail">
+        <h2>Naruto Uzumaki – Allies & Villains</h2>
+        <h3>Allies / Heroes</h3>
+        <ul>
+          <li>Sasuke Uchiha</li>
+          <li>Sakura Haruno</li>
+          <li>Kakashi Hatake</li>
+        </ul>
+        <h3>Villains</h3>
+        <ul>
+          <li>Orochimaru</li>
+          <li>Pain (Nagato)</li>
+          <li>Madara Uchiha</li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- About section -->
     <section id="about" class="about-section">
       <h2>About This Site</h2>
       <p>
-        This is a fan-made project to list and organize main characters from different anime series.
-        It will grow over time as more characters and anime are added.
+        This is a fan-made project to list and organize main characters from different anime series. It will grow over time as more characters and anime are added.
       </p>
     </section>
   </main>
 
   <footer class="site-footer">
-  <p>Made with ❤ by an anime fan.</p>
-</footer>
+    <p>Made with ❤ by an anime fan.</p>
+  </footer>
 </body>
 </html>
-
-
-
-
-
-
-
