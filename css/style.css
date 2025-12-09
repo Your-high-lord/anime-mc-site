@@ -1,98 +1,9 @@
-/* Global styles */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+/* Global smooth scroll */
+html {
+  scroll-behavior: smooth;
 }
 
-body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: #050816;
-  color: #f5f5f5;
-  line-height: 1.6;
-}
-
-/* Header */
-.site-header {
-  background: linear-gradient(135deg, #421b9b, #e11d48);
-  padding: 1.5rem 1.5rem 2.5rem;
-  text-align: center;
-}
-
-.site-header h1 {
-  font-size: 2rem;
-  letter-spacing: 1px;
-}
-
-.site-header p {
-  margin-top: 0.5rem;
-  opacity: 0.9;
-}
-
-.main-nav {
-  margin-top: 1rem;
-}
-
-.main-nav a {
-  margin: 0 0.75rem;
-  color: #f5f5f5;
-  text-decoration: none;
-  font-weight: 500;
-  border-bottom: 2px solid transparent;
-  padding-bottom: 0.2rem;
-}
-
-.main-nav a:hover {
-  border-color: #f97316;
-}
-
-/* Main content */
-main {
-  max-width: 1000px;
-  margin: 2rem auto;
-  padding: 0 1rem 3rem;
-}
-
-/* Hero section */
-.hero {
-  margin-bottom: 2rem;
-  padding: 1.5rem;
-  background: rgba(15, 23, 42, 0.9);
-  border-radius: 0.75rem;
-  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.8);
-}
-
-.hero h2 {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-  color: #f97316;
-}
-
-/* Characters section */
-.characters-section {
-  margin-bottom: 2rem;
-}
-
-.characters-section h2 {
-  margin-bottom: 1rem;
-  font-size: 1.4rem;
-}
-
-.character-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.5rem;
-}
-
-.character-card {
-  background: rgba(15, 23, 42, 0.95);
-  border-radius: 0.75rem;
-  padding: 1rem;
-  border: 1px solid rgba(148, 163, 184, 0.4);
-  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.7);
-  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
-}
-
+/* Character card hover */
 .character-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 14px 30px rgba(15, 23, 42, 0.9);
@@ -122,6 +33,37 @@ main {
   margin-top: 0.4rem;
 }
 
+/* Character images */
+.character-card img {
+  width: 100%;
+  max-height: 160px; /* control card height */
+  border-radius: 0.5rem;
+  margin-bottom: 0.6rem;
+  object-fit: cover;
+  display: block;
+}
+
+/* Character link wrapper */
+.character-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+/* Detail section */
+.character-details {
+  margin-top: 2rem;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.character-detail {
+  background: #0b1220;
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+}
+
 /* About section */
 .about-section {
   padding: 1.5rem;
@@ -138,20 +80,3 @@ main {
   font-size: 0.85rem;
   color: #9ca3af;
 }
-.character-image-placeholder {
-  width: 100%;
-  height: 160px;
-  border-radius: 0.5rem;
-  margin-bottom: 0.6rem;
-  background: radial-gradient(circle at 30% 20%, #f97316, #1e293b);
-}
-/* Real character images */
-.character-card img {
-  width: 100%;
-  max-height: 160px;  /* same height as placeholder */
-  border-radius: 0.5rem;
-  margin-bottom: 0.6rem;
-  object-fit: cover;
-  display: block;
-}
-
