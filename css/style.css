@@ -50,7 +50,7 @@ html {
   display: block;
 }
 
-/* Detail section */
+/* Detail section (for future use, safe to keep) */
 .character-details {
   margin-top: 2rem;
   display: grid;
