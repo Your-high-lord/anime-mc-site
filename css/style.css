@@ -1,4 +1,4 @@
-/* Global smooth scroll */
+/* Global layout + background */
 html {
   scroll-behavior: smooth;
 }
@@ -6,46 +6,161 @@ html {
 body {
   margin: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: linear-gradient(-45deg, #050816, #111827, #1f2937, #0f172a);
-  background-size: 400% 400%;
   color: #e5e7eb;
-  animation: bgshift 18s ease infinite;
-}
-@keyframes bgshift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  background: #050816;
+  position: relative;
+  min-height: 100vh;
 }
 
-/* Header like Crunchyroll */
+/* Animated gradient background */
+.app-bg {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at 0% 0%, #f97316 0, transparent 55%),
+              radial-gradient(circle at 100% 0%, #22c55e 0, transparent 55%),
+              radial-gradient(circle at 50% 100%, #3b82f6 0, transparent 60%);
+  opacity: 0.25;
+  z-index: -1;
+}
+
+/* Header */
 .site-header {
-  background: #0b1120;
-  border-bottom: 2px solid #f47521;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 1rem 1.5rem;
+  background: rgba(15, 23, 42, 0.96);
+  border-bottom: 2px solid #f97316;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(10px);
 }
 
-.site-header h1 {
-  margin: 0;
-  color: #f97316;
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 30%, #fde68a, #f97316);
+  box-shadow: 0 0 15px rgba(249, 115, 22, 0.85);
+}
+
+.logo-text {
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #fbbf24;
 }
 
 .main-nav a {
   color: #e5e7eb;
-  margin-right: 1rem;
+  margin-left: 1rem;
   text-decoration: none;
+  font-size: 0.95rem;
 }
 
 .main-nav a:hover {
-  color: #f47521;
+  color: #f97316;
 }
 
-/* Character card hover */
+/* Hero */
+.hero {
+  padding: 3rem 1.5rem 1.5rem;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  font-size: 2.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero p {
+  max-width: 520px;
+  color: #cbd5f5;
+}
+
+.hero-actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background: linear-gradient(to right, #f97316, #fbbf24);
+  color: #0b1120;
+  border-radius: 999px;
+  padding: 0.55rem 1.4rem;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.05);
+}
+
+.btn-ghost {
+  border-radius: 999px;
+  padding: 0.55rem 1.4rem;
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  background: transparent;
+  color: #9ca3af;
+}
+
+/* Characters section */
+.characters-section {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.characters-section h2 {
+  margin-bottom: 0.25rem;
+}
+
+.section-subtitle {
+  margin-bottom: 1rem;
+  color: #9ca3af;
+  font-size: 0.95rem;
+}
+
+.character-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+
+/* Cards */
+.character-link {
+  text-decoration: none;
+  color: inherit;
+}
+
 .character-card {
-  background: rgba(15, 23, 42, 0.92);
-  border-radius: 0.75rem;
-  padding: 1rem;
+  position: relative;
+  overflow: hidden;
+  background: rgba(15, 23, 42, 0.96);
+  border-radius: 0.9rem;
+  padding: 0.85rem;
   border: 1px solid rgba(148, 163, 184, 0.4);
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.card-glow {
+  position: absolute;
+  inset: -50%;
+  background: radial-gradient(circle at 0 0, rgba(249, 115, 22, 0.28), transparent 50%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
 }
 
 .character-card:hover {
@@ -54,10 +169,21 @@ body {
   border-color: #f97316;
 }
 
+.character-card:hover .card-glow {
+  opacity: 1;
+}
+
+.character-card img {
+  width: 100%;
+  max-height: 180px;
+  object-fit: cover;
+  border-radius: 0.65rem;
+  margin-bottom: 0.5rem;
+}
+
 .character-card h3 {
-  font-size: 1.2rem;
-  margin-bottom: 0.3rem;
-  color: #e5e7eb;
+  margin: 0.1rem 0;
+  font-size: 1.1rem;
 }
 
 .anime-name {
@@ -65,40 +191,44 @@ body {
   color: #a5b4fc;
 }
 
-.tags {
-  font-size: 0.85rem;
-  color: #f97316;
-  margin: 0.35rem 0;
-}
-
 .summary {
   font-size: 0.9rem;
   color: #e5e7eb;
-  margin-top: 0.4rem;
+  margin: 0.4rem 0;
 }
 
-/* Character images */
-.character-card img {
-  width: 100%;
-  max-height: 160px;
-  border-radius: 0.5rem;
-  margin-bottom: 0.6rem;
-  object-fit: cover;
-  display: block;
+/* Pills */
+.pill {
+  display: inline-block;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
 }
 
-/* Character link wrapper */
-.character-link {
-  text-decoration: none;
-  color: inherit;
-  display: block;
+.pill-orange {
+  background: rgba(249, 115, 22, 0.15);
+  color: #fed7aa;
+}
+
+.pill-red {
+  background: rgba(248, 113, 113, 0.2);
+  color: #fecaca;
+}
+
+.pill-yellow {
+  background: rgba(250, 204, 21, 0.15);
+  color: #fef9c3;
 }
 
 /* About section */
 .about-section {
+  max-width: 960px;
+  margin: 0 auto;
   padding: 1.5rem;
-  background: rgba(15, 23, 42, 0.9);
-  border-radius: 0.75rem;
+  margin-bottom: 2rem;
+  background: rgba(15, 23, 42, 0.95);
+  border-radius: 0.9rem;
   border: 1px solid rgba(148, 163, 184, 0.4);
 }
 
@@ -109,5 +239,5 @@ body {
   border-top: 1px solid rgba(148, 163, 184, 0.3);
   font-size: 0.85rem;
   color: #9ca3af;
+  background: rgba(15, 23, 42, 0.96);
 }
-
