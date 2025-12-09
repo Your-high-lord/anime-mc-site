@@ -1,71 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-<<link rel="stylesheet" href="css/style.css">>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Anime MC Hub</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+  <div class="app-bg"></div>
+
   <header class="site-header">
-    <h1>Anime MC Hub</h1>
-    <p>Explore main characters from your favorite anime.</p>
+    <div class="logo">
+      <span class="logo-dot"></span>
+      <span class="logo-text">Anime MC Hub</span>
+    </div>
     <nav class="main-nav">
-      <a href="index.html#home">Home</a>
-      <a href="index.html#characters">Characters</a>
-      <a href="index.html#about">About</a>
+      <a href="#home">Home</a>
+      <a href="#characters">Characters</a>
+      <a href="#about">About</a>
     </nav>
   </header>
 
   <main>
-    <!-- Home section -->
+    <!-- Hero / AI vibe section -->
     <section id="home" class="hero">
-      <h2>Welcome to Anime MC Hub</h2>
-      <p>Your simple directory of anime main characters, all in one place.</p>
+      <div class="hero-text">
+        <h1>Discover Iconic Anime Main Characters</h1>
+        <p>
+          A next‑gen, AI‑ready hub for anime protagonists, rivals, and legendary villains.
+        </p>
+        <div class="hero-actions">
+          <a href="#characters" class="btn-primary">Browse MCs</a>
+          <button class="btn-ghost" disabled>AI Recommender (coming soon)</button>
+        </div>
+      </div>
     </section>
 
-    <!-- Characters cards -->
+    <!-- Main character grid -->
     <section id="characters" class="characters-section">
       <h2>Main Characters</h2>
+      <p class="section-subtitle">
+        Choose a series to open its own page with detailed heroes and villains.
+      </p>
 
       <div class="character-grid">
         <!-- Goku card -->
         <a href="dragon-ball.html" class="character-link">
           <article class="character-card">
-            <img src="images/goku.jpg" alt="Son Goku">
+            <div class="card-glow"></div>
+            <img src="images/goku.jpg" alt="Son Goku" />
             <h3>Son Goku</h3>
-            <p class="anime-name">Anime: Dragon Ball Z / Dragon Ball Super</p>
-            <p class="summary">Click to view Dragon Ball characters and details.</p>
+            <p class="anime-name">Dragon Ball Z / Super</p>
+            <p class="summary">
+              Saiyan warrior obsessed with training and fighting the strongest opponents.
+            </p>
+            <span class="pill pill-orange">Shonen Classic</span>
           </article>
         </a>
 
         <!-- Baki card -->
         <a href="baki.html" class="character-link">
           <article class="character-card">
-            <img src="images/baki.jpg" alt="Baki Hanma">
+            <div class="card-glow"></div>
+            <img src="images/baki.jpg" alt="Baki Hanma" />
             <h3>Baki Hanma</h3>
-            <p class="anime-name">Anime: Baki the Grappler</p>
-            <p class="summary">Click to view Baki characters and details.</p>
+            <p class="anime-name">Baki the Grappler</p>
+            <p class="summary">
+              Underground fighter pushing his limits to surpass his father Yujiro Hanma.
+            </p>
+            <span class="pill pill-red">Martial Arts</span>
           </article>
         </a>
 
         <!-- Naruto card -->
         <a href="naruto.html" class="character-link">
           <article class="character-card">
-            <img src="images/Naruto.jpg" alt="Naruto Uzumaki">
+            <div class="card-glow"></div>
+            <img src="images/naruto.jpg" alt="Naruto Uzumaki" />
             <h3>Naruto Uzumaki</h3>
-            <p class="anime-name">Anime: Naruto / Naruto Shippuden</p>
-            <p class="summary">Click to view Naruto characters and details.</p>
+            <p class="anime-name">Naruto / Shippuden</p>
+            <p class="summary">
+              Outcast ninja chasing his dream of becoming Hokage and protecting his village.
+            </p>
+            <span class="pill pill-yellow">Ninja Saga</span>
           </article>
         </a>
       </div>
     </section>
 
-    <!-- About section -->
+    <!-- About -->
     <section id="about" class="about-section">
-      <h2>About This Site</h2>
+      <h2>About This Project</h2>
       <p>
-        This is a fan-made project to list and organize main characters from different anime series. It will grow over time as more characters and anime are added.
+        This is a fan‑made hub inspired by platforms like Crunchyroll, but focused on
+        main characters and their worlds. Future features can include AI search,
+        recommendations, and auto‑generated character summaries.
       </p>
     </section>
   </main>
@@ -75,4 +104,3 @@
   </footer>
 </body>
 </html>
-
