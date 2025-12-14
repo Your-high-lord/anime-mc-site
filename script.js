@@ -1,38 +1,105 @@
 document.addEventListener("DOMContentLoaded", () => {
-  /* CARD INTERACTIONS: filters, spotlight, tilt, ripple */
-  const filterButtons = document.querySelectorAll("[data-filter]");
-  const cards = document.querySelectorAll(".character-card");
+  /* HIDDEN WORLD STATE – calm / scheming / unstable */
+  (function setupWatcherState() {
+    const body = document.body;
+    let interactions = 0;
+    const startTime = Date.now();
 
-  if (filterButtons.length && cards.length) {
-    // Filter buttons
-    filterButtons.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const filter = btn.getAttribute("data-filter");
+    function applyState() {
+      const elapsed = (Date.now() - startTime) / 1000;
+      let state = "state-calm";
 
-        filterButtons.forEach((b) => b.classList.remove("active-filter"));
-        btn.classList.add("active-filter");
+      if (elapsed > 60 || interactions > 20) {
+        state = "state-scheming";
+      }
+      if (elapsed > 180 || interactions > 60) {
+        state = "state-unstable";
+      }
 
-        cards.forEach((card) => {
-          const tag = card.getAttribute("data-tag");
-          if (filter === "all" || tag === filter) {
-            card.style.opacity = "1";
-            card.style.transform = "translateY(0)";
-            card.style.pointerEvents = "auto";
-          } else {
-            card.style.opacity = "0.25";
-            card.style.transform = "scale(0.97)";
-            card.style.pointerEvents = "none";
-          }
-        });
-      });
+      body.classList.remove("state-calm", "state-scheming", "state-unstable");
+      body.classList.add(state);
+    }
+
+    const stored = localStorage.getItem("mc_world_state");
+    if (stored) {
+      body.classList.add(stored);
+    } else {
+      body.classList.add("state-calm");
+    }
+
+    window.addEventListener("pointerdown", () => {
+      interactions++;
+      applyState();
+      const cls =
+        body.className.split(" ").find((c) => c.startsWith("state-")) || "state-calm";
+      localStorage.setItem("mc_world_state", cls);
     });
 
-    // Random spotlight
+    setInterval(() => {
+      applyState();
+      const cls =
+        body.className.split(" ").find((c) => c.startsWith("state-")) || "state-calm";
+      localStorage.setItem("mc_world_state", cls);
+    }, 15000);
+  })();
+
+  /* OBSERVER AURA – follows user slightly */
+  (function setupAura() {
+    const aura = document.querySelector(".observer-aura");
+    if (!aura) return;
+
+    const updateAura = (x, y) => {
+      const nx = x / window.innerWidth;
+      const ny = y / window.innerHeight;
+      const px = Math.max(0.1, Math.min(0.9, nx));
+      const py = Math.max(0.1, Math.min(0.9, ny));
+      aura.style.background = `radial-gradient(circle at ${px * 100}% ${
+        py * 100
+      }%, rgba(148,163,255,0.22), transparent 55%)`;
+    };
+
+    window.addEventListener("pointermove", (e) => {
+      updateAura(e.clientX, e.clientY);
+    });
+
+    updateAura(window.innerWidth * 0.6, window.innerHeight * 0.3);
+  })();
+
+  /* CARD INTERACTIONS: filters, spotlight, tilt, ripple */
+  (function setupCards() {
+    const filterButtons = document.querySelectorAll("[data-filter]");
+    const cards = document.querySelectorAll(".character-card");
+
+    if (!cards.length) return;
+
+    if (filterButtons.length) {
+      filterButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const filter = btn.getAttribute("data-filter");
+
+          filterButtons.forEach((b) => b.classList.remove("active-filter"));
+          btn.classList.add("active-filter");
+
+          cards.forEach((card) => {
+            const tag = card.getAttribute("data-tag");
+            if (filter === "all" || tag === filter) {
+              card.style.opacity = "1";
+              card.style.transform = "translateY(0)";
+              card.style.pointerEvents = "auto";
+            } else {
+              card.style.opacity = "0.25";
+              card.style.transform = "scale(0.97)";
+              card.style.pointerEvents = "none";
+            }
+          });
+        });
+      });
+    }
+
     const randomCard = cards[Math.floor(Math.random() * cards.length)];
     randomCard.classList.add("spotlight");
     setTimeout(() => randomCard.classList.remove("spotlight"), 1600);
 
-    // Tilt + ripple
     cards.forEach((card) => {
       card.addEventListener("mousemove", (e) => {
         const rect = card.getBoundingClientRect();
@@ -61,7 +128,32 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => ripple.remove(), 450);
       });
     });
-  }
+  })();
+
+  /* CHARACTER IMAGE FALLBACK – animated silhouettes */
+  (function setupSilhouettes() {
+    const cards = document.querySelectorAll(".character-card");
+    if (!cards.length) return;
+
+    cards.forEach((card) => {
+      const img = card.querySelector("img");
+      if (!img) return;
+
+      const activateSilhouette = () => {
+        card.classList.add("silhouette");
+        if (!card.querySelector(".silhouette-shape")) {
+          const shape = document.createElement("div");
+          shape.className = "silhouette-shape";
+          img.replaceWith(shape);
+        }
+      };
+
+      img.addEventListener("error", activateSilhouette);
+      if (!img.complete || img.naturalWidth === 0) {
+        activateSilhouette();
+      }
+    });
+  })();
 
   /* GUESS THE MC: difficulty + streak */
   (function setupGuessGame() {
@@ -187,6 +279,72 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   })();
 
+  /* AWAKENING MINI-GAME – timing-based charge */
+  (function setupAwakening() {
+    const btn = document.getElementById("awakening-btn");
+    const fill = document.querySelector(".awakening-fill");
+    const status = document.getElementById("awakening-status");
+    const aura = document.querySelector(".observer-aura");
+
+    if (!btn || !fill) return;
+
+    let charge = 0;
+    let lastTap = 0;
+    let streak = 0;
+
+    function updateFill() {
+      const clamped = Math.max(0, Math.min(100, charge));
+      fill.style.width = `${clamped}%`;
+    }
+
+    function nudgeWorld() {
+      if (!aura) return;
+      const phase = Math.min(1, charge / 100);
+      const intensity = 0.12 + phase * 0.22;
+      aura.style.background = `radial-gradient(circle at 50% 50%, rgba(244, 244, 245, ${intensity}), transparent 58%)`;
+    }
+
+    btn.addEventListener("click", () => {
+      const now = performance.now();
+      const delta = now - lastTap;
+      lastTap = now;
+
+      if (delta > 0 && delta < 900 && delta > 250) {
+        streak++;
+        charge += 8 + streak * 0.6;
+        if (status) status.textContent = streak >= 5 ? "The silence is listening." : "";
+      } else {
+        streak = 0;
+        charge -= 5;
+        if (status) status.textContent = "";
+      }
+
+      if (charge >= 100) {
+        charge = 100;
+        if (status) status.textContent = "Something just noticed you.";
+        localStorage.setItem("mc_world_touched", "1");
+      } else if (charge < 0) {
+        charge = 0;
+      }
+
+      updateFill();
+      nudgeWorld();
+    });
+
+    setInterval(() => {
+      if (charge <= 0) return;
+      charge = Math.max(0, charge - 0.7);
+      updateFill();
+    }, 1400);
+
+    if (localStorage.getItem("mc_world_touched") === "1") {
+      charge = 24;
+      updateFill();
+      nudgeWorld();
+      if (status) status.textContent = "The residue of a previous attempt lingers.";
+    }
+  })();
+
   /* WHICH MC ARE YOU? QUIZ */
   (function setupPersonalityQuiz() {
     const startBtn = document.getElementById("mcq-start-btn");
@@ -279,8 +437,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
       if (bestMC) {
-        resultEl.textContent = `You are most like ${bestMC}!`;
-        questionEl.textContent = "Want to try again with different choices?";
+        resultEl.textContent = `You are most like ${bestMC}.`;
+        questionEl.textContent = "The archive has filed your pattern away.";
         optionsEl.innerHTML = "";
         saveLastResult(bestMC);
       }
@@ -314,7 +472,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       parallaxEls.forEach((el) => {
         const rect = el.getBoundingClientRect();
-        const offset = (rect.top / window.innerHeight) * 4; // smaller offset
+        const offset = (rect.top / window.innerHeight) * 4;
         el.style.transform = `translateY(${offset}px)`;
       });
     }
