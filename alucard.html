@@ -1,50 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Alucard – Anime MC Hub</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+  <div class="app-bg"></div>
+
   <header class="site-header">
-    <div class="logo">
-      <span class="logo-dot"></span>
-      <span class="logo-text">Anime MC Hub</span>
+    <div class="logo-lockup">
+      <span class="logo-orb"></span>
+      <div>
+        <h1>Anime MC Hub</h1>
+        <p class="tagline">Hellsing’s living weapon.</p>
+      </div>
     </div>
     <nav class="main-nav">
-      <a href="index.html#home">Home</a>
-      <a href="index.html#characters">Characters</a>
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="naruto.html" class="nav-link">Naruto</a>
+      <a href="dragon-ball.html" class="nav-link">Dragon Ball</a>
+      <a href="light.html" class="nav-link">Light</a>
+      <a href="alucard.html" class="nav-link active">Alucard</a>
+      <a href="lelouch.html" class="nav-link">Lelouch</a>
     </nav>
   </header>
 
   <main>
-    <section class="hero">
-      <h1>Alucard</h1>
-      <p>The ultimate vampire weapon of the Hellsing Organization, reveling in battle against monsters and humans alike.</p>
-      <!-- Drop Alucard image as images/Alucard.jpg -->
-      <img src="images/Alucard.jpg" alt="Alucard" class="hero-image">
-    </section>
+    <article class="mc-detail-page">
+      <header>
+        <h2>Alucard</h2>
+        <p>The ultimate vampire weapon of the Hellsing Organization, reveling in battle against monsters and humans alike.</p>
+      </header>
 
-    <section class="characters-section">
-      <h2>Allies and Enemies</h2>
-      <ul>
-        <li>Integra Hellsing – the master Alucard loyally serves.</li>
-        <li>Seras Victoria – a police officer turned vampire under Alucard.</li>
-        <li>Millennium and other supernatural threats that challenge Hellsing.</li>
-      </ul>
+      <img src="images/alucard-main.jpg" alt="Alucard" class="mc-hero-image" />
 
-      <h2>Power and Style</h2>
-      <ul>
-        <li>Regeneration, shapeshifting, and overwhelming vampiric strength.</li>
-        <li>Iconic red coat, hat, and dual guns.</li>
-        <li>A sadistic yet charismatic presence on the battlefield.</li>
-      </ul>
-    </section>
+      <section>
+        <h3>Allies</h3>
+        <div class="mc-ally-grid">
+          <article class="mc-ally-card">
+            <img src="images/integra.jpg" alt="Integra Hellsing" class="mc-ally-thumb" />
+            <div class="mc-ally-meta">
+              <h4>Integra Hellsing</h4>
+              <p>Alucard’s master and head of the Hellsing Organization.</p>
+            </div>
+          </article>
+          <article class="mc-ally-card">
+            <img src="images/seras.jpg" alt="Seras Victoria" class="mc-ally-thumb" />
+            <div class="mc-ally-meta">
+              <h4>Seras Victoria</h4>
+              <p>Police officer turned vampire fighting alongside Alucard.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <h3>Enemies</h3>
+        <div class="mc-ally-grid">
+          <article class="mc-ally-card">
+            <img src="images/millennium.jpg" alt="Millennium" class="mc-ally-thumb" />
+            <div class="mc-ally-meta">
+              <h4>Millennium</h4>
+              <p>Nazi vampire group that throws the world into war.</p>
+            </div>
+          </article>
+          <article class="mc-ally-card">
+            <img src="images/alexander-anderson.jpg" alt="Alexander Anderson" class="mc-ally-thumb" />
+            <div class="mc-ally-meta">
+              <h4>Alexander Anderson</h4>
+              <p>Regenerator priest and Alucard’s most fanatical rival.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <footer>
+        <p>Back to <a href="index.html">Anime MC Hub</a></p>
+      </footer>
+    </article>
   </main>
 
-  <footer class="site-footer">
-    <p>Back to <a href="index.html">Anime MC Hub</a></p>
-  </footer>
+  <script src="script.js"></script>
 </body>
 </html>
