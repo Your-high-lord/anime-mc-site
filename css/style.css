@@ -1,4 +1,4 @@
-/* Base layout */
+/* RESET & BASE */
 *,
 *::before,
 *::after {
@@ -27,6 +27,7 @@ body {
   z-index: -2;
 }
 
+/* HEADER */
 .site-header {
   position: sticky;
   top: 0;
@@ -83,7 +84,7 @@ body {
   font-size: 0.8rem;
   text-decoration: none;
   background: rgba(15, 23, 42, 0.7);
-  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+  transition: border-color 0.2s, background 0.2s, color 0.2s;
 }
 
 .nav-link:hover {
@@ -96,11 +97,24 @@ body {
   box-shadow: 0 0 12px rgba(251, 191, 36, 0.55);
 }
 
-/* Sections */
+/* MAIN LAYOUT */
 main {
   padding: 1.2rem 1.4rem 2.5rem;
   max-width: 1120px;
   margin: 0 auto;
+}
+
+.parallax-section {
+  position: relative;
+  margin: 1.4rem 0;
+  padding: 1.1rem 1rem;
+  border-radius: 1.25rem;
+  background: radial-gradient(circle at top left, rgba(30, 64, 175, 0.25), rgba(15, 23, 42, 0.96));
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  box-shadow:
+    0 20px 40px rgba(15, 23, 42, 0.85),
+    inset 0 0 0 1px rgba(15, 23, 42, 0.9);
+  overflow: hidden;
 }
 
 .section-header {
@@ -118,20 +132,7 @@ main {
   color: #9ca3af;
 }
 
-.parallax-section {
-  position: relative;
-  margin: 1.4rem 0;
-  padding: 1.1rem 1rem;
-  border-radius: 1.25rem;
-  background: radial-gradient(circle at top left, rgba(30, 64, 175, 0.25), rgba(15, 23, 42, 0.96));
-  border: 1px solid rgba(148, 163, 184, 0.4);
-  box-shadow:
-    0 20px 40px rgba(15, 23, 42, 0.85),
-    inset 0 0 0 1px rgba(15, 23, 42, 0.9);
-  overflow: hidden;
-}
-
-/* Hero section */
+/* HERO */
 .hero-section {
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
@@ -156,6 +157,7 @@ main {
   justify-content: center;
 }
 
+/* Orbit visual */
 .mc-orbit {
   position: relative;
   width: 190px;
@@ -190,7 +192,7 @@ main {
   animation: aura-pulse 2.6s ease-out infinite;
 }
 
-/* MC grid */
+/* MC GRID */
 .mc-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -206,7 +208,7 @@ main {
   box-shadow: 0 16px 36px rgba(15, 23, 42, 0.92);
   overflow: hidden;
   transform: translateY(0);
-  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+  transition: transform 0.22s, box-shadow 0.22s, border-color 0.22s;
 }
 
 .mc-card::before {
@@ -217,7 +219,7 @@ main {
     radial-gradient(circle at top, rgba(56, 189, 248, 0.13), transparent 55%),
     radial-gradient(circle at bottom, rgba(251, 191, 36, 0.09), transparent 60%);
   opacity: 0;
-  transition: opacity 0.22s ease;
+  transition: opacity 0.22s;
   pointer-events: none;
 }
 
@@ -238,16 +240,12 @@ main {
   margin-bottom: 0.55rem;
 }
 
-/* Covers auto-loaded from API */
-#naruto-cover,
-#dragonball-cover,
-#deathnote-cover,
-#hellsing-cover,
-#codegeass-cover {
+/* Fix image blow-up: fixed height + object-fit */
+.mc-cover-img {
+  display: block;
   width: 100%;
   height: 210px;
   object-fit: cover;
-  display: block;
 }
 
 .mc-meta h4 {
@@ -276,7 +274,7 @@ main {
   color: #e5e7eb;
   text-decoration: none;
   background: radial-gradient(circle at top left, rgba(30, 64, 175, 0.45), rgba(15, 23, 42, 0.98));
-  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
 }
 
 .ghost-btn:hover {
@@ -285,7 +283,7 @@ main {
   transform: translateY(-1px);
 }
 
-/* Games */
+/* GAMES */
 .games-layout {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
@@ -302,16 +300,6 @@ main {
   overflow: hidden;
 }
 
-.game-card h4 {
-  margin: 0 0 0.3rem;
-}
-
-.game-card p {
-  font-size: 0.82rem;
-  color: #d1d5db;
-}
-
-/* Quiz */
 .quiz-options {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -327,7 +315,7 @@ main {
   color: #e5e7eb;
   font-size: 0.8rem;
   cursor: pointer;
-  transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+  transition: background 0.18s, border-color 0.18s, transform 0.18s;
 }
 
 .quiz-option:hover {
@@ -358,7 +346,7 @@ main {
   color: #fbbf24;
 }
 
-/* Power burst animation for correct answer */
+/* Power burst */
 .power-burst {
   position: absolute;
   inset: 0;
@@ -369,7 +357,7 @@ main {
     radial-gradient(circle at 100% 100%, rgba(239, 68, 68, 0.2), transparent 55%);
   opacity: 0;
   transform: scale(0.8);
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition: opacity 0.2s, transform 0.2s;
 }
 
 .power-burst.active {
@@ -378,7 +366,7 @@ main {
   animation: burst-pulse 0.45s ease-out forwards;
 }
 
-/* Spin arena: “Goku beam” + “Baki blows” via CSS sprites/loops */
+/* Arena */
 .arena-viewport {
   position: relative;
   margin-top: 0.75rem;
@@ -396,18 +384,16 @@ main {
   background-position: center;
   background-size: cover;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s;
 }
 
-/* Put your own sprite-like images here later */
+/* Plug your own images here later */
 .arena-goku {
-  /* Example: long horizontal sprite sheet or a beam-style image */
   background-image: url("../images/goku-beam-sprite.png");
   animation: goku-beam 0.8s steps(6) infinite;
 }
 
 .arena-baki {
-  /* Example: Baki punch/kick sprite / still with movement */
   background-image: url("../images/baki-fight-sprite.png");
   animation: baki-combo 0.9s steps(6) infinite;
 }
@@ -416,7 +402,7 @@ main {
   opacity: 1;
 }
 
-/* Buttons */
+/* BUTTONS */
 .primary-btn {
   padding: 0.5rem 1.1rem;
   border-radius: 999px;
@@ -431,7 +417,7 @@ main {
   box-shadow:
     0 10px 30px rgba(248, 250, 252, 0.35),
     0 0 25px rgba(250, 204, 21, 0.9);
-  transition: transform 0.16s ease, box-shadow 0.16s ease;
+  transition: transform 0.16s, box-shadow 0.16s;
 }
 
 .primary-btn:hover {
@@ -447,7 +433,7 @@ main {
   box-shadow: none;
 }
 
-/* Footer */
+/* FOOTER */
 .site-footer {
   padding: 1rem 1.4rem 1.4rem;
   text-align: center;
@@ -455,60 +441,33 @@ main {
   color: #6b7280;
 }
 
-/* Animations */
+/* KEYFRAMES */
 @keyframes orbit-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 @keyframes aura-pulse {
-  0% {
-    transform: scale(0.9);
-    opacity: 0.5;
-  }
-  50% {
-    transform: scale(1);
-    opacity: 0.9;
-  }
-  100% {
-    transform: scale(1.05);
-    opacity: 0.3;
-  }
+  0% { transform: scale(0.9); opacity: 0.5; }
+  50% { transform: scale(1); opacity: 0.9; }
+  100% { transform: scale(1.05); opacity: 0.3; }
 }
 
 @keyframes burst-pulse {
-  0% {
-    opacity: 1;
-    transform: scale(0.9);
-  }
-  60% {
-    opacity: 1;
-    transform: scale(1.05);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(1.12);
-  }
+  0% { opacity: 1; transform: scale(0.9); }
+  60% { opacity: 1; transform: scale(1.05); }
+  100% { opacity: 0; transform: scale(1.12); }
 }
 
-/* Simple sprite-like CSS animations – replace images with your own sprite sheets */
 @keyframes goku-beam {
-  100% {
-    background-position: -2400px 0;
-  }
+  100% { background-position: -2400px 0; }
 }
 
 @keyframes baki-combo {
-  100% {
-    background-position: -2400px 0;
-  }
+  100% { background-position: -2400px 0; }
 }
 
-/* Responsive */
+/* RESPONSIVE */
 @media (max-width: 768px) {
   .hero-section {
     grid-template-columns: minmax(0, 1fr);
