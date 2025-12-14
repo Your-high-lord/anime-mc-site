@@ -6,9 +6,6 @@
   <title>Anime MC Hub</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
-<script src="script.js"></script>
-</body>
-</html>
 <body>
   <div class="app-bg"></div>
 
@@ -20,107 +17,50 @@
     <nav class="main-nav">
       <a href="#home">Home</a>
       <a href="#characters">Characters</a>
+      <a href="#quiz">Games</a>
       <a href="#about">About</a>
     </nav>
   </header>
 
   <main>
+    <!-- HERO -->
     <section id="home" class="hero">
       <h1>Welcome to Anime MC Hub</h1>
-      <p>Explore your favorite main characters from classic anime series. Just drop your images in the <code>images</code> folder and this site will handle the rest.</p>
+      <p>Explore your favorite main characters from classic anime series. Drop your images into the <code>images</code> folder and this hub brings them to life.</p>
     </section>
 
+    <!-- CHARACTERS -->
     <section id="characters" class="characters-section">
-      <section id="characters" class="characters-section">
-  <h2>Featured Main Characters</h2>
-
-  <div class="filter-bar">
-    <button type="button" class="filter-btn active-filter" data-filter="all">All</button>
-    <button type="button" class="filter-btn" data-filter="shonen">Shonen</button>
-    <button type="button" class="filter-btn" data-filter="antihero">Anti-heroes</button>
-  </div>
-
-  <div class="character-grid">
-    <!-- Naruto -->
-    <a href="naruto.html" class="character-link">
-      <article class="character-card" data-tag="shonen">
-        <img src="images/Naruto.jpg" alt="Naruto Uzumaki">
-        <h3>Naruto Uzumaki</h3>
-        <p>Knuckle-headed ninja chasing his dream of becoming Hokage.</p>
-      </article>
-    </a>
-
-    <!-- Goku -->
-    <a href="dragon-ball.html" class="character-link">
-      <article class="character-card" data-tag="shonen">
-        <img src="images/goku.jpg" alt="Son Goku">
-        <h3>Son Goku</h3>
-        <p>Cheerful Saiyan warrior always pushing past his limits.</p>
-      </article>
-    </a>
-
-    <!-- Baki -->
-    <a href="baki.html" class="character-link">
-      <article class="character-card" data-tag="shonen">
-        <img src="images/baki.jpg" alt="Baki Hanma">
-        <h3>Baki Hanma</h3>
-        <p>A young fighter aiming to surpass the strongest creature on Earth.</p>
-      </article>
-    </a>
-
-    <!-- Light Yagami -->
-    <a href="light.html" class="character-link">
-      <article class="character-card" data-tag="antihero">
-        <img src="images/light.jpg" alt="Light Yagami">
-        <h3>Light Yagami</h3>
-        <p>A genius student who finds a deadly notebook and tries to remake the world.</p>
-      </article>
-    </a>
-
-    <!-- Alucard -->
-    <a href="alucard.html" class="character-link">
-      <article class="character-card" data-tag="antihero">
-        <img src="images/alucard.jpg" alt="Alucard">
-        <h3>Alucard</h3>
-        <p>An immortal vampire serving the Hellsing Organization with terrifying power.</p>
-      </article>
-    </a>
-
-    <!-- Lelouch -->
-    <a href="lelouch.html" class="character-link">
-      <article class="character-card" data-tag="antihero">
-        <img src="images/lelouch.jpg" alt="Lelouch vi Britannia">
-        <h3>Lelouch vi Britannia</h3>
-        <p>A fallen prince who gains a mysterious power and leads a rebellion.</p>
-      </article>
-    </a>
-  </div>
-</section>
-
       <h2>Featured Main Characters</h2>
+
+      <div class="filter-bar">
+        <button type="button" class="filter-btn active-filter" data-filter="all">All</button>
+        <button type="button" class="filter-btn" data-filter="shonen">Shonen</button>
+        <button type="button" class="filter-btn" data-filter="antihero">Anti-heroes</button>
+      </div>
 
       <div class="character-grid">
         <!-- Naruto -->
         <a href="naruto.html" class="character-link">
-          <article class="character-card">
+          <article class="character-card" data-tag="shonen">
             <img src="images/Naruto.jpg" alt="Naruto Uzumaki">
             <h3>Naruto Uzumaki</h3>
-            <p>Knuckle‑headed ninja chasing his dream of becoming Hokage.</p>
+            <p>Knuckle-headed ninja chasing his dream of becoming Hokage.</p>
           </article>
         </a>
 
-        <!-- Goku (example) -->
+        <!-- Goku -->
         <a href="dragon-ball.html" class="character-link">
-          <article class="character-card">
+          <article class="character-card" data-tag="shonen">
             <img src="images/goku.jpg" alt="Son Goku">
             <h3>Son Goku</h3>
             <p>Cheerful Saiyan warrior always pushing past his limits.</p>
           </article>
         </a>
 
-        <!-- Baki (example) -->
+        <!-- Baki -->
         <a href="baki.html" class="character-link">
-          <article class="character-card">
+          <article class="character-card" data-tag="shonen">
             <img src="images/baki.jpg" alt="Baki Hanma">
             <h3>Baki Hanma</h3>
             <p>A young fighter aiming to surpass the strongest creature on Earth.</p>
@@ -129,7 +69,7 @@
 
         <!-- Light Yagami -->
         <a href="light.html" class="character-link">
-          <article class="character-card">
+          <article class="character-card" data-tag="antihero">
             <img src="images/light.jpg" alt="Light Yagami">
             <h3>Light Yagami</h3>
             <p>A genius student who finds a deadly notebook and tries to remake the world.</p>
@@ -138,7 +78,7 @@
 
         <!-- Alucard -->
         <a href="alucard.html" class="character-link">
-          <article class="character-card">
+          <article class="character-card" data-tag="antihero">
             <img src="images/alucard.jpg" alt="Alucard">
             <h3>Alucard</h3>
             <p>An immortal vampire serving the Hellsing Organization with terrifying power.</p>
@@ -147,7 +87,7 @@
 
         <!-- Lelouch -->
         <a href="lelouch.html" class="character-link">
-          <article class="character-card">
+          <article class="character-card" data-tag="antihero">
             <img src="images/lelouch.jpg" alt="Lelouch vi Britannia">
             <h3>Lelouch vi Britannia</h3>
             <p>A fallen prince who gains a mysterious power and leads a rebellion.</p>
@@ -156,21 +96,23 @@
       </div>
     </section>
 
-    <section id="about" class="characters-section">
-      <h2>About This Hub</h2>
-      <p>This site is built so you can easily plug in images for your favorite MCs.</p>
-      <ul>
-        <li>Upload images into the <code>images</code> folder.</li>
-        <li>Match the filenames used in the <code>img src</code> attributes.</li>
-        <li>Ask to “put these IMAGES” and only the <code>src</code>/<code>alt</code> will need changing.</li>
-      </ul>
-    </section>
-  </main>
+    <!-- GAME 1: GUESS THE MC -->
+    <section id="quiz" class="game-section">
+      <h2>Guess The MC</h2>
+      <p class="game-desc">Can you guess which MC this hint is talking about?</p>
 
-  <footer class="site-footer">
-    <p>Anime MC Hub · Built by Your-high-lord</p>
-  </footer>
-</body>
-</html>
+      <div class="quiz-card">
+        <p id="quiz-hint">Click “New Hint” to start.</p>
 
+        <div class="quiz-options">
+          <button type="button" class="quiz-option">Naruto</button>
+          <button type="button" class="quiz-option">Goku</button>
+          <button type="button" class="quiz-option">Baki</button>
+          <button type="button" class="quiz-option">Light</button>
+          <button type="button" class="quiz-option">Alucard</button>
+          <button type="button" class="quiz-option">Lelouch</button>
+        </div>
 
+        <div class="quiz-actions">
+          <button type="button" id="new-hint-btn">New Hint</button>
+          <span id="
