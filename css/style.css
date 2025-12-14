@@ -11,7 +11,7 @@ body {
   min-height: 100vh;
 }
 
-/* Baki / hero image size */
+/* Hero image size */
 .hero-image {
   max-width: 320px;
   width: 100%;
@@ -265,7 +265,7 @@ button:focus-visible {
   background: rgba(15, 23, 42, 0.96);
 }
 
-/* List with thumbs (used on other pages) */
+/* List with thumbs (for other pages) */
 .character-list {
   list-style: none;
   padding: 0;
