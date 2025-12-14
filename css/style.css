@@ -1,142 +1,118 @@
-/* Global layout + background */
-html {
-  scroll-behavior: smooth;
-}
+/* Add these missing styles at the end of your file */
 
-body {
-  margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  color: #e5e7eb;
-  background: #050816;
-  position: relative;
-  min-height: 100vh;
-}
-
-/* Baki / hero image size */
-.hero-image {
-  max-width: 320px;
-  width: 100%;
-  border-radius: 0.75rem;
-  display: block;
-  margin-top: 0.75rem;
-}
-
-/* Animated gradient background */
-.app-bg {
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(circle at 0% 0%, #f97316 0, transparent 55%),
-              radial-gradient(circle at 100% 0%, #22c55e 0, transparent 55%),
-              radial-gradient(circle at 50% 100%, #3b82f6 0, transparent 60%);
-  opacity: 0.25;
-  z-index: -1;
-}
-
-/* Header */
-.site-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 1.5rem;
-  background: rgba(15, 23, 42, 0.96);
-  border-bottom: 2px solid #f97316;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  backdrop-filter: blur(10px);
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.logo-dot {
-  width: 18px;
-  height: 18px;
-  border-radius: 999px;
-  background: radial-gradient(circle at 30% 30%, #fde68a, #f97316);
-  box-shadow: 0 0 15px rgba(249, 115, 22, 0.85);
-}
-
-.logo-text {
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  color: #fbbf24;
-}
-
-.main-nav a {
-  color: #e5e7eb;
-  margin-left: 1rem;
+/* Button styles */
+.btn-primary {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background: #f97316;
+  color: white;
+  border-radius: 0.5rem;
   text-decoration: none;
-  font-size: 0.95rem;
+  font-weight: 600;
+  transition: background 0.3s ease;
 }
 
-.main-nav a:hover {
+.btn-primary:hover {
+  background: #ea580c;
+}
+
+.btn-ghost {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  border: 1px solid #9ca3af;
+  color: #e5e7eb;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-ghost:hover:not(:disabled) {
+  border-color: #f97316;
   color: #f97316;
 }
 
-/* Hero */
-.hero {
-  padding: 3rem 1.5rem 1.5rem;
+.btn-ghost:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Pills/Tags */
+.pill {
+  display: inline-block;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+.pill-orange {
+  background: rgba(249, 115, 22, 0.2);
+  color: #fb923c;
+}
+
+.pill-red {
+  background: rgba(239, 68, 68, 0.2);
+  color: #f87171;
+}
+
+.pill-yellow {
+  background: rgba(234, 179, 8, 0.2);
+  color: #eab308;
+}
+
+/* About section */
+.about-section {
   max-width: 960px;
-  margin: 0 auto;
-}
-
-.hero h1 {
-  font-size: 2.1rem;
-  margin-bottom: 0.5rem;
-}
-
-.hero p {
-  max-width: 520px;
-  color: #cbd5f5;
-}
-
-/* Characters section */
-.characters-section {
-  max-width: 960px;
-  margin: 0 auto;
+  margin: 2rem auto;
   padding: 1.5rem;
-}
-
-/* Cards */
-.character-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.25rem;
-}
-
-.character-link {
-  text-decoration: none;
-  color: inherit;
-}
-
-.character-card {
-  position: relative;
-  overflow: hidden;
-  background: rgba(15, 23, 42, 0.96);
+  background: rgba(15, 23, 42, 0.6);
   border-radius: 0.9rem;
-  padding: 0.85rem;
-  border: 1px solid rgba(148, 163, 184, 0.4);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  border: 1px solid rgba(148, 163, 184, 0.3);
 }
 
-.character-card img {
-  width: 100%;
-  max-height: 180px;
-  object-fit: cover;
-  border-radius: 0.65rem;
-  margin-bottom: 0.5rem;
+/* Section subtitle */
+.section-subtitle {
+  color: #cbd5f5;
+  margin-bottom: 1.5rem;
 }
 
-/* Footer */
-.site-footer {
-  text-align: center;
-  padding: 1rem;
-  border-top: 1px solid rgba(148, 163, 184, 0.3);
-  font-size: 0.85rem;
-  color: #9ca3af;
-  background: rgba(15, 23, 42, 0.96);
+/* Card hover effects */
+.character-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(249, 115, 22, 0.2);
+  border-color: #f97316;
+}
+
+.card-glow {
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(249, 115, 22, 0.1), transparent);
+  border-radius: 50%;
+}
+
+/* Hero text styles */
+.hero-text {
+  margin-bottom: 2rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+/* Footer link styling */
+.site-footer a {
+  color: #f97316;
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
 }
