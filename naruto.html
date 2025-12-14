@@ -1,73 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Naruto – Anime MC Hub</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+  <div class="app-bg"></div>
+
   <header class="site-header">
-    <div class="logo">
-      <span class="logo-dot"></span>
-      <span class="logo-text">Anime MC Hub</span>
+    <div class="logo-lockup">
+      <span class="logo-orb"></span>
+      <div>
+        <h1>Anime MC Hub</h1>
+        <p class="tagline">Shinobi bonds and destinies.</p>
+      </div>
     </div>
     <nav class="main-nav">
-      <a href="index.html#home">Home</a>
-      <a href="index.html#characters">Characters</a>
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="naruto.html" class="nav-link active">Naruto</a>
+      <a href="dragon-ball.html" class="nav-link">Dragon Ball</a>
+      <a href="light.html" class="nav-link">Light</a>
+      <a href="alucard.html" class="nav-link">Alucard</a>
+      <a href="lelouch.html" class="nav-link">Lelouch</a>
     </nav>
   </header>
 
   <main>
-    <section class="hero">
-      <h1>Naruto</h1>
-      <p>A ninja who dreams of becoming Hokage and earning everyone’s respect.</p>
-      <img src="images/Naruto.jpg" alt="Naruto Uzumaki" class="hero-image">
-    </section>
-<section class="characters-section">
-  <h2>Heroes</h2>
-  <div class="character-grid">
-    <article class="character-card">
-      <img src="images/sasuke.jpg" alt="Sasuke Uchiha">
-      <h3>Sasuke Uchiha</h3>
-      <p>Rival and friend walking a dark path.</p>
-    </article>
-    <article class="character-card">
-      <img src="images/sakura.jpg" alt="Sakura Haruno">
-      <h3>Sakura Haruno</h3>
-      <p>Teammate and medic ninja who grows stronger over time.</p>
-    </article>
-    <article class="character-card">
-      <img src="images/kakashi.jpg" alt="Kakashi Hatake">
-      <h3>Kakashi Hatake</h3>
-      <p>Copy Ninja and mentor of Team 7.</p>
-    </article>
-  </div>
+    <article class="mc-detail-page">
+      <header>
+        <h2>Naruto Uzumaki</h2>
+        <p>The loud, lonely prankster who carries the power of the Nine-Tails and fights to be acknowledged by his village.</p>
+      </header>
 
-  <h2>Villains</h2>
-  <div class="character-grid">
-    <article class="character-card">
-      <img src="images/orochimaru.jpg" alt="Orochimaru">
-      <h3>Orochimaru</h3>
-      <p>Rogue Sannin obsessed with forbidden jutsu.</p>
-    </article>
-    <article class="character-card">
-      <img src="images/pain.jpg" alt="Pain Nagato">
-      <h3>Pain (Nagato)</h3>
-      <p>Leader of Akatsuki who brings “pain” to the world.</p>
-    </article>
-    <article class="character-card">
-      <img src="images/madara.png" alt="Madara Uchiha">
-      <h3>Madara Uchiha</h3>
-      <p>Legendary Uchiha shaping the ninja world’s fate.</p>
-    </article>
-  </div>
-</section>
+      <!-- You just add images/naruto-main.jpg -->
+      <img src="images/naruto-main.jpg" alt="Naruto Uzumaki" class="mc-hero-image" />
 
+      <section>
+        <h3>Allies</h3>
+        <div class="mc-ally-grid">
+          <article class="mc-ally-card">
+            <img src="images/sasuke.jpg" alt="Sasuke Uchiha" class="mc-ally-thumb" />
+            <div class="mc-ally-meta">
+              <h4>Sasuke Uchiha</h4>
+              <p>Rival, friend, and the one Naruto refuses to give up on.</p>
+            </div>
+          </article>
+          <article class="mc-ally-card">
+            <img src="images/sakura.jpg" alt="Sakura Haruno" class="mc-ally-thumb" />
+            <div class="mc-ally-meta">
+              <h4>Sakura Haruno</h4>
+              <p>Teammate and medic-nin who grows into her own strength.</p>
+            </div>
+          </article>
+          <article class="mc-ally-card">
+            <img src="images/kakashi.jpg" alt="Kakashi Hatake" class="mc-ally-thumb" />
+            <div class="mc-ally-meta">
+              <h4>Kakashi Hatake</h4>
+              <p>Copy Ninja and Team 7’s sensei, guiding Naruto’s path.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <h3>Villains and Antagonists</h3>
+        <div class="mc-ally-grid">
+          <article class="mc-ally-card">
+            <img src="images/orochimaru.jpg" alt="Orochimaru" class="mc-ally-thumb" />
+            <div class="mc-ally-meta">
+              <h4>Orochimaru</h4>
+              <p>Snake-like rogue Sannin obsessed with forbidden jutsu.</p>
+            </div>
+          </article>
+          <article class="mc-ally-card">
+            <img src="images/pain.jpg" alt="Pain" class="mc-ally-thumb" />
+            <div class="mc-ally-meta">
+              <h4>Pain</h4>
+              <p>Leader of the Akatsuki who forces Naruto to redefine peace.</p>
+            </div>
+          </article>
+          <article class="mc-ally-card">
+            <img src="images/madara.jpg" alt="Madara Uchiha" class="mc-ally-thumb" />
+            <div class="mc-ally-meta">
+              <h4>Madara Uchiha</h4>
+              <p>Legendary Uchiha who turns the entire world into a battlefield.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <footer>
+        <p>Back to <a href="index.html">Anime MC Hub</a></p>
+      </footer>
+    </article>
   </main>
 
-  <footer class="site-footer">
-    <p>Back to <a href="index.html">Anime MC Hub</a></p>
-  </footer>
+  <script src="script.js"></script>
 </body>
 </html>
