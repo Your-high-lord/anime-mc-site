@@ -1,76 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dragon Ball – Anime MC Hub</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+  <div class="app-bg"></div>
+
   <header class="site-header">
-    <div class="logo">
-      <span class="logo-dot"></span>
-      <span class="logo-text">Anime MC Hub</span>
+    <div class="logo-lockup">
+      <span class="logo-orb"></span>
+      <div>
+        <h1>Anime MC Hub</h1>
+        <p class="tagline">Saiyan pride and battles.</p>
+      </div>
     </div>
     <nav class="main-nav">
-      <a href="index.html#home">Home</a>
-      <a href="index.html#characters">Characters</a>
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="naruto.html" class="nav-link">Naruto</a>
+      <a href="dragon-ball.html" class="nav-link active">Dragon Ball</a>
+      <a href="light.html" class="nav-link">Light</a>
+      <a href="alucard.html" class="nav-link">Alucard</a>
+      <a href="lelouch.html" class="nav-link">Lelouch</a>
     </nav>
   </header>
 
   <main>
-    <section class="hero">
-      <h1>Dragon Ball</h1>
-      <p>The story of Son Goku and his journey to become stronger and protect Earth.</p>
-      <img src="images/goku.jpg" alt="Son Goku" class="hero-image">
-    </section>
-<section class="characters-section">
-  <h2>Heroes</h2>
-  <div class="character-grid">
-    <article class="character-card">
-      <img src="images/vegeta.jpg" alt="Vegeta" class="hero-image">
-      <h3>Vegeta</h3>
-      <p>Goku’s rival and proud Saiyan prince.</p>
+    <article class="mc-detail-page">
+      <header>
+        <h2>Son Goku</h2>
+        <p>A Saiyan raised on Earth who never stops chasing stronger opponents, protecting his friends and planet along the way.</p>
+      </header>
+
+      <img src="images/goku-main.jpg" alt="Son Goku" class="mc-hero-image" />
+
+      <section>
+        <h3>Allies</h3>
+        <div class="mc-ally-grid">
+          <article class="mc-ally-card">
+            <img src="images/vegeta.jpg" alt="Vegeta" class="mc-ally-thumb" />
+            <div class="mc-ally-meta">
+              <h4>Vegeta</h4>
+              <p>Prince of all Saiyans and Goku’s proudest rival.</p>
+            </div>
+          </article>
+          <article class="mc-ally-card">
+            <img src="images/gohan.jpg" alt="Gohan" class="mc-ally-thumb" />
+            <div class="mc-ally-meta">
+              <h4>Gohan</h4>
+              <p>Goku’s son, balancing scholar life with hidden power.</p>
+            </div>
+          </article>
+          <article class="mc-ally-card">
+            <img src="images/piccolo.jpg" alt="Piccolo" class="mc-ally-thumb" />
+            <div class="mc-ally-meta">
+              <h4>Piccolo</h4>
+              <p>Former enemy turned mentor and guardian of Earth.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <h3>Villains and Antagonists</h3>
+        <div class="mc-ally-grid">
+          <article class="mc-ally-card">
+            <img src="images/frieza.jpg" alt="Frieza" class="mc-ally-thumb" />
+            <div class="mc-ally-meta">
+              <h4>Frieza</h4>
+              <p>Galactic tyrant whose cruelty pushed Goku to Super Saiyan.</p>
+            </div>
+          </article>
+          <article class="mc-ally-card">
+            <img src="images/cell.jpg" alt="Cell" class="mc-ally-thumb" />
+            <div class="mc-ally-meta">
+              <h4>Cell</h4>
+              <p>Bio-engineered monster aiming for a perfect form.</p>
+            </div>
+          </article>
+          <article class="mc-ally-card">
+            <img src="images/majin-buu.jpg" alt="Majin Buu" class="mc-ally-thumb" />
+            <div class="mc-ally-meta">
+              <h4>Majin Buu</h4>
+              <p>Shapeshifting pink chaos, from childish to pure evil.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <footer>
+        <p>Back to <a href="index.html">Anime MC Hub</a></p>
+      </footer>
     </article>
+  </main>
 
-    <article class="character-card">
-      <img src="images/gohan.jpg" alt="Gohan" class="hero-image">
-      <h3>Gohan</h3>
-      <p>Goku’s son with incredible hidden power.</p>
-    </article>
-
-    <article class="character-card">
-      <img src="images/piccolo.jpg" alt="Piccolo" class="hero-image">
-      <h3>Piccolo</h3>
-      <p>Former enemy turned ally who trains Gohan.</p>
-    </article>
-  </div>
-
-  <h2>Villains</h2>
-  <div class="character-grid">
-    <article class="character-card">
-      <img src="images/frieza.jpg" alt="Frieza" class="hero-image">
-      <h3>Frieza</h3>
-      <p>Space tyrant and emperor of the universe.</p>
-    </article>
-
-    <article class="character-card">
-      <img src="images/cell.jpg" alt="Cell" class="hero-image">
-      <h3>Cell</h3>
-      <p>Bio‑engineered android seeking perfection.</p>
-    </article>
-
-    <article class="character-card">
-      <img src="images/buu.jpg" alt="Majin Buu" class="hero-image">
-      <h3>Majin Buu</h3>
-      <p>Magical creature with many dangerous forms.</p>
-    </article>
-  </div>
-</section>
-
-
-  <footer class="site-footer">
-    <p>Back to <a href="index.html">Anime MC Hub</a></p>
-  </footer>
+  <script src="script.js"></script>
 </body>
 </html>
