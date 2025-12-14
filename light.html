@@ -1,50 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Light Yagami – Anime MC Hub</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+  <div class="app-bg"></div>
+
   <header class="site-header">
-    <div class="logo">
-      <span class="logo-dot"></span>
-      <span class="logo-text">Anime MC Hub</span>
+    <div class="logo-lockup">
+      <span class="logo-orb"></span>
+      <div>
+        <h1>Anime MC Hub</h1>
+        <p class="tagline">Justice, ego, and a black notebook.</p>
+      </div>
     </div>
     <nav class="main-nav">
-      <a href="index.html#home">Home</a>
-      <a href="index.html#characters">Characters</a>
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="naruto.html" class="nav-link">Naruto</a>
+      <a href="dragon-ball.html" class="nav-link">Dragon Ball</a>
+      <a href="light.html" class="nav-link active">Light</a>
+      <a href="alucard.html" class="nav-link">Alucard</a>
+      <a href="lelouch.html" class="nav-link">Lelouch</a>
     </nav>
   </header>
 
   <main>
-    <section class="hero">
-      <h1>Light Yagami</h1>
-      <p>A top‑tier student who discovers the Death Note and decides to become a god of a new world.</p>
-      <!-- Just drop Light image as images/Light.jpg -->
-      <img src="images/Light.jpg" alt="Light Yagami" class="hero-image">
-    </section>
+    <article class="mc-detail-page">
+      <header>
+        <h2>Light Yagami</h2>
+        <p>A top student who discovers the Death Note and decides to become the god of a new world by erasing criminals.</p>
+      </header>
 
-    <section class="characters-section">
-      <h2>Allies and Rivals</h2>
-      <ul>
-        <li>L – the world‑famous detective determined to expose Kira.</li>
-        <li>Misa Amane – devoted supporter who also holds a Death Note.</li>
-        <li>Ryuk – the bored Shinigami who drops the notebook into the human world.</li>
-      </ul>
+      <img src="images/light-main.jpg" alt="Light Yagami" class="mc-hero-image" />
 
-      <h2>Key Themes</h2>
-      <ul>
-        <li>Justice twisted by absolute power.</li>
-        <li>Cat‑and‑mouse mind games and psychological warfare.</li>
-        <li>The cost of playing god over life and death.</li>
-      </ul>
-    </section>
+      <section>
+        <h3>Allies and Tools</h3>
+        <div class="mc-ally-grid">
+          <article class="mc-ally-card">
+            <img src="images/ryuk.jpg" alt="Ryuk" class="mc-ally-thumb" />
+            <div class="mc-ally-meta">
+              <h4>Ryuk</h4>
+              <p>Shinigami who drops the Death Note into the human world for fun.</p>
+            </div>
+          </article>
+          <article class="mc-ally-card">
+            <img src="images/misa.jpg" alt="Misa Amane" class="mc-ally-thumb" />
+            <div class="mc-ally-meta">
+              <h4>Misa Amane</h4>
+              <p>Kira supporter with her own Death Note and Shinigami eyes.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <h3>Opponents</h3>
+        <div class="mc-ally-grid">
+          <article class="mc-ally-card">
+            <img src="images/l-lawliet.jpg" alt="L" class="mc-ally-thumb" />
+            <div class="mc-ally-meta">
+              <h4>L</h4>
+              <p>Mysterious detective whose intellect rivals Light’s.</p>
+            </div>
+          </article>
+          <article class="mc-ally-card">
+            <img src="images/near.jpg" alt="Near" class="mc-ally-thumb" />
+            <div class="mc-ally-meta">
+              <h4>Near</h4>
+              <p>Successor to L who finishes the hunt for Kira.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <footer>
+        <p>Back to <a href="index.html">Anime MC Hub</a></p>
+      </footer>
+    </article>
   </main>
 
-  <footer class="site-footer">
-    <p>Back to <a href="index.html">Anime MC Hub</a></p>
-  </footer>
+  <script src="script.js"></script>
 </body>
 </html>
