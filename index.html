@@ -9,6 +9,16 @@
 <body>
   <div class="app-bg"></div>
 
+  <!-- Floating particles -->
+  <div class="particle-layer">
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+  </div>
+
   <header class="site-header">
     <div class="logo">
       <span class="logo-dot"></span>
@@ -18,19 +28,20 @@
       <a href="#home">Home</a>
       <a href="#characters">Characters</a>
       <a href="#quiz">Games</a>
+      <a href="#mc-quiz">Personality</a>
       <a href="#about">About</a>
     </nav>
   </header>
 
   <main>
     <!-- HERO -->
-    <section id="home" class="hero">
+    <section id="home" class="hero reveal parallax-section">
       <h1>Welcome to Anime MC Hub</h1>
       <p>Explore your favorite main characters from classic anime series. Drop your images into the <code>images</code> folder and this hub brings them to life.</p>
     </section>
 
     <!-- CHARACTERS -->
-    <section id="characters" class="characters-section">
+    <section id="characters" class="characters-section reveal parallax-section">
       <h2>Featured Main Characters</h2>
 
       <div class="filter-bar">
@@ -97,7 +108,7 @@
     </section>
 
     <!-- GAME 1: GUESS THE MC -->
-    <section id="quiz" class="game-section">
+    <section id="quiz" class="game-section reveal parallax-section">
       <h2>Guess The MC</h2>
       <p class="game-desc">Can you guess which MC this hint is talking about?</p>
 
@@ -117,3 +128,53 @@
           <button type="button" id="new-hint-btn">New Hint</button>
           <span id="quiz-result"></span>
         </div>
+      </div>
+    </section>
+
+    <!-- GAME 2: RANDOM SPIN -->
+    <section id="spin" class="game-section reveal parallax-section">
+      <h2>Spin For A Random MC</h2>
+      <p class="game-desc">Not sure who to explore? Spin and jump to a random main character page.</p>
+
+      <div class="spin-card">
+        <div id="spin-display">Press Spin</div>
+        <button type="button" id="spin-btn">Spin</button>
+      </div>
+    </section>
+
+    <!-- GAME 3: WHICH MC ARE YOU -->
+    <section id="mc-quiz" class="game-section reveal parallax-section">
+      <h2>Which MC Are You?</h2>
+      <p class="game-desc">Answer a few questions to see which main character matches your vibe.</p>
+
+      <div class="quiz-card">
+        <div id="mcq-question">Press Start to begin.</div>
+
+        <div id="mcq-options" class="quiz-options"></div>
+
+        <div class="quiz-actions">
+          <button type="button" id="mcq-start-btn">Start</button>
+          <span id="mcq-result"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="characters-section reveal parallax-section">
+      <h2>About This Hub</h2>
+      <p>This site is built so you can easily plug in images for your favorite MCs.</p>
+      <ul>
+        <li>Upload images into the <code>images</code> folder.</li>
+        <li>Use filenames like <code>Naruto.jpg</code>, <code>goku.jpg</code>, <code>baki.jpg</code>, etc.</li>
+        <li>Then just refresh — the hub and games will use them automatically.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Anime MC Hub · Built by Your-high-lord</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
