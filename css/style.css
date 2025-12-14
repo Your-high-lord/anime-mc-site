@@ -1,574 +1,308 @@
-/* RESET & BASE */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+/* ===== GLOBAL IMAGE + CANVAS SHARPNESS ===== */
+
+img {
+  image-rendering: auto;
+  -ms-interpolation-mode: bicubic;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
-body {
-  margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-    "Segoe UI", sans-serif;
-  background: radial-gradient(circle at top, #020617 0, #000 45%, #020617 100%);
-  color: #e5e7eb;
-  min-height: 100vh;
-  overflow-x: hidden;
-}
-
-.app-bg {
-  position: fixed;
-  inset: 0;
-  background:
-    radial-gradient(circle at 10% 10%, rgba(56, 189, 248, 0.08) 0, transparent 45%),
-    radial-gradient(circle at 80% 0%, rgba(236, 72, 153, 0.12) 0, transparent 50%),
-    radial-gradient(circle at 50% 100%, rgba(250, 204, 21, 0.12) 0, transparent 55%);
-  filter: blur(40px);
-  opacity: 0.9;
-  z-index: -2;
-}
-
-/* HEADER */
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.85rem 1.4rem;
-  backdrop-filter: blur(24px);
-  background: linear-gradient(to bottom, rgba(15,23,42,0.95), rgba(15,23,42,0.65));
-  border-bottom: 1px solid rgba(148, 163, 184, 0.28);
-}
-
-.logo-lockup {
-  display: flex;
-  align-items: center;
-  gap: 0.85rem;
-}
-
-.logo-orb {
-  width: 32px;
-  height: 32px;
-  border-radius: 999px;
-  background: radial-gradient(circle at 30% 30%, #facc15, #f97316, #ef4444);
-  box-shadow:
-    0 0 20px rgba(250, 204, 21, 0.7),
-    0 0 50px rgba(249, 115, 22, 0.5);
-}
-
-.logo-lockup h1 {
-  margin: 0;
-  font-size: 1.2rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.tagline {
-  margin: 0;
-  font-size: 0.72rem;
-  color: #9ca3af;
-}
-
-.main-nav {
-  display: flex;
-  gap: 0.6rem;
-  flex-wrap: wrap;
-}
-
-.nav-link {
-  padding: 0.4rem 0.9rem;
-  border-radius: 999px;
-  border: 1px solid transparent;
-  color: #e5e7eb;
-  font-size: 0.8rem;
-  text-decoration: none;
-  background: rgba(15, 23, 42, 0.7);
-  transition: border-color 0.2s, background 0.2s, color 0.2s;
-}
-
-.nav-link:hover {
-  border-color: rgba(96, 165, 250, 0.7);
-  background: rgba(15, 23, 42, 0.9);
-}
-
-.nav-link.active {
-  border-color: rgba(251, 191, 36, 0.9);
-  box-shadow: 0 0 12px rgba(251, 191, 36, 0.55);
-}
-
-/* MAIN LAYOUT */
-main {
-  padding: 1.2rem 1.4rem 2.5rem;
-  max-width: 1120px;
-  margin: 0 auto;
+.mc-card img,
+.mc-cover-img,
+.hero-thumb img,
+.villain-thumb img {
+  width: 100%;
+  height: 220px;
+  max-width: 100%;
+  object-fit: cover;
 }
 
 .parallax-section {
-  position: relative;
-  margin: 1.4rem 0;
-  padding: 1.1rem 1rem;
-  border-radius: 1.25rem;
-  background: radial-gradient(circle at top left, rgba(30, 64, 175, 0.25), rgba(15, 23, 42, 0.96));
-  border: 1px solid rgba(148, 163, 184, 0.4);
-  box-shadow:
-    0 20px 40px rgba(15, 23, 42, 0.85),
-    inset 0 0 0 1px rgba(15, 23, 42, 0.9);
-  overflow: hidden;
+  transform-origin: center center;
+  will-change: transform, opacity;
 }
 
-.section-header {
-  margin-bottom: 0.9rem;
-}
-
-.section-header h3 {
-  margin: 0;
-  font-size: 1.1rem;
-}
-
-.section-header p {
-  margin: 0.25rem 0 0;
-  font-size: 0.85rem;
-  color: #9ca3af;
-}
-
-/* HERO */
-.hero-section {
-  display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-  gap: 1.2rem;
-  align-items: center;
-}
-
-.hero-content h2 {
-  margin: 0 0 0.4rem;
-  font-size: 1.4rem;
-}
-
-.hero-content p {
-  margin: 0 0 0.8rem;
-  color: #d1d5db;
-  font-size: 0.9rem;
-}
-
-.hero-visual {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Orbit visual */
-.mc-orbit {
-  position: relative;
-  width: 190px;
-  height: 190px;
-}
-
-.mc-orbit-ring {
-  position: absolute;
+#fx-canvas {
+  position: fixed;
   inset: 0;
-  border-radius: 999px;
-  border: 1.5px dashed rgba(148, 163, 184, 0.7);
-  box-shadow: 0 0 35px rgba(96, 165, 250, 0.7);
-  animation: orbit-spin 18s linear infinite;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 999;
 }
 
-.mc-orbit-core {
-  position: absolute;
-  inset: 32px;
-  border-radius: 999px;
-  background: radial-gradient(circle at 20% 20%, #facc15, #f97316, #7c2d12);
-  box-shadow:
-    0 0 28px rgba(250, 204, 21, 0.9),
-    0 0 80px rgba(249, 115, 22, 0.85);
-}
+/* ===== JIKAN-POWERED MC ARCHIVE ===== */
 
-.mc-orbit-pulse {
-  position: absolute;
-  inset: 20px;
-  border-radius: 999px;
-  border: 1px solid rgba(253, 224, 71, 0.8);
-  box-shadow: 0 0 60px rgba(253, 224, 71, 0.8);
-  animation: aura-pulse 2.6s ease-out infinite;
-}
-
-/* MC GRID */
-.mc-grid {
+.mc-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .mc-card {
   position: relative;
-  border-radius: 1rem;
-  padding: 0.55rem;
-  background: linear-gradient(to bottom right, rgba(15,23,42,0.92), rgba(15,23,42,0.98));
-  border: 1px solid rgba(148, 163, 184, 0.35);
-  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.92);
+  padding: 1rem;
+  border-radius: 1.2rem;
+  background: radial-gradient(
+    circle at top,
+    rgba(56, 189, 248, 0.12),
+    rgba(15, 23, 42, 0.95)
+  );
+  border: 1px solid rgba(148, 163, 184, 0.45);
   overflow: hidden;
-  transform: translateY(0);
-  transition: transform 0.22s, box-shadow 0.22s, border-color 0.22s;
+  cursor: pointer;
+  transition:
+    transform 180ms ease-out,
+    box-shadow 180ms ease-out,
+    border-color 180ms ease-out;
 }
 
+.mc-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 60px rgba(15, 23, 42, 0.9);
+  border-color: rgba(248, 250, 252, 0.65);
+}
+
+.mc-card-img-wrap {
+  position: relative;
+  border-radius: 0.9rem;
+  overflow: hidden;
+  margin-bottom: 0.75rem;
+}
+
+.mc-card-img {
+  display: block;
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+}
+
+/* fallback silhouette */
+.mc-card-silhouette {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 230px;
+  background: radial-gradient(
+    circle at top,
+    rgba(148, 163, 184, 0.22),
+    rgba(15, 23, 42, 0.9)
+  );
+  color: rgba(148, 163, 184, 0.9);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.mc-status {
+  margin-top: 1.25rem;
+  font-size: 0.9rem;
+  color: rgba(148, 163, 184, 0.95);
+}
+
+.mc-meta {
+  font-size: 0.9rem;
+  color: rgba(148, 163, 184, 0.98);
+}
+
+/* hover aura hook */
 .mc-card::before {
   content: "";
   position: absolute;
   inset: -40%;
-  background:
-    radial-gradient(circle at top, rgba(56, 189, 248, 0.13), transparent 55%),
-    radial-gradient(circle at bottom, rgba(251, 191, 36, 0.09), transparent 60%);
+  background: radial-gradient(
+    circle,
+    rgba(56, 189, 248, 0),
+    rgba(56, 189, 248, 0)
+  );
   opacity: 0;
-  transition: opacity 0.22s;
+  transition:
+    opacity 200ms ease-out,
+    transform 200ms ease-out;
+  mix-blend-mode: screen;
   pointer-events: none;
-}
-
-.mc-card:hover {
-  transform: translateY(-3px);
-  border-color: rgba(251, 191, 36, 0.8);
-  box-shadow: 0 24px 50px rgba(15, 23, 42, 0.98);
 }
 
 .mc-card:hover::before {
-  opacity: 1;
+  opacity: 0.6;
+  transform: scale(1.05);
 }
 
-.mc-cover-wrap {
-  border-radius: 0.8rem;
-  overflow: hidden;
-  border: 1px solid rgba(148, 163, 184, 0.28);
-  margin-bottom: 0.55rem;
-}
+/* ===== OPENING SEQUENCE ===== */
 
-/* Fix image blow-up: fixed height + object-fit */
-.mc-cover-img {
-  display: block;
-  width: 100%;
-  height: 210px;
-  object-fit: cover;
-}
-
-.mc-meta h4 {
-  margin: 0 0 0.2rem;
-  font-size: 0.95rem;
-}
-
-.mc-meta p {
-  margin: 0;
-  font-size: 0.8rem;
-  color: #9ca3af;
-}
-
-.mc-footer {
-  margin-top: 0.6rem;
-}
-
-.ghost-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.38rem 0.9rem;
-  border-radius: 999px;
-  border: 1px solid rgba(148, 163, 184, 0.7);
-  font-size: 0.8rem;
-  color: #e5e7eb;
-  text-decoration: none;
-  background: radial-gradient(circle at top left, rgba(30, 64, 175, 0.45), rgba(15, 23, 42, 0.98));
-  transition: background 0.2s, border-color 0.2s, transform 0.2s;
-}
-
-.ghost-btn:hover {
-  border-color: rgba(251, 191, 36, 0.9);
-  background: radial-gradient(circle at top left, rgba(251, 191, 36, 0.4), rgba(15, 23, 42, 0.98));
-  transform: translateY(-1px);
-}
-
-/* GAMES */
-.games-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-  gap: 1.1rem;
-}
-
-.game-card {
-  position: relative;
-  padding: 0.8rem;
-  border-radius: 1rem;
-  background: radial-gradient(circle at top, rgba(15,23,42,0.95), rgba(15,23,42,1));
-  border: 1px solid rgba(148, 163, 184, 0.4);
-  box-shadow: 0 18px 42px rgba(15, 23, 42, 0.96);
-  overflow: hidden;
-}
-
-.quiz-options {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.4rem;
-  margin: 0.6rem 0;
-}
-
-.quiz-option {
-  padding: 0.45rem 0.3rem;
-  border-radius: 0.7rem;
-  background: rgba(15, 23, 42, 0.9);
-  border: 1px solid rgba(148, 163, 184, 0.45);
-  color: #e5e7eb;
-  font-size: 0.8rem;
-  cursor: pointer;
-  transition: background 0.18s, border-color 0.18s, transform 0.18s;
-}
-
-.quiz-option:hover {
-  background: rgba(30, 64, 175, 0.9);
-  border-color: rgba(96, 165, 250, 0.9);
-  transform: translateY(-1px);
-}
-
-.quiz-option.correct {
-  background: linear-gradient(to right, rgba(22, 163, 74, 0.95), rgba(21, 128, 61, 0.95));
-  border-color: rgba(22, 163, 74, 0.95);
-}
-
-.quiz-option.wrong {
-  background: linear-gradient(to right, rgba(239, 68, 68, 0.95), rgba(185, 28, 28, 0.95));
-  border-color: rgba(248, 113, 113, 0.95);
-}
-
-.quiz-actions {
+.intro-overlay {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, #020617 0%, #000 55%, #020617 100%);
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-top: 0.3rem;
-}
-
-.quiz-streak {
-  font-size: 0.8rem;
-  color: #fbbf24;
-}
-
-/* Power burst */
-.power-burst {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(circle at center, rgba(251, 191, 36, 0.1), transparent 60%),
-    radial-gradient(circle at 0 0, rgba(59, 130, 246, 0.2), transparent 55%),
-    radial-gradient(circle at 100% 100%, rgba(239, 68, 68, 0.2), transparent 55%);
-  opacity: 0;
-  transform: scale(0.8);
-  transition: opacity 0.2s, transform 0.2s;
-}
-
-.power-burst.active {
+  justify-content: center;
+  z-index: 998;
+  pointer-events: auto;
   opacity: 1;
-  transform: scale(1.05);
-  animation: burst-pulse 0.45s ease-out forwards;
+  transition: opacity 500ms ease-out;
 }
 
-/* Arena */
-.arena-viewport {
+.intro-overlay.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.intro-core {
   position: relative;
-  margin-top: 0.75rem;
-  height: 160px;
-  border-radius: 0.85rem;
+  width: 180px;
+  height: 180px;
+  border-radius: 999px;
+  background: radial-gradient(
+    circle at center,
+    rgba(148, 163, 184, 0.2),
+    transparent 60%
+  );
+  box-shadow:
+    0 0 40px rgba(56, 189, 248, 0.5),
+    0 0 120px rgba(15, 23, 42, 0.9);
+}
+
+.intro-ring {
+  position: absolute;
+  inset: 18%;
+  border-radius: inherit;
+  border: 2px solid rgba(148, 163, 184, 0.35);
+  mix-blend-mode: screen;
+}
+
+.intro-ring-outer {
+  animation: intro-spin 2600ms linear infinite;
+}
+
+.intro-ring-inner {
+  inset: 32%;
+  border-color: rgba(56, 189, 248, 0.65);
+  animation: intro-spin-rev 2800ms linear infinite;
+}
+
+.intro-flare {
+  position: absolute;
+  inset: 40%;
+  border-radius: inherit;
+  background: radial-gradient(
+    circle at center,
+    rgba(248, 250, 252, 0.9),
+    rgba(56, 189, 248, 0)
+  );
+  filter: blur(10px);
+  animation: intro-pulse 1400ms ease-in-out infinite;
+}
+
+@keyframes intro-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes intro-spin-rev {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes intro-pulse {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+/* ===== POWER BURST + ARENA (you already use these IDs; this just ensures style) ===== */
+
+.power-burst {
+  position: relative;
+  margin-top: 1rem;
+  height: 80px;
+  border-radius: 1rem;
   overflow: hidden;
-  background: radial-gradient(circle at center, rgba(15,23,42,1), rgba(3,7,18,1));
-  border: 1px solid rgba(148, 163, 184, 0.5);
+  background: radial-gradient(circle at center, rgba(15, 23, 42, 1), rgba(15, 23, 42, 0.9));
+}
+
+.power-burst::before {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  background: radial-gradient(
+    circle at center,
+    rgba(248, 250, 252, 0.15),
+    rgba(56, 189, 248, 0.0)
+  );
+  opacity: 0;
+  transform: scale(0.6);
+  transition:
+    opacity 200ms ease-out,
+    transform 200ms ease-out;
+}
+
+.power-burst.active::before {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+.arena-viewport {
+  margin-top: 1rem;
+  position: relative;
+  height: 120px;
+  border-radius: 1rem;
+  overflow: hidden;
+  background: radial-gradient(circle at top, rgba(15, 23, 42, 1), rgba(0, 0, 0, 1));
 }
 
 .arena-layer {
   position: absolute;
   inset: 0;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
   opacity: 0;
-  transition: opacity 0.3s;
-}
-
-/* Plug your own images here later */
-.arena-goku {
-  background-image: url("../images/goku-beam-sprite.png");
-  animation: goku-beam 0.8s steps(6) infinite;
-}
-
-.arena-baki {
-  background-image: url("../images/baki-fight-sprite.png");
-  animation: baki-combo 0.9s steps(6) infinite;
+  transition: opacity 200ms ease-out;
 }
 
 .arena-layer.active {
   opacity: 1;
 }
 
-/* BUTTONS */
-.primary-btn {
-  padding: 0.5rem 1.1rem;
-  border-radius: 999px;
-  border: none;
-  cursor: pointer;
-  font-size: 0.82rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  background: linear-gradient(to right, #facc15, #f97316, #ef4444);
-  color: #0b1120;
-  box-shadow:
-    0 10px 30px rgba(248, 250, 252, 0.35),
-    0 0 25px rgba(250, 204, 21, 0.9);
-  transition: transform 0.16s, box-shadow 0.16s;
+.arena-goku {
+  background: radial-gradient(
+    circle at left,
+    rgba(56, 189, 248, 0.6),
+    rgba(0, 0, 0, 1)
+  );
 }
 
-.primary-btn:hover {
-  transform: translateY(-1px);
-  box-shadow:
-    0 16px 40px rgba(248, 250, 252, 0.35),
-    0 0 32px rgba(250, 204, 21, 1);
+.arena-baki {
+  background: radial-gradient(
+    circle at right,
+    rgba(248, 113, 113, 0.7),
+    rgba(0, 0, 0, 1)
+  );
 }
 
-.primary-btn:disabled {
-  opacity: 0.6;
-  cursor: default;
-  box-shadow: none;
-}
+/* ===== WORLD PRESSURE INDICATOR ===== */
 
-/* FOOTER */
-.site-footer {
-  padding: 1rem 1.4rem 1.4rem;
-  text-align: center;
-  font-size: 0.75rem;
-  color: #6b7280;
-}
-
-/* KEYFRAMES */
-@keyframes orbit-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-@keyframes aura-pulse {
-  0% { transform: scale(0.9); opacity: 0.5; }
-  50% { transform: scale(1); opacity: 0.9; }
-  100% { transform: scale(1.05); opacity: 0.3; }
-}
-
-@keyframes burst-pulse {
-  0% { opacity: 1; transform: scale(0.9); }
-  60% { opacity: 1; transform: scale(1.05); }
-  100% { opacity: 0; transform: scale(1.12); }
-}
-
-@keyframes goku-beam {
-  100% { background-position: -2400px 0; }
-}
-
-@keyframes baki-combo {
-  100% { background-position: -2400px 0; }
-}
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-  .hero-section {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .games-layout {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .main-nav {
-    justify-content: flex-end;
-  }
-}
-/* ===== MC DETAIL PAGES (Naruto, Goku, Light, Alucard, Lelouch) ===== */
-
-.mc-detail-page {
-  max-width: 900px;
-  margin: 1.5rem auto 2.5rem;
-  padding: 1.2rem 1.4rem;
-  border-radius: 1.25rem;
-  background: radial-gradient(circle at top left, rgba(15,23,42,0.95), rgba(15,23,42,1));
-  border: 1px solid rgba(148, 163, 184, 0.4);
-  box-shadow: 0 22px 50px rgba(15, 23, 42, 0.96);
-}
-
-.mc-detail-page h2 {
-  margin-top: 0;
-  margin-bottom: 0.3rem;
-}
-
-.mc-detail-page h3 {
-  margin-top: 1rem;
-  margin-bottom: 0.4rem;
-}
-
-.mc-detail-page p {
+.world-pressure-indicator {
+  margin-top: 0.6rem;
   font-size: 0.9rem;
-  color: #d1d5db;
+  color: rgba(148, 163, 184, 0.96);
 }
 
-/* Main MC hero image */
-.mc-hero-image {
-  display: block;
-  width: 100%;
-  max-width: 360px;
-  height: 360px;
-  object-fit: cover;
-  border-radius: 1.2rem;
-  border: 1px solid rgba(148, 163, 184, 0.45);
-  margin: 0.8rem auto 1rem;
-}
+/* ===== REDUCED MOTION ===== */
 
-/* Allies / villains grid */
-.mc-ally-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-  gap: 0.8rem;
-  margin-top: 0.5rem;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
-
-.mc-ally-card {
-  padding: 0.55rem;
-  border-radius: 0.9rem;
-  background: linear-gradient(to bottom, rgba(15,23,42,0.98), rgba(15,23,42,1));
-  border: 1px solid rgba(148, 163, 184, 0.4);
-  display: flex;
-  gap: 0.55rem;
-  align-items: center;
-}
-
-.mc-ally-thumb {
-  width: 64px;
-  height: 64px;
-  border-radius: 0.8rem;
-  object-fit: cover;
-  border: 1px solid rgba(148, 163, 184, 0.45);
-  flex-shrink: 0;
-}
-
-.mc-ally-meta h4 {
-  margin: 0 0 0.15rem;
-  font-size: 0.85rem;
-}
-
-.mc-ally-meta p {
-  margin: 0;
-  font-size: 0.78rem;
-  color: #9ca3af;
-}
-
-.mc-detail-page footer {
-  margin-top: 1.1rem;
-  font-size: 0.8rem;
-}
-
-.mc-detail-page footer a {
-  color: #93c5fd;
-  text-decoration: none;
-}
-
-.mc-detail-page footer a:hover {
-  text-decoration: underline;
-}
-
