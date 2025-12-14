@@ -29,7 +29,46 @@ body {
     radial-gradient(circle at 100% 0%, #22c55e 0, transparent 55%),
     radial-gradient(circle at 50% 100%, #3b82f6 0, transparent 60%);
   opacity: 0.25;
+  z-index: -2;
+}
+
+/* Floating particles */
+.particle-layer {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
   z-index: -1;
+}
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: radial-gradient(circle, #facc15, transparent 60%);
+  opacity: 0.4;
+  box-shadow: 0 0 12px rgba(250, 204, 21, 0.8);
+  animation: float-particle 18s linear infinite;
+}
+.particle:nth-child(1) { left: 10%; top: 110%; animation-duration: 22s; }
+.particle:nth-child(2) { left: 30%; top: 120%; animation-duration: 18s; }
+.particle:nth-child(3) { left: 50%; top: 115%; animation-duration: 20s; }
+.particle:nth-child(4) { left: 70%; top: 125%; animation-duration: 17s; }
+.particle:nth-child(5) { left: 85%; top: 118%; animation-duration: 24s; }
+.particle:nth-child(6) { left: 40%; top: 130%; animation-duration: 19s; }
+
+@keyframes float-particle {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-140vh) translateX(20px);
+    opacity: 0;
+  }
 }
 
 /* Header */
@@ -72,6 +111,13 @@ body {
   color: #f97316;
 }
 
+/* Focus accessibility */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #f97316;
+  outline-offset: 3px;
+}
+
 /* Hero */
 .hero {
   padding: 3rem 1.5rem 1.5rem;
@@ -81,20 +127,44 @@ body {
 .hero h1 {
   font-size: 2.1rem;
   margin-bottom: 0.5rem;
+  position: relative;
+  display: inline-block;
+}
+.hero h1::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #f97316, #22c55e, #3b82f6);
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.9);
 }
 .hero p {
   max-width: 520px;
   color: #cbd5f5;
 }
 
-/* Characters section */
-.characters-section {
+/* Sections */
+.characters-section,
+.game-section {
   max-width: 960px;
   margin: 0 auto;
   padding: 1.5rem;
 }
 
-/* Cards */
+/* Section labels */
+.characters-section h2,
+.game-section h2 {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #9ca3af;
+  margin: 1.5rem 0 0.75rem;
+}
+
+/* Character grid */
 .character-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -104,14 +174,18 @@ body {
   text-decoration: none;
   color: inherit;
 }
+
+/* Cards */
 .character-card {
   position: relative;
   overflow: hidden;
-  background: rgba(15, 23, 42, 0.96);
+  background: radial-gradient(circle at top left, rgba(248, 250, 252, 0.06), transparent),
+    rgba(15, 23, 42, 0.96);
   border-radius: 0.9rem;
   padding: 0.85rem;
   border: 1px solid rgba(148, 163, 184, 0.4);
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.9);
 }
 .character-card h3 {
   margin: 0.25rem 0;
@@ -122,15 +196,63 @@ body {
   font-size: 0.9rem;
   color: #cbd5f5;
 }
-.characters-section h2 {
-  margin-bottom: 0.75rem;
-}
 .character-card img {
   width: 100%;
   max-height: 180px;
   object-fit: cover;
   border-radius: 0.65rem;
   margin-bottom: 0.5rem;
+}
+
+/* Power aura on hover */
+.character-card::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: conic-gradient(from 180deg, #f97316, #22c55e, #3b82f6, #f97316);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  mix-blend-mode: screen;
+}
+.character-card::after {
+  content: "";
+  position: absolute;
+  inset: 40%;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(250, 204, 21, 0.0), rgba(250, 204, 21, 0.0));
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+}
+.character-card:hover::before {
+  opacity: 0.22;
+}
+.character-card:hover::after {
+  opacity: 1;
+  transform: scale(1.6);
+  background: radial-gradient(circle, rgba(250, 204, 21, 0.3), rgba(37, 99, 235, 0.05));
+}
+.character-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  border-color: rgba(248, 250, 252, 0.7);
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.95);
+}
+
+/* Click ripple */
+.card-ripple {
+  position: absolute;
+  border-radius: 999px;
+  pointer-events: none;
+  transform: scale(0);
+  opacity: 0.7;
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.8), transparent 70%);
+  animation: card-ripple 0.45s ease-out forwards;
+}
+@keyframes card-ripple {
+  to {
+    transform: scale(3.5);
+    opacity: 0;
+  }
 }
 
 /* Footer */
@@ -143,7 +265,7 @@ body {
   background: rgba(15, 23, 42, 0.96);
 }
 
-/* List with thumbs (if used on other pages) */
+/* List with thumbs (used on other pages) */
 .character-list {
   list-style: none;
   padding: 0;
@@ -163,60 +285,7 @@ body {
   border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
-/* Glow + hover parallax for cards */
-.character-card {
-  position: relative;
-  overflow: hidden;
-  background: radial-gradient(circle at top left, rgba(248, 250, 252, 0.06), transparent),
-    rgba(15, 23, 42, 0.96);
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.9);
-}
-.character-card::before {
-  content: "";
-  position: absolute;
-  inset: -40%;
-  background: conic-gradient(from 180deg, #f97316, #22c55e, #3b82f6, #f97316);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  mix-blend-mode: screen;
-}
-.character-card:hover::before {
-  opacity: 0.22;
-}
-.character-card:hover {
-  transform: translateY(-6px) scale(1.02);
-  border-color: rgba(248, 250, 252, 0.7);
-  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.95);
-}
-
-/* Hero section anime-style title underline */
-.hero h1 {
-  position: relative;
-  display: inline-block;
-}
-.hero h1::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -6px;
-  height: 3px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, #f97316, #22c55e, #3b82f6);
-  box-shadow: 0 0 12px rgba(59, 130, 246, 0.9);
-}
-
-/* Section labels (Heroes / Villains / Games etc.) */
-.characters-section h2,
-.game-section h2 {
-  font-size: 1.1rem;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: #9ca3af;
-  margin: 1.5rem 0 0.75rem;
-}
-
-/* Slight tilt on hero images */
+/* Hero image tilt */
 .hero-image {
   max-width: 320px;
   width: 100%;
@@ -300,7 +369,8 @@ body {
   border: 1px solid rgba(148, 163, 184, 0.45);
   box-shadow: 0 12px 30px rgba(15, 23, 42, 0.9);
 }
-#quiz-hint {
+#quiz-hint,
+#mcq-question {
   margin: 0 0 0.75rem;
   font-weight: 500;
 }
@@ -340,7 +410,8 @@ body {
   gap: 0.75rem;
 }
 #new-hint-btn,
-#spin-btn {
+#spin-btn,
+#mcq-start-btn {
   border-radius: 999px;
   border: none;
   padding: 0.35rem 0.95rem;
@@ -353,7 +424,8 @@ body {
   transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.2s ease;
 }
 #new-hint-btn:hover,
-#spin-btn:hover {
+#spin-btn:hover,
+#mcq-start-btn:hover {
   transform: translateY(-1px);
   box-shadow: 0 12px 28px rgba(15, 23, 42, 0.95);
 }
@@ -366,37 +438,28 @@ body {
   border-radius: 0.6rem;
   border: 1px dashed rgba(148, 163, 184, 0.7);
 }
-/* Power aura on hover */
-.character-card::after {
-  content: "";
-  position: absolute;
-  inset: 40%;
-  border-radius: 999px;
-  background: radial-gradient(circle, rgba(250, 204, 21, 0.0), rgba(250, 204, 21, 0.0));
+
+/* Scroll reveal + parallax */
+.reveal {
   opacity: 0;
-  transition: opacity 0.25s ease, transform 0.25s ease;
-  pointer-events: none;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
-.character-card:hover::after {
+.reveal.visible {
   opacity: 1;
-  transform: scale(1.6);
-  background: radial-gradient(circle, rgba(250, 204, 21, 0.3), rgba(37, 99, 235, 0.05));
+  transform: translateY(0);
+}
+.parallax-section {
+  position: relative;
+  will-change: transform;
 }
 
-/* Click ripple */
-.card-ripple {
-  position: absolute;
-  border-radius: 999px;
-  pointer-events: none;
-  transform: scale(0);
-  opacity: 0.7;
-  background: radial-gradient(circle, rgba(251, 191, 36, 0.8), transparent 70%);
-  animation: card-ripple 0.45s ease-out forwards;
-}
-@keyframes card-ripple {
-  to {
-    transform: scale(3.5);
-    opacity: 0;
+/* Responsive */
+@media (max-width: 640px) {
+  .hero {
+    padding-top: 2.5rem;
+  }
+  .character-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   }
 }
-
