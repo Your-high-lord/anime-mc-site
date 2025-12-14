@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // ====== 1. Anime covers via Jikan (no manual downloads) ======
+  // ===== 1. Jikan covers =====
   async function loadAnimeCover(animeTitle, imgId) {
     const img = document.getElementById(imgId);
     if (!img) return;
@@ -9,11 +9,11 @@ document.addEventListener("DOMContentLoaded", () => {
         `https://api.jikan.moe/v4/anime?q=${encodeURIComponent(
           animeTitle
         )}&limit=1&sfw=true`
-      ); // Free, no key. [web:59][web:60]
+      );
       const json = await res.json();
       if (!json.data || !json.data.length) return;
 
-      const coverUrl = json.data[0].images.jpg.image_url; // series poster. [web:54]
+      const coverUrl = json.data[0].images.jpg.image_url;
       img.src = coverUrl;
     } catch (err) {
       console.error("Failed to load cover for", animeTitle, err);
@@ -29,8 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "codegeass-cover"
   );
 
-  // ====== 2. Guess the MC game with power burst ======
-
+  // ===== 2. Guess the MC =====
   const hintsPool = [
     { hint: "He once stole a legendary scroll and painted graffiti on faces.", answer: "naruto" },
     { hint: "He turned Super Saiyan watching his best friend die.", answer: "goku" },
@@ -53,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const idx = Math.floor(Math.random() * hintsPool.length);
     const { hint, answer } = hintsPool[idx];
     currentAnswer = answer;
-    hintEl.textContent = hint;
+    if (hintEl) hintEl.textContent = hint;
     optionButtons.forEach((btn) => {
       btn.classList.remove("correct", "wrong");
     });
@@ -62,8 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function triggerPowerBurst() {
     if (!powerBurst) return;
     powerBurst.classList.remove("active");
-    // force reflow
-    void powerBurst.offsetWidth;
+    void powerBurst.offsetWidth; // reflow
     powerBurst.classList.add("active");
   }
 
@@ -80,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (chosen === currentAnswer) {
           streak += 1;
           btn.classList.add("correct");
-          triggerPowerBurst(); // “Goku-style” burst when right
+          triggerPowerBurst();
         } else {
           streak = 0;
           btn.classList.add("wrong");
@@ -90,12 +88,10 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
-    // First hint on load
     pickNewHint();
   }
 
-  // ====== 3. Fate Spinner + animated arena ======
-
+  // ===== 3. Fate spinner + arena =====
   const spinBtn = document.getElementById("spin-btn");
   const spinDisplay = document.getElementById("spin-display");
   const arenaGoku = document.querySelector(".arena-goku");
@@ -131,7 +127,6 @@ document.addEventListener("DOMContentLoaded", () => {
       let ticks = 0;
       const maxTicks = 18 + Math.floor(Math.random() * 6);
 
-      // Start with “Goku beam” then switch to “Baki combo”
       setArenaMode("goku");
 
       const interval = setInterval(() => {
@@ -153,15 +148,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ====== 4. Awakening button small effect ======
+  // Awakening button triggers a burst too
   const startAwakeningBtn = document.getElementById("start-awakening-btn");
-  if (startAwakeningBtn && powerBurst) {
-    startAwakeningBtn.addEventListener("click", () => {
-      triggerPowerBurst();
-    });
+  if (startAwakeningBtn) {
+    startAwakeningBtn.addEventListener("click", triggerPowerBurst);
   }
 
-  // ====== 5. Soft parallax for sections ======
+  // ===== 4. Parallax =====
   const parallaxSections = Array.from(
     document.querySelectorAll(".parallax-section")
   );
