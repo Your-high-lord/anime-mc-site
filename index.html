@@ -28,7 +28,7 @@
   </header>
 
   <main>
-    <!-- Hero section with animated aura -->
+    <!-- Hero -->
     <section class="hero-section parallax-section">
       <div class="hero-content">
         <h2>Who holds the strongest resolve?</h2>
@@ -44,7 +44,7 @@
       </div>
     </section>
 
-    <!-- Cards for each anime -->
+    <!-- MC cards -->
     <section class="mcs-section parallax-section">
       <header class="section-header">
         <h3>Featured MC Universes</h3>
@@ -55,7 +55,7 @@
         <!-- Naruto -->
         <article class="mc-card" data-anime="Naruto">
           <div class="mc-cover-wrap">
-            <img id="naruto-cover" src="images/default-cover.jpg" alt="Naruto cover" />
+            <img id="naruto-cover" class="mc-cover-img" src="images/default-cover.jpg" alt="Naruto cover" />
           </div>
           <div class="mc-meta">
             <h4>Naruto</h4>
@@ -69,7 +69,7 @@
         <!-- Dragon Ball -->
         <article class="mc-card" data-anime="Dragon Ball Z">
           <div class="mc-cover-wrap">
-            <img id="dragonball-cover" src="images/default-cover.jpg" alt="Dragon Ball cover" />
+            <img id="dragonball-cover" class="mc-cover-img" src="images/default-cover.jpg" alt="Dragon Ball cover" />
           </div>
           <div class="mc-meta">
             <h4>Dragon Ball</h4>
@@ -83,7 +83,7 @@
         <!-- Death Note -->
         <article class="mc-card" data-anime="Death Note">
           <div class="mc-cover-wrap">
-            <img id="deathnote-cover" src="images/default-cover.jpg" alt="Death Note cover" />
+            <img id="deathnote-cover" class="mc-cover-img" src="images/default-cover.jpg" alt="Death Note cover" />
           </div>
           <div class="mc-meta">
             <h4>Death Note</h4>
@@ -97,7 +97,7 @@
         <!-- Hellsing -->
         <article class="mc-card" data-anime="Hellsing Ultimate">
           <div class="mc-cover-wrap">
-            <img id="hellsing-cover" src="images/default-cover.jpg" alt="Hellsing cover" />
+            <img id="hellsing-cover" class="mc-cover-img" src="images/default-cover.jpg" alt="Hellsing cover" />
           </div>
           <div class="mc-meta">
             <h4>Hellsing</h4>
@@ -111,7 +111,7 @@
         <!-- Code Geass -->
         <article class="mc-card" data-anime="Code Geass: Lelouch of the Rebellion">
           <div class="mc-cover-wrap">
-            <img id="codegeass-cover" src="images/default-cover.jpg" alt="Code Geass cover" />
+            <img id="codegeass-cover" class="mc-cover-img" src="images/default-cover.jpg" alt="Code Geass cover" />
           </div>
           <div class="mc-meta">
             <h4>Code Geass</h4>
@@ -124,7 +124,7 @@
       </div>
     </section>
 
-    <!-- Game area -->
+    <!-- Games -->
     <section class="games-section parallax-section">
       <header class="section-header">
         <h3>MC Trials</h3>
@@ -146,18 +146,15 @@
             <button id="new-hint-btn" class="primary-btn">New Hint</button>
             <span class="quiz-streak" id="quiz-streak">Streak: 0</span>
           </div>
-
-          <!-- Power burst animation overlay -->
           <div class="power-burst" id="power-burst"></div>
         </div>
 
-        <!-- Spin fate (with arena animation) -->
+        <!-- Fate Spinner -->
         <div class="game-card">
           <h4>Fate Spinner</h4>
           <p id="spin-display">Press spin to choose your next MC universe.</p>
           <button id="spin-btn" class="primary-btn">Spin Destiny</button>
 
-          <!-- Animated arena: think Goku beam / Baki blows via CSS sprites -->
           <div class="arena-viewport">
             <div class="arena-layer arena-goku"></div>
             <div class="arena-layer arena-baki"></div>
