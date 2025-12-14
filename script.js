@@ -1,8 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  /* =========================
-   * CARD INTERACTIONS
-   * filters, spotlight, tilt, ripple
-   * ========================= */
+  /* CARD INTERACTIONS: filters, spotlight, tilt, ripple */
   const filterButtons = document.querySelectorAll("[data-filter]");
   const cards = document.querySelectorAll(".character-card");
 
@@ -30,14 +27,12 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
-    // Random spotlight on one card
+    // Random spotlight
     const randomCard = cards[Math.floor(Math.random() * cards.length)];
     randomCard.classList.add("spotlight");
-    setTimeout(() => {
-      randomCard.classList.remove("spotlight");
-    }, 1600);
+    setTimeout(() => randomCard.classList.remove("spotlight"), 1600);
 
-    // 3D tilt + click ripple
+    // Tilt + ripple
     cards.forEach((card) => {
       card.addEventListener("mousemove", (e) => {
         const rect = card.getBoundingClientRect();
@@ -68,10 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* =========================
-   * GUESS THE MC GAME
-   * difficulty + streak
-   * ========================= */
+  /* GUESS THE MC: difficulty + streak */
   (function setupGuessGame() {
     const hintEl = document.getElementById("quiz-hint");
     const resultEl = document.getElementById("quiz-result");
@@ -132,7 +124,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     newHintBtn.addEventListener("click", (event) => {
-      // Easter egg difficulty toggle: Ctrl + click
       if (event.ctrlKey) {
         difficulty = difficulty === "easy" ? "hard" : "easy";
         localStorage.setItem("mc_quiz_difficulty", difficulty);
@@ -162,9 +153,7 @@ document.addEventListener("DOMContentLoaded", () => {
     updateMeta();
   })();
 
-  /* =========================
-   * RANDOM MC SPIN GAME
-   * ========================= */
+  /* RANDOM SPIN GAME */
   (function setupSpinGame() {
     const spinBtn = document.getElementById("spin-btn");
     const spinDisplay = document.getElementById("spin-display");
@@ -198,9 +187,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   })();
 
-  /* =========================
-   * WHICH MC ARE YOU? QUIZ
-   * ========================= */
+  /* WHICH MC ARE YOU? QUIZ */
   (function setupPersonalityQuiz() {
     const startBtn = document.getElementById("mcq-start-btn");
     const questionEl = document.getElementById("mcq-question");
@@ -308,9 +295,7 @@ document.addEventListener("DOMContentLoaded", () => {
     loadLastResult();
   })();
 
-  /* =========================
-   * SCROLL REVEAL + PARALLAX
-   * ========================= */
+  /* SCROLL REVEAL + PARALLAX (gentle) */
   (function setupScrollEffects() {
     const revealEls = document.querySelectorAll(".reveal");
     const parallaxEls = document.querySelectorAll(".parallax-section");
@@ -329,7 +314,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       parallaxEls.forEach((el) => {
         const rect = el.getBoundingClientRect();
-        const offset = (rect.top / window.innerHeight) * 10;
+        const offset = (rect.top / window.innerHeight) * 4; // smaller offset
         el.style.transform = `translateY(${offset}px)`;
       });
     }
