@@ -2,19 +2,36 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
   <title>Anime MC Hub</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
   <div class="app-bg"></div>
 
+  <!-- Opening sequence -->
+  <div id="intro-overlay" class="intro-overlay">
+    <div class="intro-core">
+      <div class="intro-ring intro-ring-outer"></div>
+      <div class="intro-ring intro-ring-inner"></div>
+      <div class="intro-flare"></div>
+    </div>
+  </div>
+
+  <!-- FX canvas for aura / attack / fight -->
+  <canvas id="fx-canvas" aria-hidden="true"></canvas>
+
   <header class="site-header">
     <div class="logo-lockup">
       <span class="logo-orb"></span>
       <div>
         <h1>Anime MC Hub</h1>
-        <p class="tagline">Main characters, power surges, and fated duels.</p>
+        <p class="tagline">
+          Main characters, power surges, and fated duels.
+        </p>
       </div>
     </div>
     <nav class="main-nav">
@@ -27,147 +44,21 @@
     </nav>
   </header>
 
-  <main>
+  <main class="app-main">
     <!-- Hero -->
     <section class="hero-section parallax-section">
       <div class="hero-content">
         <h2>Who holds the strongest resolve?</h2>
-        <p>Spin the fates, test your instincts, and feel the MCs power up as you interact.</p>
-        <button class="primary-btn" id="start-awakening-btn">Charge Awakening</button>
+        <p>
+          Spin the fates, test your instincts, and feel the MCs
+          power up as you interact.
+        </p>
+        <button class="primary-btn" id="start-awakening-btn">
+          Charge Awakening
+        </button>
+        <p class="world-pressure-indicator" id="world-pressure-indicator">
+          World Pressure: 0%
+        </p>
       </div>
       <div class="hero-visual">
         <div class="mc-orbit">
-          <div class="mc-orbit-ring"></div>
-          <div class="mc-orbit-core"></div>
-          <div class="mc-orbit-pulse"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- MC cards -->
-    <section class="mcs-section parallax-section">
-      <header class="section-header">
-        <h3>Featured MC Universes</h3>
-        <p>Each card auto-loads official series art so you never manage covers manually.</p>
-      </header>
-
-      <div class="mc-grid">
-        <!-- Naruto -->
-        <article class="mc-card" data-anime="Naruto">
-          <div class="mc-cover-wrap">
-            <img id="naruto-cover" class="mc-cover-img" src="images/default-cover.jpg" alt="Naruto cover" />
-          </div>
-          <div class="mc-meta">
-            <h4>Naruto</h4>
-            <p>Shinobi tales of loneliness, bonds, and unbreakable will.</p>
-          </div>
-          <footer class="mc-footer">
-            <a href="naruto.html" class="ghost-btn">Enter Naruto World</a>
-          </footer>
-        </article>
-
-        <!-- Dragon Ball -->
-        <article class="mc-card" data-anime="Dragon Ball Z">
-          <div class="mc-cover-wrap">
-            <img id="dragonball-cover" class="mc-cover-img" src="images/default-cover.jpg" alt="Dragon Ball cover" />
-          </div>
-          <div class="mc-meta">
-            <h4>Dragon Ball</h4>
-            <p>Goku, rivals, and universe-shaking clashes.</p>
-          </div>
-          <footer class="mc-footer">
-            <a href="dragon-ball.html" class="ghost-btn">Enter Saiyan Saga</a>
-          </footer>
-        </article>
-
-        <!-- Death Note -->
-        <article class="mc-card" data-anime="Death Note">
-          <div class="mc-cover-wrap">
-            <img id="deathnote-cover" class="mc-cover-img" src="images/default-cover.jpg" alt="Death Note cover" />
-          </div>
-          <div class="mc-meta">
-            <h4>Death Note</h4>
-            <p>Light Yagami rewriting the world with a single notebook.</p>
-          </div>
-          <footer class="mc-footer">
-            <a href="light.html" class="ghost-btn">Enter Kira Era</a>
-          </footer>
-        </article>
-
-        <!-- Hellsing -->
-        <article class="mc-card" data-anime="Hellsing Ultimate">
-          <div class="mc-cover-wrap">
-            <img id="hellsing-cover" class="mc-cover-img" src="images/default-cover.jpg" alt="Hellsing cover" />
-          </div>
-          <div class="mc-meta">
-            <h4>Hellsing</h4>
-            <p>Alucard hunting monsters in gothic blood-red nights.</p>
-          </div>
-          <footer class="mc-footer">
-            <a href="alucard.html" class="ghost-btn">Enter Hellsing Files</a>
-          </footer>
-        </article>
-
-        <!-- Code Geass -->
-        <article class="mc-card" data-anime="Code Geass: Lelouch of the Rebellion">
-          <div class="mc-cover-wrap">
-            <img id="codegeass-cover" class="mc-cover-img" src="images/default-cover.jpg" alt="Code Geass cover" />
-          </div>
-          <div class="mc-meta">
-            <h4>Code Geass</h4>
-            <p>Lelouch, Geass, and impossible choices for a better world.</p>
-          </div>
-          <footer class="mc-footer">
-            <a href="lelouch.html" class="ghost-btn">Enter Black Rebellion</a>
-          </footer>
-        </article>
-      </div>
-    </section>
-
-    <!-- Games -->
-    <section class="games-section parallax-section">
-      <header class="section-header">
-        <h3>MC Trials</h3>
-        <p>Guess, spin, and watch the battlefield react when you’re right.</p>
-      </header>
-
-      <div class="games-layout">
-        <!-- Guess the MC -->
-        <div class="game-card">
-          <h4>Guess the MC</h4>
-          <p id="quiz-hint">Tap “New Hint” to start.</p>
-          <div class="quiz-options">
-            <button class="quiz-option" data-answer="goku">Goku</button>
-            <button class="quiz-option" data-answer="naruto">Naruto</button>
-            <button class="quiz-option" data-answer="light">Light</button>
-            <button class="quiz-option" data-answer="lelouch">Lelouch</button>
-          </div>
-          <div class="quiz-actions">
-            <button id="new-hint-btn" class="primary-btn">New Hint</button>
-            <span class="quiz-streak" id="quiz-streak">Streak: 0</span>
-          </div>
-          <div class="power-burst" id="power-burst"></div>
-        </div>
-
-        <!-- Fate Spinner -->
-        <div class="game-card">
-          <h4>Fate Spinner</h4>
-          <p id="spin-display">Press spin to choose your next MC universe.</p>
-          <button id="spin-btn" class="primary-btn">Spin Destiny</button>
-
-          <div class="arena-viewport">
-            <div class="arena-layer arena-goku"></div>
-            <div class="arena-layer arena-baki"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <p>Anime MC Hub · Built by Your-high-lord</p>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
-</html>
