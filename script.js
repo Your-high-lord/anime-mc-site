@@ -627,3 +627,75 @@ document.addEventListener("DOMContentLoaded", () => {
   function setArenaMode(mode) {
     if (!arenaGoku || !arenaBaki) return;
     if (mode === "goku") {
+      arenaGoku.classList.add("active");
+      arenaBaki.classList.remove("active");
+    } else if (mode === "baki") {
+      arenaBaki.classList.add("active");
+      arenaGoku.classList.remove("active");
+    } else {
+      arenaGoku.classList.remove("active");
+      arenaBaki.classList.remove("active");
+    }
+  }
+
+  if (spinBtn && spinDisplay) {
+    spinBtn.addEventListener("click", () => {
+      if (spinBtn.disabled) return;
+      spinBtn.disabled = true;
+      let ticks = 0;
+      const maxTicks = 18 + Math.floor(Math.random() * 6);
+      setArenaMode("goku");
+
+      const interval = setInterval(() => {
+        const random = mcs[Math.floor(Math.random() * mcs.length)];
+        spinDisplay.textContent = `Focusing on: ${random.name}`;
+        ticks++;
+
+        if (ticks === Math.floor(maxTicks / 2)) {
+          setArenaMode("baki");
+        }
+
+        if (ticks >= maxTicks) {
+          clearInterval(interval);
+          spinBtn.disabled = false;
+          setArenaMode(null);
+
+          worldPressure = savePressure(worldPressure + 5);
+
+          window.location.href = random.url;
+        }
+      }, 100);
+    });
+  }
+
+  const startAwakeningBtn = document.getElementById(
+    "start-awakening-btn"
+  );
+  if (startAwakeningBtn) {
+    startAwakeningBtn.addEventListener("click", () => {
+      triggerPowerBurst();
+      if (window.AttackFX?.triggerAttack) {
+        window.AttackFX.triggerAttack({
+          title: "Awakening",
+          characters: []
+        });
+      }
+    });
+  }
+
+  // ===== PARALLAX (kept lightweight, translate only) =====
+  const parallaxSections = Array.from(
+    document.querySelectorAll(".parallax-section")
+  );
+
+  function onScroll() {
+    parallaxSections.forEach((sec) => {
+      const rect = sec.getBoundingClientRect();
+      const offset = (rect.top / window.innerHeight) * 4;
+      sec.style.transform = `translateY(${offset}px)`;
+    });
+  }
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+});
