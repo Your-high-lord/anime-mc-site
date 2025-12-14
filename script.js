@@ -1,8 +1,8 @@
 // --- Card interactions, filters, spotlight, tilt ----
 document.addEventListener("DOMContentLoaded", () => {
   const filterButtons = document.querySelectorAll("[data-filter]");
-  const cards = document.querySelectorAll(".character-card");
-
+  const cards = document.querySelectorAll(".character-card"); 
+  
   // Filter buttons
   filterButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
