@@ -4,7 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Anime MC Hub</title>
-  <link rel="stylesheet" href="style.css" />
+
+  <!-- Single, clean stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
   <div class="page-root">
@@ -17,18 +19,20 @@
             <span class="brand-sub">Clean power. No chaos.</span>
           </div>
         </div>
-        <nav class="main-nav" aria-label="Primary">
+        <nav class="main-nav" aria-label="Primary navigation">
           <a href="index.html" class="nav-link nav-link-active">Home</a>
           <a href="naruto.html" class="nav-link">Naruto</a>
           <a href="dragon-ball.html" class="nav-link">Dragon Ball</a>
           <a href="light.html" class="nav-link">Light</a>
           <a href="alucard.html" class="nav-link">Alucard</a>
           <a href="lelouch.html" class="nav-link">Lelouch</a>
+          <a href="baki.html" class="nav-link">Baki</a>
         </nav>
       </div>
     </header>
 
     <main class="site-main">
+      <!-- HERO -->
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-content">
           <h1 id="hero-title" class="hero-title">
@@ -41,6 +45,7 @@
             <button class="btn btn-primary" id="charge-btn">
               Charge Awakening
             </button>
+
             <div class="world-pressure" aria-label="World pressure">
               <div class="world-pressure-label">
                 World Pressure:
@@ -52,6 +57,7 @@
             </div>
           </div>
         </div>
+
         <div class="hero-visual" aria-hidden="true">
           <div class="hero-orbit">
             <div class="hero-orbit-ring"></div>
@@ -60,16 +66,16 @@
         </div>
       </section>
 
+      <!-- UNIVERSES -->
       <section class="section" aria-labelledby="universes-title">
         <header class="section-header">
           <h2 id="universes-title" class="section-title">Featured MC Universes</h2>
           <p class="section-tagline">
-            Anime data, card layout, and motion kept disciplined and minimal.
+            Anime data and layout, tuned for calm but powerful motion.
           </p>
         </header>
 
         <div class="card-grid" id="universe-grid">
-          <!-- Static data now; you can rewire to Jikan later without changing layout -->
           <article class="universe-card depth-hover" data-universe="Naruto">
             <div class="card-chip">ANIME</div>
             <h3 class="card-title">Naruto</h3>
@@ -98,11 +104,13 @@
             <p class="card-note">Nen systems, cruel exams, impossible ceilings.</p>
           </article>
         </div>
+
         <p class="section-footnote">
           Linked to the anime dimension. Tap any card to stir the system.
         </p>
       </section>
 
+      <!-- MC TRIALS + SPINNER -->
       <section class="section section-split" aria-labelledby="trials-title">
         <div class="section-block">
           <header class="section-header">
@@ -114,6 +122,51 @@
             <p class="guess-prompt" id="guess-prompt">
               He once stole a legendary scroll and painted graffiti on faces.
             </p>
+
             <div class="guess-options" id="guess-options">
               <button class="btn btn-ghost guess-option" data-answer="Goku">Goku</button>
-              <button class="btn btn-ghost guess-option" data-answer
+              <button class="btn btn-ghost guess-option" data-answer="Naruto">Naruto</button>
+              <button class="btn btn-ghost guess-option" data-answer="Light">Light</button>
+              <button class="btn btn-ghost guess-option" data-answer="Lelouch">Lelouch</button>
+            </div>
+
+            <div class="guess-bottom-row">
+              <button class="btn btn-subtle" id="hint-btn">New Hint</button>
+              <div class="streak-display">
+                Streak:
+                <span id="streak-value">0</span>
+              </div>
+            </div>
+
+            <p class="guess-feedback" id="guess-feedback" aria-live="polite"></p>
+          </div>
+        </div>
+
+        <div class="section-block">
+          <header class="section-header">
+            <h2 class="section-title">Fate Spinner</h2>
+            <p class="section-tagline">Press once. Let one clean motion decide.</p>
+          </header>
+
+          <div class="spinner-panel">
+            <div class="spinner-wheel depth-hover" id="spinner-wheel">
+              <div class="spinner-label" id="spinner-label">Awaiting spin</div>
+            </div>
+            <button class="btn btn-primary" id="spin-btn">Spin Destiny</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer-inner">
+        <span class="footer-left">Anime MC Hub · Built by Your-high-lord</span>
+        <span class="footer-right">Balanced for desktop & mobile. No wasted motion.</span>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Single, clean script -->
+  <script src="script.js"></script>
+</body>
+</html>
