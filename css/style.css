@@ -12,6 +12,15 @@ body {
   min-height: 100vh;
 }
 
+/* Baki / hero image size */
+.hero-image {
+  max-width: 320px;
+  width: 100%;
+  border-radius: 0.75rem;
+  display: block;
+  margin-top: 0.75rem;
+}
+
 /* Animated gradient background */
 .app-bg {
   position: fixed;
@@ -85,14 +94,6 @@ body {
   color: #cbd5f5;
 }
 
-.hero-image {
-  max-width: 320px;
-  width: 100%;
-  border-radius: 0.75rem;
-  display: block;
-  margin-top: 0.75rem;
-}
-
 /* Characters section */
 .characters-section {
   max-width: 960px;
@@ -100,18 +101,11 @@ body {
   padding: 1.5rem;
 }
 
-.characters-section h2 {
-  font-size: 1.5rem;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-}
-
 /* Cards */
 .character-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1.25rem;
-  margin-bottom: 1.5rem;
 }
 
 .character-link {
@@ -137,129 +131,6 @@ body {
   margin-bottom: 0.5rem;
 }
 
-.character-card h3 {
-  margin: 0.75rem 0 0.25rem 0;
-  font-size: 1.1rem;
-}
-
-.character-card p {
-  margin: 0.35rem 0;
-  font-size: 0.9rem;
-  color: #cbd5f5;
-}
-
-/* Button styles */
-.btn-primary {
-  display: inline-block;
-  padding: 0.75rem 1.5rem;
-  background: #f97316;
-  color: white;
-  border-radius: 0.5rem;
-  text-decoration: none;
-  font-weight: 600;
-  transition: background 0.3s ease;
-}
-
-.btn-primary:hover {
-  background: #ea580c;
-}
-
-.btn-ghost {
-  display: inline-block;
-  padding: 0.75rem 1.5rem;
-  background: transparent;
-  border: 1px solid #9ca3af;
-  color: #e5e7eb;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  font-weight: 600;
-  transition: all 0.3s ease;
-}
-
-.btn-ghost:hover:not(:disabled) {
-  border-color: #f97316;
-  color: #f97316;
-}
-
-.btn-ghost:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-/* Pills/Tags */
-.pill {
-  display: inline-block;
-  padding: 0.35rem 0.75rem;
-  border-radius: 999px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  margin-top: 0.5rem;
-}
-
-.pill-orange {
-  background: rgba(249, 115, 22, 0.2);
-  color: #fb923c;
-}
-
-.pill-red {
-  background: rgba(239, 68, 68, 0.2);
-  color: #f87171;
-}
-
-.pill-yellow {
-  background: rgba(234, 179, 8, 0.2);
-  color: #eab308;
-}
-
-/* About section */
-.about-section {
-  max-width: 960px;
-  margin: 2rem auto;
-  padding: 1.5rem;
-  background: rgba(15, 23, 42, 0.6);
-  border-radius: 0.9rem;
-  border: 1px solid rgba(148, 163, 184, 0.3);
-}
-
-.about-section h2 {
-  margin-top: 0;
-}
-
-/* Section subtitle */
-.section-subtitle {
-  color: #cbd5f5;
-  margin-bottom: 1.5rem;
-}
-
-/* Card hover effects */
-.character-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 30px rgba(249, 115, 22, 0.2);
-  border-color: #f97316;
-}
-
-.card-glow {
-  position: absolute;
-  top: -50%;
-  right: -50%;
-  width: 200px;
-  height: 200px;
-  background: radial-gradient(circle, rgba(249, 115, 22, 0.1), transparent);
-  border-radius: 50%;
-}
-
-/* Hero text styles */
-.hero-text {
-  margin-bottom: 2rem;
-}
-
-.hero-actions {
-  display: flex;
-  gap: 1rem;
-  margin-top: 1.5rem;
-  flex-wrap: wrap;
-}
-
 /* Footer */
 .site-footer {
   text-align: center;
@@ -268,27 +139,4 @@ body {
   font-size: 0.85rem;
   color: #9ca3af;
   background: rgba(15, 23, 42, 0.96);
-}
-
-.site-footer a {
-  color: #f97316;
-  text-decoration: none;
-}
-
-.site-footer a:hover {
-  text-decoration: underline;
-}
-
-/* Anime name and summary styles */
-.anime-name {
-  color: #f97316;
-  font-size: 0.85rem;
-  margin: 0.25rem 0;
-  font-weight: 600;
-}
-
-.summary {
-  color: #cbd5f5;
-  font-size: 0.9rem;
-  line-height: 1.4;
 }
