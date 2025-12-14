@@ -2,152 +2,118 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Anime MC Hub</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="app-bg"></div>
-
-  <!-- Opening sequence -->
-  <div id="intro-overlay" class="intro-overlay">
-    <div class="intro-core">
-      <div class="intro-ring intro-ring-outer"></div>
-      <div class="intro-ring intro-ring-inner"></div>
-      <div class="intro-flare"></div>
-    </div>
-  </div>
-
-  <!-- FX canvas for aura / attack / fight -->
-  <canvas id="fx-canvas" aria-hidden="true"></canvas>
-
-  <header class="site-header">
-    <div class="logo-lockup">
-      <span class="logo-orb"></span>
-      <div>
-        <h1>Anime MC Hub</h1>
-        <p class="tagline">
-          Main characters, power surges, and fated duels.
-        </p>
-      </div>
-    </div>
-    <nav class="main-nav">
-      <a href="index.html" class="nav-link active">Home</a>
-      <a href="naruto.html" class="nav-link">Naruto</a>
-      <a href="dragon-ball.html" class="nav-link">Dragon Ball</a>
-      <a href="light.html" class="nav-link">Light</a>
-      <a href="alucard.html" class="nav-link">Alucard</a>
-      <a href="lelouch.html" class="nav-link">Lelouch</a>
-    </nav>
-  </header>
-
-  <main class="app-main">
-    <!-- Hero -->
-    <section class="hero-section parallax-section">
-      <div class="hero-content">
-        <h2>Who holds the strongest resolve?</h2>
-        <p>
-          Spin the fates, test your instincts, and feel the MCs
-          power up as you interact.
-        </p>
-        <button class="primary-btn" id="start-awakening-btn">
-          Charge Awakening
-        </button>
-        <p class="world-pressure-indicator" id="world-pressure-indicator">
-          World Pressure: 0%
-        </p>
-      </div>
-      <div class="hero-visual">
-        <div class="mc-orbit">
-          <div class="mc-orbit-ring"></div>
-          <div class="mc-orbit-core"></div>
-          <div class="mc-orbit-pulse"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Jikan-powered archive -->
-    <section class="mcs-section parallax-section">
-      <header class="section-header">
-        <h3>Featured MC Universes</h3>
-        <p>
-          Live-linked from the anime dimension. No manual cover
-          management.
-        </p>
-      </header>
-
-      <div id="mc-list" class="mc-list">
-        <!-- JS injects cards here -->
-      </div>
-
-      <div id="mc-status" class="mc-status"></div>
-    </section>
-
-    <!-- Games / fight hooks stay (Guess + Spin) -->
-    <section class="games-section parallax-section">
-      <header class="section-header">
-        <h3>MC Trials</h3>
-        <p>
-          Guess, spin, and watch the battlefield react when you’re
-          right.
-        </p>
-      </header>
-
-      <div class="games-layout">
-        <!-- Guess the MC -->
-        <div class="game-card">
-          <h4>Guess the MC</h4>
-          <p id="quiz-hint">Tap “New Hint” to start.</p>
-
-          <div class="quiz-options">
-            <button class="quiz-option" data-answer="goku">Goku</button>
-            <button class="quiz-option" data-answer="naruto">
-              Naruto
-            </button>
-            <button class="quiz-option" data-answer="light">
-              Light
-            </button>
-            <button class="quiz-option" data-answer="lelouch">
-              Lelouch
-            </button>
+  <div class="page-root">
+    <header class="site-header">
+      <div class="site-header-inner">
+        <div class="brand-lockup">
+          <div class="brand-mark"></div>
+          <div class="brand-text">
+            <span class="brand-kicker">Anime MC Hub</span>
+            <span class="brand-sub">Clean power. No chaos.</span>
           </div>
-
-          <div class="quiz-actions">
-            <button id="new-hint-btn" class="primary-btn">
-              New Hint
-            </button>
-            <span class="quiz-streak" id="quiz-streak">
-              Streak: 0
-            </span>
-          </div>
-
-          <div class="power-burst" id="power-burst"></div>
         </div>
+        <nav class="main-nav" aria-label="Primary">
+          <a href="index.html" class="nav-link nav-link-active">Home</a>
+          <a href="naruto.html" class="nav-link">Naruto</a>
+          <a href="dragon-ball.html" class="nav-link">Dragon Ball</a>
+          <a href="light.html" class="nav-link">Light</a>
+          <a href="alucard.html" class="nav-link">Alucard</a>
+          <a href="lelouch.html" class="nav-link">Lelouch</a>
+        </nav>
+      </div>
+    </header>
 
-        <!-- Fate Spinner -->
-        <div class="game-card">
-          <h4>Fate Spinner</h4>
-          <p id="spin-display">
-            Press spin to choose your next MC universe.
+    <main class="site-main">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-content">
+          <h1 id="hero-title" class="hero-title">
+            Main characters. Quiet power.
+          </h1>
+          <p class="hero-subtitle">
+            Spin fates, test instincts, and feel the pressure rise with every choice.
           </p>
-          <button id="spin-btn" class="primary-btn">Spin Destiny</button>
-
-          <div class="arena-viewport">
-            <div class="arena-layer arena-goku"></div>
-            <div class="arena-layer arena-baki"></div>
+          <div class="hero-controls">
+            <button class="btn btn-primary" id="charge-btn">
+              Charge Awakening
+            </button>
+            <div class="world-pressure" aria-label="World pressure">
+              <div class="world-pressure-label">
+                World Pressure:
+                <span id="world-pressure-value">100%</span>
+              </div>
+              <div class="world-pressure-bar">
+                <div class="world-pressure-fill" id="world-pressure-fill"></div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-  </main>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="hero-orbit">
+            <div class="hero-orbit-ring"></div>
+            <div class="hero-orbit-core"></div>
+          </div>
+        </div>
+      </section>
 
-  <footer class="site-footer">
-    <p>Anime MC Hub · Built by Your-high-lord</p>
-  </footer>
+      <section class="section" aria-labelledby="universes-title">
+        <header class="section-header">
+          <h2 id="universes-title" class="section-title">Featured MC Universes</h2>
+          <p class="section-tagline">
+            Anime data, card layout, and motion kept disciplined and minimal.
+          </p>
+        </header>
 
-  <script src="script.js"></script>
-</body>
-</html>
+        <div class="card-grid" id="universe-grid">
+          <!-- Static data now; you can rewire to Jikan later without changing layout -->
+          <article class="universe-card depth-hover" data-universe="Naruto">
+            <div class="card-chip">ANIME</div>
+            <h3 class="card-title">Naruto</h3>
+            <p class="card-meta">Primary characters: <span>10</span></p>
+            <p class="card-note">Hidden Leaf, loud heart, stubborn resolve.</p>
+          </article>
+
+          <article class="universe-card depth-hover" data-universe="Naruto: Shippuuden">
+            <div class="card-chip">ANIME</div>
+            <h3 class="card-title">Naruto: Shippuuden</h3>
+            <p class="card-meta">Primary characters: <span>10</span></p>
+            <p class="card-note">Older, heavier, but the same fire burning.</p>
+          </article>
+
+          <article class="universe-card depth-hover" data-universe="Fullmetal Alchemist: Brotherhood">
+            <div class="card-chip">ANIME</div>
+            <h3 class="card-title">Fullmetal Alchemist: Brotherhood</h3>
+            <p class="card-meta">Primary characters: <span>10</span></p>
+            <p class="card-note">Equivalent trade, impossible choices, steel bonds.</p>
+          </article>
+
+          <article class="universe-card depth-hover" data-universe="Hunter x Hunter (2011)">
+            <div class="card-chip">ANIME</div>
+            <h3 class="card-title">Hunter x Hunter (2011)</h3>
+            <p class="card-meta">Primary characters: <span>10</span></p>
+            <p class="card-note">Nen systems, cruel exams, impossible ceilings.</p>
+          </article>
+        </div>
+        <p class="section-footnote">
+          Linked to the anime dimension. Tap any card to stir the system.
+        </p>
+      </section>
+
+      <section class="section section-split" aria-labelledby="trials-title">
+        <div class="section-block">
+          <header class="section-header">
+            <h2 id="trials-title" class="section-title">MC Trials</h2>
+            <p class="section-tagline">Guess, commit, and see how the world responds.</p>
+          </header>
+
+          <div class="guess-panel">
+            <p class="guess-prompt" id="guess-prompt">
+              He once stole a legendary scroll and painted graffiti on faces.
+            </p>
+            <div class="guess-options" id="guess-options">
+              <button class="btn btn-ghost guess-option" data-answer="Goku">Goku</button>
+              <button class="btn btn-ghost guess-option" data-answer
