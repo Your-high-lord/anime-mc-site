@@ -62,3 +62,92 @@
       </div>
       <div class="hero-visual">
         <div class="mc-orbit">
+          <div class="mc-orbit-ring"></div>
+          <div class="mc-orbit-core"></div>
+          <div class="mc-orbit-pulse"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Jikan-powered archive -->
+    <section class="mcs-section parallax-section">
+      <header class="section-header">
+        <h3>Featured MC Universes</h3>
+        <p>
+          Live-linked from the anime dimension. No manual cover
+          management.
+        </p>
+      </header>
+
+      <div id="mc-list" class="mc-list">
+        <!-- JS injects cards here -->
+      </div>
+
+      <div id="mc-status" class="mc-status"></div>
+    </section>
+
+    <!-- Games / fight hooks stay (Guess + Spin) -->
+    <section class="games-section parallax-section">
+      <header class="section-header">
+        <h3>MC Trials</h3>
+        <p>
+          Guess, spin, and watch the battlefield react when you’re
+          right.
+        </p>
+      </header>
+
+      <div class="games-layout">
+        <!-- Guess the MC -->
+        <div class="game-card">
+          <h4>Guess the MC</h4>
+          <p id="quiz-hint">Tap “New Hint” to start.</p>
+
+          <div class="quiz-options">
+            <button class="quiz-option" data-answer="goku">Goku</button>
+            <button class="quiz-option" data-answer="naruto">
+              Naruto
+            </button>
+            <button class="quiz-option" data-answer="light">
+              Light
+            </button>
+            <button class="quiz-option" data-answer="lelouch">
+              Lelouch
+            </button>
+          </div>
+
+          <div class="quiz-actions">
+            <button id="new-hint-btn" class="primary-btn">
+              New Hint
+            </button>
+            <span class="quiz-streak" id="quiz-streak">
+              Streak: 0
+            </span>
+          </div>
+
+          <div class="power-burst" id="power-burst"></div>
+        </div>
+
+        <!-- Fate Spinner -->
+        <div class="game-card">
+          <h4>Fate Spinner</h4>
+          <p id="spin-display">
+            Press spin to choose your next MC universe.
+          </p>
+          <button id="spin-btn" class="primary-btn">Spin Destiny</button>
+
+          <div class="arena-viewport">
+            <div class="arena-layer arena-goku"></div>
+            <div class="arena-layer arena-baki"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Anime MC Hub · Built by Your-high-lord</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
