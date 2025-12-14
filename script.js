@@ -1,22 +1,26 @@
-// Single global controller for interactions and animations.
-// No scroll listeners or continuous loops.
+// Anime MC Hub – single, clean interaction controller
+// Works with index.html structure you pasted (hero, universes, MC trials, spinner).
 
 (function () {
   const body = document.body;
 
+  // --- DOM references ---
   const chargeBtn = document.getElementById("charge-btn");
   const worldPressureValue = document.getElementById("world-pressure-value");
   const worldPressureFill = document.getElementById("world-pressure-fill");
+
   const spinnerWheel = document.getElementById("spinner-wheel");
   const spinnerLabel = document.getElementById("spinner-label");
   const spinBtn = document.getElementById("spin-btn");
   const universeGrid = document.getElementById("universe-grid");
+
   const guessPrompt = document.getElementById("guess-prompt");
   const guessOptionsContainer = document.getElementById("guess-options");
   const hintBtn = document.getElementById("hint-btn");
   const streakValue = document.getElementById("streak-value");
   const guessFeedback = document.getElementById("guess-feedback");
 
+  // --- State ---
   let pressure = 100;
   let chargeCooldown = false;
   let streak = 0;
@@ -69,26 +73,27 @@
     "Hunter x Hunter (2011)",
   ];
 
-  // Shared click feedback for all .btn
+  // --- Utility: shared button click ripple (no extra DOM) ---
   function attachButtonClickFeedback() {
     body.addEventListener("click", (event) => {
-      const target = event.target.closest(".btn");
-      if (!target) return;
+      const btn = event.target.closest(".btn");
+      if (!btn) return;
 
-      target.classList.remove("is-clicked");
+      btn.classList.remove("is-clicked");
       window.requestAnimationFrame(() => {
-        target.classList.add("is-clicked");
+        btn.classList.add("is-clicked");
         window.setTimeout(() => {
-          target.classList.remove("is-clicked");
+          btn.classList.remove("is-clicked");
         }, 220);
       });
     });
   }
 
-  // Pressure bar
+  // --- World pressure logic ---
   function updatePressureDisplay() {
     const clamped = Math.max(0, Math.min(120, pressure));
     worldPressureValue.textContent = clamped + "%";
+
     const scale = Math.min(1.2, clamped / 100);
     worldPressureFill.style.transform = "scaleX(" + scale + ")";
   }
@@ -114,7 +119,7 @@
     }, 800);
   }
 
-  // Spinner
+  // --- Fate spinner logic ---
   function handleSpin() {
     if (spinnerLock) return;
     spinnerLock = true;
@@ -134,6 +139,7 @@
   }
 
   function highlightUniverseCard(name) {
+    if (!universeGrid) return;
     const cards = universeGrid.querySelectorAll(".universe-card");
     cards.forEach((card) => {
       card.classList.remove("is-active");
@@ -143,7 +149,7 @@
     });
   }
 
-  // Guessing game
+  // --- Guess game logic ---
   function setPrompt(index) {
     currentPromptIndex = index % MC_PROMPTS.length;
     const data = MC_PROMPTS[currentPromptIndex];
@@ -161,13 +167,14 @@
     if (selected === current.answer) {
       streak += 1;
       guessFeedback.textContent = "Correct. Resolve recognized.";
+      pressure = Math.min(120, pressure + 5);
     } else {
       streak = 0;
       guessFeedback.textContent = "Missed. The system resets your streak.";
+      pressure = Math.max(0, pressure - 5);
     }
 
     streakValue.textContent = String(streak);
-    pressure = Math.min(120, pressure + (selected === current.answer ? 5 : -5));
     updatePressureDisplay();
   }
 
@@ -179,17 +186,7 @@
     guessFeedback.textContent = hint;
   }
 
-  // Universe cards
-  function attachUniverseCardHandlers() {
-    universeGrid.addEventListener("click", (event) => {
-      const card = event.target.closest(".universe-card");
-      if (!card) return;
-      highlightUniverseCard(card.dataset.universe);
-      guessFeedback.textContent = "Locked in: " + card.dataset.universe;
-    });
-  }
-
-  // Wire up core handlers
+  // --- Wiring listeners (no scroll, all lightweight) ---
   function attachCoreHandlers() {
     if (chargeBtn) {
       chargeBtn.addEventListener("click", handleChargeClick, { passive: true });
@@ -207,12 +204,12 @@
     }
   }
 
+  // --- Init ---
   function init() {
     updatePressureDisplay();
     setPrompt(0);
     attachButtonClickFeedback();
     attachCoreHandlers();
-    attachUniverseCardHandlers();
   }
 
   if (document.readyState === "loading") {
