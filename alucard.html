@@ -7,80 +7,157 @@
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <div class="app-bg"></div>
-
-  <header class="site-header">
-    <div class="logo-lockup">
-      <span class="logo-orb"></span>
-      <div>
-        <h1>Anime MC Hub</h1>
-        <p class="tagline">Hellsing’s living weapon.</p>
+  <div class="page-root">
+    <header class="site-header">
+      <div class="site-header-inner">
+        <div class="brand-lockup">
+          <div class="brand-mark"></div>
+          <div class="brand-text">
+            <span class="brand-kicker">Anime MC Hub</span>
+            <span class="brand-sub">Monsters in tailored coats.</span>
+          </div>
+        </div>
+        <nav class="main-nav" aria-label="Primary navigation">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="naruto.html" class="nav-link">Naruto</a>
+          <a href="dragon-ball.html" class="nav-link">Dragon Ball</a>
+          <a href="light.html" class="nav-link">Light</a>
+          <a href="alucard.html" class="nav-link nav-link-active">Alucard</a>
+          <a href="lelouch.html" class="nav-link">Lelouch</a>
+          <a href="baki.html" class="nav-link">Baki</a>
+        </nav>
       </div>
-    </div>
-    <nav class="main-nav">
-      <a href="index.html" class="nav-link">Home</a>
-      <a href="naruto.html" class="nav-link">Naruto</a>
-      <a href="dragon-ball.html" class="nav-link">Dragon Ball</a>
-      <a href="light.html" class="nav-link">Light</a>
-      <a href="alucard.html" class="nav-link active">Alucard</a>
-      <a href="lelouch.html" class="nav-link">Lelouch</a>
-    </nav>
-  </header>
+    </header>
 
-  <main>
-    <article class="mc-detail-page">
-      <header>
-        <h2>Alucard</h2>
-        <p>The ultimate vampire weapon of the Hellsing Organization, reveling in battle against monsters and humans alike.</p>
-      </header>
-
-      <img src="images/alucard-main.jpg" alt="Alucard" class="mc-hero-image" />
-
-      <section>
-        <h3>Allies</h3>
-        <div class="mc-ally-grid">
-          <article class="mc-ally-card">
-            <img src="images/integra.jpg" alt="Integra Hellsing" class="mc-ally-thumb" />
-            <div class="mc-ally-meta">
-              <h4>Integra Hellsing</h4>
-              <p>Alucard’s master and head of the Hellsing Organization.</p>
+    <main class="site-main">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-content">
+          <h1 id="hero-title" class="hero-title">
+            Alucard
+          </h1>
+          <p class="hero-subtitle">
+            The immortal hound of Hellsing, walking through bullets like rain.
+          </p>
+          <div class="hero-controls">
+            <button class="btn btn-primary" id="charge-btn">
+              Release Restrictions
+            </button>
+            <div class="world-pressure" aria-label="Threat level">
+              <div class="world-pressure-label">
+                Threat Level:
+                <span id="world-pressure-value">100%</span>
+              </div>
+              <div class="world-pressure-bar">
+                <div class="world-pressure-fill" id="world-pressure-fill"></div>
+              </div>
             </div>
-          </article>
-          <article class="mc-ally-card">
-            <img src="images/seras.jpg" alt="Seras Victoria" class="mc-ally-thumb" />
-            <div class="mc-ally-meta">
-              <h4>Seras Victoria</h4>
-              <p>Police officer turned vampire fighting alongside Alucard.</p>
-            </div>
-          </article>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="hero-orbit">
+            <div class="hero-orbit-ring"></div>
+            <div class="hero-orbit-core"></div>
+          </div>
         </div>
       </section>
 
-      <section>
-        <h3>Enemies</h3>
-        <div class="mc-ally-grid">
-          <article class="mc-ally-card">
-            <img src="images/millennium.jpg" alt="Millennium" class="mc-ally-thumb" />
-            <div class="mc-ally-meta">
-              <h4>Millennium</h4>
-              <p>Nazi vampire group that throws the world into war.</p>
-            </div>
-          </article>
-          <article class="mc-ally-card">
-            <img src="images/alexander-anderson.jpg" alt="Alexander Anderson" class="mc-ally-thumb" />
-            <div class="mc-ally-meta">
-              <h4>Alexander Anderson</h4>
-              <p>Regenerator priest and Alucard’s most fanatical rival.</p>
-            </div>
-          </article>
+      <section class="section section-split" aria-labelledby="allies-title">
+        <div class="section-block">
+          <header class="section-header">
+            <h2 id="allies-title" class="section-title">Allies</h2>
+            <p class="section-tagline">
+              Humans who dare to command a monster.
+            </p>
+          </header>
+
+          <div class="card-grid">
+            <article class="universe-card depth-hover">
+              <div class="card-chip">HELLSING</div>
+              <h3 class="card-title">Integra Hellsing</h3>
+              <p class="card-meta">Commander · Steel will</p>
+              <p class="card-note">
+                The master whose orders even a monster respects.
+              </p>
+            </article>
+
+            <article class="universe-card depth-hover">
+              <div class="card-chip">ALLY</div>
+              <h3 class="card-title">Seras Victoria</h3>
+              <p class="card-meta">Police girl · New vampire</p>
+              <p class="card-note">
+                The rookie who learns what it means to drink blood and keep a heart.
+              </p>
+            </article>
+
+            <article class="universe-card depth-hover">
+              <div class="card-chip">ORGANIZATION</div>
+              <h3 class="card-title">Hellsing Organization</h3>
+              <p class="card-meta">Hunters · Night watch</p>
+              <p class="card-note">
+                The shield between Britain and the monsters outside—and inside.
+              </p>
+            </article>
+          </div>
+        </div>
+
+        <div class="section-block">
+          <header class="section-header">
+            <h2 class="section-title">Enemies</h2>
+            <p class="section-tagline">
+              Forces that try to out-monster the monster.
+            </p>
+          </header>
+
+          <div class="card-grid">
+            <article class="universe-card depth-hover">
+              <div class="card-chip">NAZI REMNANT</div>
+              <h3 class="card-title">Millennium</h3>
+              <p class="card-meta">War fanatics · Endless bloodshed</p>
+              <p class="card-note">
+                An army obsessed with eternal war and undead soldiers.
+              </p>
+            </article>
+
+            <article class="universe-card depth-hover">
+              <div class="card-chip">VATICAN</div>
+              <h3 class="card-title">Alexander Anderson</h3>
+              <p class="card-meta">Regenerator · Holy monster</p>
+              <p class="card-note">
+                A man of faith who chooses to become a monster for God.
+              </p>
+            </article>
+
+            <article class="universe-card depth-hover">
+              <div class="card-chip">MONSTER</div>
+              <h3 class="card-title">Alucard Himself</h3>
+              <p class="card-meta">Self · Inner abyss</p>
+              <p class="card-note">
+                The real enemy is how far he is willing to go to win.
+              </p>
+            </article>
+          </div>
         </div>
       </section>
 
-      <footer>
-        <p>Back to <a href="index.html">Anime MC Hub</a></p>
-      </footer>
-    </article>
-  </main>
+      <section class="section" aria-label="Back to hub">
+        <div class="section-header">
+          <h2 class="section-title">Return to Hub</h2>
+          <p class="section-tagline">
+            Step back from the battlefield to the full MC selection.
+          </p>
+        </div>
+        <a href="index.html" class="btn btn-subtle">Back to Anime MC Hub</a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer-inner">
+        <span class="footer-left">Anime MC Hub · Built by Your-high-lord</span>
+        <span class="footer-right">Balanced for desktop &amp; mobile. No wasted motion.</span>
+      </div>
+    </footer>
+  </div>
 
   <script src="script.js"></script>
 </body>
