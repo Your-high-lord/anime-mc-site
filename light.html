@@ -7,80 +7,159 @@
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <div class="app-bg"></div>
-
-  <header class="site-header">
-    <div class="logo-lockup">
-      <span class="logo-orb"></span>
-      <div>
-        <h1>Anime MC Hub</h1>
-        <p class="tagline">Justice, ego, and a black notebook.</p>
+  <div class="page-root">
+    <header class="site-header">
+      <div class="site-header-inner">
+        <div class="brand-lockup">
+          <div class="brand-mark"></div>
+          <div class="brand-text">
+            <span class="brand-kicker">Anime MC Hub</span>
+            <span class="brand-sub">Justice, ego, and a black notebook.</span>
+          </div>
+        </div>
+        <nav class="main-nav" aria-label="Primary navigation">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="naruto.html" class="nav-link">Naruto</a>
+          <a href="dragon-ball.html" class="nav-link">Dragon Ball</a>
+          <a href="light.html" class="nav-link nav-link-active">Light</a>
+          <a href="alucard.html" class="nav-link">Alucard</a>
+          <a href="lelouch.html" class="nav-link">Lelouch</a>
+          <a href="baki.html" class="nav-link">Baki</a>
+        </nav>
       </div>
-    </div>
-    <nav class="main-nav">
-      <a href="index.html" class="nav-link">Home</a>
-      <a href="naruto.html" class="nav-link">Naruto</a>
-      <a href="dragon-ball.html" class="nav-link">Dragon Ball</a>
-      <a href="light.html" class="nav-link active">Light</a>
-      <a href="alucard.html" class="nav-link">Alucard</a>
-      <a href="lelouch.html" class="nav-link">Lelouch</a>
-    </nav>
-  </header>
+    </header>
 
-  <main>
-    <article class="mc-detail-page">
-      <header>
-        <h2>Light Yagami</h2>
-        <p>A top student who discovers the Death Note and decides to become the god of a new world by erasing criminals.</p>
-      </header>
-
-      <img src="images/light-main.jpg" alt="Light Yagami" class="mc-hero-image" />
-
-      <section>
-        <h3>Allies and Tools</h3>
-        <div class="mc-ally-grid">
-          <article class="mc-ally-card">
-            <img src="images/ryuk.jpg" alt="Ryuk" class="mc-ally-thumb" />
-            <div class="mc-ally-meta">
-              <h4>Ryuk</h4>
-              <p>Shinigami who drops the Death Note into the human world for fun.</p>
+    <main class="site-main">
+      <!-- Light hero -->
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-content">
+          <h1 id="hero-title" class="hero-title">
+            Light Yagami
+          </h1>
+          <p class="hero-subtitle">
+            A top student who finds the Death Note and decides to judge the world as Kira.
+          </p>
+          <div class="hero-controls">
+            <button class="btn btn-primary" id="charge-btn">
+              Write a Name
+            </button>
+            <div class="world-pressure" aria-label="Moral pressure">
+              <div class="world-pressure-label">
+                Moral Pressure:
+                <span id="world-pressure-value">100%</span>
+              </div>
+              <div class="world-pressure-bar">
+                <div class="world-pressure-fill" id="world-pressure-fill"></div>
+              </div>
             </div>
-          </article>
-          <article class="mc-ally-card">
-            <img src="images/misa.jpg" alt="Misa Amane" class="mc-ally-thumb" />
-            <div class="mc-ally-meta">
-              <h4>Misa Amane</h4>
-              <p>Kira supporter with her own Death Note and Shinigami eyes.</p>
-            </div>
-          </article>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="hero-orbit">
+            <div class="hero-orbit-ring"></div>
+            <div class="hero-orbit-core"></div>
+          </div>
         </div>
       </section>
 
-      <section>
-        <h3>Opponents</h3>
-        <div class="mc-ally-grid">
-          <article class="mc-ally-card">
-            <img src="images/l-lawliet.jpg" alt="L" class="mc-ally-thumb" />
-            <div class="mc-ally-meta">
-              <h4>L</h4>
-              <p>Mysterious detective whose intellect rivals Light’s.</p>
-            </div>
-          </article>
-          <article class="mc-ally-card">
-            <img src="images/near.jpg" alt="Near" class="mc-ally-thumb" />
-            <div class="mc-ally-meta">
-              <h4>Near</h4>
-              <p>Successor to L who finishes the hunt for Kira.</p>
-            </div>
-          </article>
+      <!-- Allies / Tools and Opponents -->
+      <section class="section section-split" aria-labelledby="allies-title">
+        <div class="section-block">
+          <header class="section-header">
+            <h2 id="allies-title" class="section-title">Allies and Tools</h2>
+            <p class="section-tagline">
+              The pieces that make Kira possible.
+            </p>
+          </header>
+
+          <div class="card-grid">
+            <article class="universe-card depth-hover">
+              <div class="card-chip">SHINIGAMI</div>
+              <h3 class="card-title">Ryuk</h3>
+              <p class="card-meta">Observer · Chaos enjoyer</p>
+              <p class="card-note">
+                The shinigami who drops the Death Note into the human world just to see what happens.
+              </p>
+            </article>
+
+            <article class="universe-card depth-hover">
+              <div class="card-chip">ALLY</div>
+              <h3 class="card-title">Misa Amane</h3>
+              <p class="card-meta">Second Kira · Shinigami eyes</p>
+              <p class="card-note">
+                A devoted follower with her own Death Note and the power to see names and lifespans.
+              </p>
+            </article>
+
+            <article class="universe-card depth-hover">
+              <div class="card-chip">TOOL</div>
+              <h3 class="card-title">Death Note</h3>
+              <p class="card-meta">Notebook · Absolute power</p>
+              <p class="card-note">
+                The book that turns a bored genius into a self‑appointed god of justice.
+              </p>
+            </article>
+          </div>
+        </div>
+
+        <div class="section-block">
+          <header class="section-header">
+            <h2 class="section-title">Opponents</h2>
+            <p class="section-tagline">
+              Minds sharp enough to challenge Kira.
+            </p>
+          </header>
+
+          <div class="card-grid">
+            <article class="universe-card depth-hover">
+              <div class="card-chip">DETECTIVE</div>
+              <h3 class="card-title">L</h3>
+              <p class="card-meta">Genius · True opponent</p>
+              <p class="card-note">
+                The mysterious detective whose intellect and instincts match Light step for step.
+              </p>
+            </article>
+
+            <article class="universe-card depth-hover">
+              <div class="card-chip">SUCCESSOR</div>
+              <h3 class="card-title">Near</h3>
+              <p class="card-meta">Successor · Patient hunter</p>
+              <p class="card-note">
+                The one who picks up L’s investigation and quietly brings the Kira case to an end.
+              </p>
+            </article>
+
+            <article class="universe-card depth-hover">
+              <div class="card-chip">WORLD</div>
+              <h3 class="card-title">Public Opinion</h3>
+              <p class="card-meta">Fear · Worship</p>
+              <p class="card-note">
+                The shifting crowd that both empowers and threatens Kira’s new world.
+              </p>
+            </article>
+          </div>
         </div>
       </section>
 
-      <footer>
-        <p>Back to <a href="index.html">Anime MC Hub</a></p>
-      </footer>
-    </article>
-  </main>
+      <section class="section" aria-label="Back to hub">
+        <div class="section-header">
+          <h2 class="section-title">Return to Hub</h2>
+          <p class="section-tagline">
+            Step away from the notebook and back to the full MC lineup.
+          </p>
+        </div>
+        <a href="index.html" class="btn btn-subtle">Back to Anime MC Hub</a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer-inner">
+        <span class="footer-left">Anime MC Hub · Built by Your-high-lord</span>
+        <span class="footer-right">Balanced for desktop &amp; mobile. No wasted motion.</span>
+      </div>
+    </footer>
+  </div>
 
   <script src="script.js"></script>
 </body>
