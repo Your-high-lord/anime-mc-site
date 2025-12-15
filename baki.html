@@ -1,71 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Baki – Anime MC Hub</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <header class="site-header">
-    <div class="logo">
-      <span class="logo-dot"></span>
-      <span class="logo-text">Anime MC Hub</span>
-    </div>
-    <nav class="main-nav">
-      <a href="index.html#home">Home</a>
-      <a href="index.html#characters">Characters</a>
-    </nav>
-  </header>
-
-  <main>
-    <section class="hero">
-      <h1>Baki the Grappler</h1>
-      <p>A martial artist who wants to surpass his father Yujiro Hanma.</p>
-      <img src="images/baki.jpg" alt="Baki Hanma" class="hero-image">
-    </section>
-
-    <section class="characters-section">
-      <h2>Allies</h2>
-      <div class="character-grid">
-        <article class="character-card">
-          <img src="images/hanayama.jpg" alt="Kaoru Hanayama" class="hero-image">
-          <h3>Kaoru Hanayama</h3>
-          <p>Gangster with insane grip strength who respects Baki.</p>
-        </article>
-
-        <article class="character-card">
-          <img src="images/doppo.jpg" alt="Doppo Orochi" class="hero-image">
-          <h3>Doppo Orochi</h3>
-          <p>Karate master and powerful martial artist.</p>
-        </article>
+  <div class="page-root">
+    <header class="site-header">
+      <div class="site-header-inner">
+        <div class="brand-lockup">
+          <div class="brand-mark"></div>
+          <div class="brand-text">
+            <span class="brand-kicker">Anime MC Hub</span>
+            <span class="brand-sub">Muscles, scars, and raw intent.</span>
+          </div>
+        </div>
+        <nav class="main-nav" aria-label="Primary navigation">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="naruto.html" class="nav-link">Naruto</a>
+          <a href="dragon-ball.html" class="nav-link">Dragon Ball</a>
+          <a href="light.html" class="nav-link">Light</a>
+          <a href="alucard.html" class="nav-link">Alucard</a>
+          <a href="lelouch.html" class="nav-link">Lelouch</a>
+          <a href="baki.html" class="nav-link nav-link-active">Baki</a>
+        </nav>
       </div>
+    </header>
 
-      <h2>Villains / Opponents</h2>
-      <div class="character-grid">
-        <article class="character-card">
-          <img src="images/yujiro.jpg" alt="Yujiro Hanma" class="hero-image">
-          <h3>Yujiro Hanma</h3>
-          <p>Strongest creature on Earth and Baki's father.</p>
-        </article>
+    <main class="site-main">
+      <!-- Baki hero -->
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-content">
+          <h1 id="hero-title" class="hero-title">
+            Baki Hanma
+          </h1>
+          <p class="hero-subtitle">
+            A born fighter pushing his body past human limits to surpass his father, Yujiro Hanma.
+          </p>
+          <div class="hero-controls">
+            <button class="btn btn-primary" id="charge-btn">
+              Enter Fighting Stance
+            </button>
+            <div class="world-pressure" aria-label="Arena pressure">
+              <div class="world-pressure-label">
+                Arena Pressure:
+                <span id="world-pressure-value">100%</span>
+              </div>
+              <div class="world-pressure-bar">
+                <div class="world-pressure-fill" id="world-pressure-fill"></div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-        <article class="character-card">
-          <img src="images/spec.jpg" alt="Spec" class="hero-image">
-          <h3>Spec</h3>
-          <p>Dangerous death row inmate who seeks strong fights.</p>
-        </article>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="hero-orbit">
+            <div class="hero-orbit-ring"></div>
+            <div class="hero-orbit-core"></div>
+          </div>
+        </div>
+      </section>
 
-        <article class="character-card">
-          <img src="images/dorian.jpg" alt="Dorian" class="hero-image">
-          <h3>Dorian</h3>
-          <p>Deadly assassin and master of many techniques.</p>
-        </article>
+      <!-- Allies / Mentors and Opponents -->
+      <section class="section section-split" aria-labelledby="allies-title">
+        <div class="section-block">
+          <header class="section-header">
+            <h2 id="allies-title" class="section-title">Allies and Mentors</h2>
+            <p class="section-tagline">
+              Fighters who sharpen Baki instead of breaking him.
+            </p>
+          </header>
+
+          <div class="card-grid">
+            <article class="universe-card depth-hover">
+              <div class="card-chip">ALLY</div>
+              <h3 class="card-title">Kaoru Hanayama</h3>
+              <p class="card-meta">Gangster · Iron grip</p>
+              <p class="card-note">
+                A yakuza boss with monstrous strength who respects Baki as a true fighter.
+              </p>
+            </article>
+
+            <article class="universe-card depth-hover">
+              <div class="card-chip">MASTER</div>
+              <h3 class="card-title">Doppo Orochi</h3>
+              <p class="card-meta">Karate · Veteran</p>
+              <p class="card-note">
+                A karate legend whose techniques and experience anchor Baki’s wild talent.
+              </p>
+            </article>
+
+            <article class="universe-card depth-hover">
+              <div class="card-chip">SUPPORT</div>
+              <h3 class="card-title">Friends & Gym</h3>
+              <p class="card-meta">Training · Grounding</p>
+              <p class="card-note">
+                The people and places that let Baki heal, train, and come back stronger.
+              </p>
+            </article>
+          </div>
+        </div>
+
+        <div class="section-block">
+          <header class="section-header">
+            <h2 class="section-title">Villains / Opponents</h2>
+            <p class="section-tagline">
+              Monsters in human skin that define Baki’s ceiling.
+            </p>
+          </header>
+
+          <div class="card-grid">
+            <article class="universe-card depth-hover">
+              <div class="card-chip">FATHER</div>
+              <h3 class="card-title">Yujiro Hanma</h3>
+              <p class="card-meta">“Strongest creature” · Final wall</p>
+              <p class="card-note">
+                Baki’s father and ultimate target, a man treated like a natural disaster.
+              </p>
+            </article>
+
+            <article class="universe-card depth-hover">
+              <div class="card-chip">DEATH ROW</div>
+              <h3 class="card-title">Spec</h3>
+              <p class="card-meta">Inmate · Cruel thrills</p>
+              <p class="card-note">
+                A deadly prisoner who breaks out just to chase the strongest fights.
+              </p>
+            </article>
+
+            <article class="universe-card depth-hover">
+              <div class="card-chip">ASSASSIN</div>
+              <h3 class="card-title">Dorian</h3>
+              <p class="card-meta">Illusion · Technique</p>
+              <p class="card-note">
+                A calculating killer whose tricks and techniques test Baki’s composure.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-label="Back to hub">
+        <div class="section-header">
+          <h2 class="section-title">Return to Hub</h2>
+          <p class="section-tagline">
+            Step out of the underground arena and back to the full MC lineup.
+          </p>
+        </div>
+        <a href="index.html" class="btn btn-subtle">Back to Anime MC Hub</a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer-inner">
+        <span class="footer-left">Anime MC Hub · Built by Your-high-lord</span>
+        <span class="footer-right">Balanced for desktop &amp; mobile. No wasted motion.</span>
       </div>
-    </section>
-  </main>
+    </footer>
+  </div>
 
-  <footer class="site-footer">
-    <p>Back to <a href="index.html">Anime MC Hub</a></p>
-  </footer>
+  <script src="script.js"></script>
 </body>
 </html>
