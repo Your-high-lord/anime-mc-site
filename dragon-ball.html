@@ -7,94 +7,185 @@
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <div class="app-bg"></div>
-
-  <header class="site-header">
-    <div class="logo-lockup">
-      <span class="logo-orb"></span>
-      <div>
-        <h1>Anime MC Hub</h1>
-        <p class="tagline">Saiyan pride and battles.</p>
+  <div class="page-root">
+    <header class="site-header">
+      <div class="site-header-inner">
+        <div class="brand-lockup">
+          <div class="brand-mark"></div>
+          <div class="brand-text">
+            <span class="brand-kicker">Anime MC Hub</span>
+            <span class="brand-sub">Saiyan pride and endless battles.</span>
+          </div>
+        </div>
+        <nav class="main-nav" aria-label="Primary navigation">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="naruto.html" class="nav-link">Naruto</a>
+          <a href="dragon-ball.html" class="nav-link nav-link-active">Dragon Ball</a>
+          <a href="light.html" class="nav-link">Light</a>
+          <a href="alucard.html" class="nav-link">Alucard</a>
+          <a href="lelouch.html" class="nav-link">Lelouch</a>
+          <a href="baki.html" class="nav-link">Baki</a>
+        </nav>
       </div>
-    </div>
-    <nav class="main-nav">
-      <a href="index.html" class="nav-link">Home</a>
-      <a href="naruto.html" class="nav-link">Naruto</a>
-      <a href="dragon-ball.html" class="nav-link active">Dragon Ball</a>
-      <a href="light.html" class="nav-link">Light</a>
-      <a href="alucard.html" class="nav-link">Alucard</a>
-      <a href="lelouch.html" class="nav-link">Lelouch</a>
-    </nav>
-  </header>
+    </header>
 
-  <main>
-    <article class="mc-detail-page">
-      <header>
-        <h2>Son Goku</h2>
-        <p>A Saiyan raised on Earth who never stops chasing stronger opponents, protecting his friends and planet along the way.</p>
-      </header>
+    <main class="site-main">
+      <!-- Goku hero -->
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-content">
+          <h1 id="hero-title" class="hero-title">
+            Son Goku
+          </h1>
+          <p class="hero-subtitle">
+            A Saiyan raised on Earth who never stops chasing stronger opponents and protecting his friends.
+          </p>
+          <div class="hero-controls">
+            <button class="btn btn-primary" id="charge-btn">
+              Power Up
+            </button>
+            <div class="world-pressure" aria-label="Battle pressure">
+              <div class="world-pressure-label">
+                Battle Pressure:
+                <span id="world-pressure-value">100%</span>
+              </div>
+              <div class="world-pressure-bar">
+                <div class="world-pressure-fill" id="world-pressure-fill"></div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-      <img src="images/goku-main.jpg" alt="Son Goku" class="mc-hero-image" />
+        <div class="hero-visual" aria-hidden="true">
+          <div class="hero-orbit">
+            <div class="hero-orbit-ring"></div>
+            <div class="hero-orbit-core"></div>
+          </div>
+        </div>
+      </section>
 
-      <section>
-        <h3>Allies</h3>
-        <div class="mc-ally-grid">
-          <article class="mc-ally-card">
-            <img src="images/vegeta.jpg" alt="Vegeta" class="mc-ally-thumb" />
-            <div class="mc-ally-meta">
-              <h4>Vegeta</h4>
-              <p>Prince of all Saiyans and Goku’s proudest rival.</p>
-            </div>
-          </article>
-          <article class="mc-ally-card">
-            <img src="images/gohan.jpg" alt="Gohan" class="mc-ally-thumb" />
-            <div class="mc-ally-meta">
-              <h4>Gohan</h4>
-              <p>Goku’s son, balancing scholar life with hidden power.</p>
-            </div>
-          </article>
-          <article class="mc-ally-card">
-            <img src="images/piccolo.jpg" alt="Piccolo" class="mc-ally-thumb" />
-            <div class="mc-ally-meta">
-              <h4>Piccolo</h4>
-              <p>Former enemy turned mentor and guardian of Earth.</p>
-            </div>
+      <!-- Allies and Villains -->
+      <section class="section section-split" aria-labelledby="allies-title">
+        <div class="section-block">
+          <header class="section-header">
+            <h2 id="allies-title" class="section-title">Allies</h2>
+            <p class="section-tagline">
+              Friends and rivals who keep pushing Goku higher.
+            </p>
+          </header>
+
+          <div class="card-grid">
+            <article class="universe-card depth-hover">
+              <div class="card-chip">SAIYAN</div>
+              <h3 class="card-title">Vegeta</h3>
+              <p class="card-meta">Prince · Proud rival</p>
+              <p class="card-note">
+                The prince of all Saiyans, always chasing Goku from just one step behind.
+              </p>
+            </article>
+
+            <article class="universe-card depth-hover">
+              <div class="card-chip">FAMILY</div>
+              <h3 class="card-title">Gohan</h3>
+              <p class="card-meta">Son · Hidden potential</p>
+              <p class="card-note">
+                A scholar with power that can surpass even his father when it truly matters.
+              </p>
+            </article>
+
+            <article class="universe-card depth-hover">
+              <div class="card-chip">MENTOR</div>
+              <h3 class="card-title">Piccolo</h3>
+              <p class="card-meta">Former enemy · Guardian</p>
+              <p class="card-note">
+                Once an enemy, now a mentor and protector of Gohan and Earth.
+              </p>
+            </article>
+          </div>
+        </div>
+
+        <div class="section-block">
+          <header class="section-header">
+            <h2 class="section-title">Villains and Antagonists</h2>
+            <p class="section-tagline">
+              Enemies whose power forced the next transformation.
+            </p>
+          </header>
+
+          <div class="card-grid">
+            <article class="universe-card depth-hover">
+              <div class="card-chip">TYRANT</div>
+              <h3 class="card-title">Frieza</h3>
+              <p class="card-meta">Galactic emperor · Cruelty</p>
+              <p class="card-note">
+                The tyrant whose actions pushed Goku to become a Super Saiyan for the first time.
+              </p>
+            </article>
+
+            <article class="universe-card depth-hover">
+              <div class="card-chip">BIO-ANDROID</div>
+              <h3 class="card-title">Cell</h3>
+              <p class="card-meta">Perfect form · Tournament of fear</p>
+              <p class="card-note">
+                A bio‑engineered monster seeking perfection through absorbing others.
+              </p>
+            </article>
+
+            <article class="universe-card depth-hover">
+              <div class="card-chip">MAJIN</div>
+              <h3 class="card-title">Majin Buu</h3>
+              <p class="card-meta">Chaos · Many forms</p>
+              <p class="card-note">
+                A pink being shifting from childish innocence to pure, destructive evil.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Optional hero image section, if you have goku-main.jpg -->
+      <section class="section" aria-label="Goku visual">
+        <div class="section-header">
+          <h2 class="section-title">Goku in Focus</h2>
+          <p class="section-tagline">
+            One calm frame to anchor the Saiyan energy.
+          </p>
+        </div>
+        <div class="card-grid">
+          <article class="universe-card depth-hover">
+            <div class="card-chip">VISUAL</div>
+            <h3 class="card-title">Goku</h3>
+            <p class="card-meta">Hero shot</p>
+            <p class="card-note">
+              A single frame capturing his drive to push beyond every limit.
+            </p>
+            <!-- Ensure this file exists in /images or rename src to match your real image -->
+            <img
+              src="images/goku-main.jpg"
+              alt="Son Goku"
+              style="width: 100%; margin-top: 8px; border-radius: 12px; display: block;"
+            />
           </article>
         </div>
       </section>
 
-      <section>
-        <h3>Villains and Antagonists</h3>
-        <div class="mc-ally-grid">
-          <article class="mc-ally-card">
-            <img src="images/frieza.jpg" alt="Frieza" class="mc-ally-thumb" />
-            <div class="mc-ally-meta">
-              <h4>Frieza</h4>
-              <p>Galactic tyrant whose cruelty pushed Goku to Super Saiyan.</p>
-            </div>
-          </article>
-          <article class="mc-ally-card">
-            <img src="images/cell.jpg" alt="Cell" class="mc-ally-thumb" />
-            <div class="mc-ally-meta">
-              <h4>Cell</h4>
-              <p>Bio-engineered monster aiming for a perfect form.</p>
-            </div>
-          </article>
-          <article class="mc-ally-card">
-            <img src="images/majin-buu.jpg" alt="Majin Buu" class="mc-ally-thumb" />
-            <div class="mc-ally-meta">
-              <h4>Majin Buu</h4>
-              <p>Shapeshifting pink chaos, from childish to pure evil.</p>
-            </div>
-          </article>
+      <section class="section" aria-label="Back to hub">
+        <div class="section-header">
+          <h2 class="section-title">Return to Hub</h2>
+          <p class="section-tagline">
+            Step away from the battlefield and back to the full MC lineup.
+          </p>
         </div>
+        <a href="index.html" class="btn btn-subtle">Back to Anime MC Hub</a>
       </section>
+    </main>
 
-      <footer>
-        <p>Back to <a href="index.html">Anime MC Hub</a></p>
-      </footer>
-    </article>
-  </main>
+    <footer class="site-footer">
+      <div class="site-footer-inner">
+        <span class="footer-left">Anime MC Hub · Built by Your-high-lord</span>
+        <span class="footer-right">Balanced for desktop &amp; mobile. No wasted motion.</span>
+      </div>
+    </footer>
+  </div>
 
   <script src="script.js"></script>
 </body>
