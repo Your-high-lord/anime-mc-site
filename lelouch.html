@@ -7,80 +7,157 @@
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <div class="app-bg"></div>
-
-  <header class="site-header">
-    <div class="logo-lockup">
-      <span class="logo-orb"></span>
-      <div>
-        <h1>Anime MC Hub</h1>
-        <p class="tagline">Rebellion, Geass, and sacrifice.</p>
+  <div class="page-root">
+    <header class="site-header">
+      <div class="site-header-inner">
+        <div class="brand-lockup">
+          <div class="brand-mark"></div>
+          <div class="brand-text">
+            <span class="brand-kicker">Anime MC Hub</span>
+            <span class="brand-sub">Checkmate on a global scale.</span>
+          </div>
+        </div>
+        <nav class="main-nav" aria-label="Primary navigation">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="naruto.html" class="nav-link">Naruto</a>
+          <a href="dragon-ball.html" class="nav-link">Dragon Ball</a>
+          <a href="light.html" class="nav-link">Light</a>
+          <a href="alucard.html" class="nav-link">Alucard</a>
+          <a href="lelouch.html" class="nav-link nav-link-active">Lelouch</a>
+          <a href="baki.html" class="nav-link">Baki</a>
+        </nav>
       </div>
-    </div>
-    <nav class="main-nav">
-      <a href="index.html" class="nav-link">Home</a>
-      <a href="naruto.html" class="nav-link">Naruto</a>
-      <a href="dragon-ball.html" class="nav-link">Dragon Ball</a>
-      <a href="light.html" class="nav-link">Light</a>
-      <a href="alucard.html" class="nav-link">Alucard</a>
-      <a href="lelouch.html" class="nav-link active">Lelouch</a>
-    </nav>
-  </header>
+    </header>
 
-  <main>
-    <article class="mc-detail-page">
-      <header>
-        <h2>Lelouch vi Britannia</h2>
-        <p>An exiled prince who gains the power of Geass and starts a revolution as the masked leader Zero.</p>
-      </header>
-
-      <img src="images/lelouch-main.jpg" alt="Lelouch vi Britannia" class="mc-hero-image" />
-
-      <section>
-        <h3>Allies</h3>
-        <div class="mc-ally-grid">
-          <article class="mc-ally-card">
-            <img src="images/cc.jpg" alt="C.C." class="mc-ally-thumb" />
-            <div class="mc-ally-meta">
-              <h4>C.C.</h4>
-              <p>Mysterious immortal girl who grants Lelouch his Geass.</p>
+    <main class="site-main">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-content">
+          <h1 id="hero-title" class="hero-title">
+            Lelouch vi Britannia
+          </h1>
+          <p class="hero-subtitle">
+            A fallen prince who gains the power to command and chooses to rewrite the world.
+          </p>
+          <div class="hero-controls">
+            <button class="btn btn-primary" id="charge-btn">
+              Invoke Geass
+            </button>
+            <div class="world-pressure" aria-label="World tension">
+              <div class="world-pressure-label">
+                World Tension:
+                <span id="world-pressure-value">100%</span>
+              </div>
+              <div class="world-pressure-bar">
+                <div class="world-pressure-fill" id="world-pressure-fill"></div>
+              </div>
             </div>
-          </article>
-          <article class="mc-ally-card">
-            <img src="images/suzaku.jpg" alt="Suzaku Kururugi" class="mc-ally-thumb" />
-            <div class="mc-ally-meta">
-              <h4>Suzaku Kururugi</h4>
-              <p>Childhood friend whose justice clashes with Lelouch’s methods.</p>
-            </div>
-          </article>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="hero-orbit">
+            <div class="hero-orbit-ring"></div>
+            <div class="hero-orbit-core"></div>
+          </div>
         </div>
       </section>
 
-      <section>
-        <h3>Opponents and Forces</h3>
-        <div class="mc-ally-grid">
-          <article class="mc-ally-card">
-            <img src="images/charles.jpg" alt="Charles zi Britannia" class="mc-ally-thumb" />
-            <div class="mc-ally-meta">
-              <h4>Charles zi Britannia</h4>
-              <p>The emperor whose empire Lelouch seeks to overthrow.</p>
-            </div>
-          </article>
-          <article class="mc-ally-card">
-            <img src="images/knights-of-round.jpg" alt="Knights of the Round" class="mc-ally-thumb" />
-            <div class="mc-ally-meta">
-              <h4>Knights of the Round</h4>
-              <p>Elite Britannian knights piloting top-tier Knightmares.</p>
-            </div>
-          </article>
+      <section class="section section-split" aria-labelledby="allies-title">
+        <div class="section-block">
+          <header class="section-header">
+            <h2 id="allies-title" class="section-title">Allies and Pieces</h2>
+            <p class="section-tagline">
+              Friends and soldiers moved across a board only he can see.
+            </p>
+          </header>
+
+          <div class="card-grid">
+            <article class="universe-card depth-hover">
+              <div class="card-chip">ZERO</div>
+              <h3 class="card-title">Kallen Stadtfeld</h3>
+              <p class="card-meta">Ace pilot · Loyal knightmare</p>
+              <p class="card-note">
+                The fiery warrior who believes in Zero more than the prince beneath.
+              </p>
+            </article>
+
+            <article class="universe-card depth-hover">
+              <div class="card-chip">BRITANNIA</div>
+              <h3 class="card-title">Suzaku Kururugi</h3>
+              <p class="card-meta">Knight · Conflicting ideals</p>
+              <p class="card-note">
+                Lelouch’s opposite: trying to change the world from inside the system.
+              </p>
+            </article>
+
+            <article class="universe-card depth-hover">
+              <div class="card-chip">CONTRACT</div>
+              <h3 class="card-title">C.C.</h3>
+              <p class="card-meta">Immortal · Contract bearer</p>
+              <p class="card-note">
+                The witch who gives him Geass and watches how he spends it.
+              </p>
+            </article>
+          </div>
+        </div>
+
+        <div class="section-block">
+          <header class="section-header">
+            <h2 class="section-title">Opposition</h2>
+            <p class="section-tagline">
+              Empires and orders that stand in front of Zero’s rebellion.
+            </p>
+          </header>
+
+          <div class="card-grid">
+            <article class="universe-card depth-hover">
+              <div class="card-chip">EMPIRE</div>
+              <h3 class="card-title">Holy Britannian Empire</h3>
+              <p class="card-meta">Superpower · Ruthless hierarchy</p>
+              <p class="card-note">
+                The world-order Lelouch wants to overturn, even if he breaks himself to do it.
+              </p>
+            </article>
+
+            <article class="universe-card depth-hover">
+              <div class="card-chip">ORDER</div>
+              <h3 class="card-title">Knights of the Round</h3>
+              <p class="card-meta">Elite · Royal guard</p>
+              <p class="card-note">
+                The sharpest blades sworn to protect the status quo.
+              </p>
+            </article>
+
+            <article class="universe-card depth-hover">
+              <div class="card-chip">LEGEND</div>
+              <h3 class="card-title">Zero Requiem</h3>
+              <p class="card-meta">Plan · Final gambit</p>
+              <p class="card-note">
+                The last move that decides how history remembers him.
+              </p>
+            </article>
+          </div>
         </div>
       </section>
 
-      <footer>
-        <p>Back to <a href="index.html">Anime MC Hub</a></p>
-      </footer>
-    </article>
-  </main>
+      <section class="section" aria-label="Back to hub">
+        <div class="section-header">
+          <h2 class="section-title">Return to Hub</h2>
+          <p class="section-tagline">
+            Leave the chessboard and return to the full MC lineup.
+          </p>
+        </div>
+        <a href="index.html" class="btn btn-subtle">Back to Anime MC Hub</a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer-inner">
+        <span class="footer-left">Anime MC Hub · Built by Your-high-lord</span>
+        <span class="footer-right">Balanced for desktop &amp; mobile. No wasted motion.</span>
+      </div>
+    </footer>
+  </div>
 
   <script src="script.js"></script>
 </body>
