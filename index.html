@@ -4,8 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Anime MC Hub</title>
-
-  <!-- Single, clean stylesheet -->
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -45,7 +43,6 @@
             <button class="btn btn-primary" id="charge-btn">
               Charge Awakening
             </button>
-
             <div class="world-pressure" aria-label="World pressure">
               <div class="world-pressure-label">
                 World Pressure:
@@ -57,7 +54,6 @@
             </div>
           </div>
         </div>
-
         <div class="hero-visual" aria-hidden="true">
           <div class="hero-orbit">
             <div class="hero-orbit-ring"></div>
@@ -66,7 +62,7 @@
         </div>
       </section>
 
-      <!-- UNIVERSES -->
+      <!-- FEATURED UNIVERSES -->
       <section class="section" aria-labelledby="universes-title">
         <header class="section-header">
           <h2 id="universes-title" class="section-title">Featured MC Universes</h2>
@@ -74,7 +70,6 @@
             Anime data and layout, tuned for calm but powerful motion.
           </p>
         </header>
-
         <div class="card-grid" id="universe-grid">
           <article class="universe-card depth-hover" data-universe="Naruto">
             <div class="card-chip">ANIME</div>
@@ -82,21 +77,18 @@
             <p class="card-meta">Primary characters: <span>10</span></p>
             <p class="card-note">Hidden Leaf, loud heart, stubborn resolve.</p>
           </article>
-
           <article class="universe-card depth-hover" data-universe="Naruto: Shippuuden">
             <div class="card-chip">ANIME</div>
             <h3 class="card-title">Naruto: Shippuuden</h3>
             <p class="card-meta">Primary characters: <span>10</span></p>
             <p class="card-note">Older, heavier, but the same fire burning.</p>
           </article>
-
           <article class="universe-card depth-hover" data-universe="Fullmetal Alchemist: Brotherhood">
             <div class="card-chip">ANIME</div>
             <h3 class="card-title">Fullmetal Alchemist: Brotherhood</h3>
             <p class="card-meta">Primary characters: <span>10</span></p>
             <p class="card-note">Equivalent trade, impossible choices, steel bonds.</p>
           </article>
-
           <article class="universe-card depth-hover" data-universe="Hunter x Hunter (2011)">
             <div class="card-chip">ANIME</div>
             <h3 class="card-title">Hunter x Hunter (2011)</h3>
@@ -104,9 +96,24 @@
             <p class="card-note">Nen systems, cruel exams, impossible ceilings.</p>
           </article>
         </div>
-
         <p class="section-footnote">
           Linked to the anime dimension. Tap any card to stir the system.
+        </p>
+      </section>
+
+      <!-- CHARACTER ARCHIVE (New) -->
+      <section class="section" id="character-archive" aria-labelledby="archive-title">
+        <header class="section-header">
+          <h2 id="archive-title" class="section-title">Character Archive</h2>
+          <p class="section-tagline">
+            All heroes, villains, and side characters — rendered from live data, never static.
+          </p>
+        </header>
+        <div class="card-grid" id="character-grid">
+          <!-- JS populates this -->
+        </div>
+        <p class="section-footnote" id="archive-footnote">
+          Character images loaded from <code>/images</code>. Missing files gracefully degrade.
         </p>
       </section>
 
@@ -117,19 +124,16 @@
             <h2 id="trials-title" class="section-title">MC Trials</h2>
             <p class="section-tagline">Guess, commit, and see how the world responds.</p>
           </header>
-
           <div class="guess-panel">
             <p class="guess-prompt" id="guess-prompt">
               He once stole a legendary scroll and painted graffiti on faces.
             </p>
-
             <div class="guess-options" id="guess-options">
               <button class="btn btn-ghost guess-option" data-answer="Goku">Goku</button>
               <button class="btn btn-ghost guess-option" data-answer="Naruto">Naruto</button>
               <button class="btn btn-ghost guess-option" data-answer="Light">Light</button>
               <button class="btn btn-ghost guess-option" data-answer="Lelouch">Lelouch</button>
             </div>
-
             <div class="guess-bottom-row">
               <button class="btn btn-subtle" id="hint-btn">New Hint</button>
               <div class="streak-display">
@@ -137,17 +141,14 @@
                 <span id="streak-value">0</span>
               </div>
             </div>
-
             <p class="guess-feedback" id="guess-feedback" aria-live="polite"></p>
           </div>
         </div>
-
         <div class="section-block">
           <header class="section-header">
             <h2 class="section-title">Fate Spinner</h2>
             <p class="section-tagline">Press once. Let one clean motion decide.</p>
           </header>
-
           <div class="spinner-panel">
             <div class="spinner-wheel depth-hover" id="spinner-wheel">
               <div class="spinner-label" id="spinner-label">Awaiting spin</div>
@@ -161,12 +162,11 @@
     <footer class="site-footer">
       <div class="site-footer-inner">
         <span class="footer-left">Anime MC Hub · Built by Your-high-lord</span>
-        <span class="footer-right">Balanced for desktop & mobile. No wasted motion.</span>
+        <span class="footer-right">Balanced for desktop &amp; mobile. No wasted motion.</span>
       </div>
     </footer>
   </div>
 
-  <!-- Single, clean script -->
   <script src="script.js"></script>
 </body>
 </html>
