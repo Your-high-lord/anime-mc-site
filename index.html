@@ -4,616 +4,384 @@
   <meta charset="UTF-8" />
   <title>Anime MC Hub</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="css/styles.css" />
   <style>
-    :root {
-      --bg: #050713;
-      --bg-alt: #0c1020;
-      --accent: #f39c12;
-      --accent-soft: rgba(243, 156, 18, 0.15);
-      --accent-strong: rgba(243, 156, 18, 0.35);
-      --text-main: #f5f7ff;
-      --text-soft: #a9b1d6;
-      --border-soft: rgba(255, 255, 255, 0.06);
-      --danger: #e74c3c;
-      --success: #2ecc71;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
+    /* ====== Basic Layout ====== */
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        sans-serif;
-      background: radial-gradient(circle at top, #151a3b 0, #050713 50%, #01010a 100%);
-      color: var(--text-main);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #141b2f 0, #05060a 50%, #02030a 100%);
+      color: #f7f7ff;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    /* Layout */
-    .page-shell {
-      max-width: 1200px;
+    .page {
+      max-width: 1050px;
       margin: 0 auto;
       padding: 16px 16px 40px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
     }
 
     header {
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .title-row {
+      display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 16px;
+      gap: 8px;
+      flex-wrap: wrap;
     }
 
-    .brand {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .brand-title {
-      font-size: 1.6rem;
+    h1 {
+      font-size: 1.5rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
+      margin: 0;
     }
 
-    .brand-sub {
-      font-size: 0.85rem;
-      color: var(--text-soft);
+    .tagline {
+      font-size: 0.9rem;
+      color: #a6b1ff;
+      opacity: 0.9;
     }
 
+    /* ====== Nav ====== */
     nav {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
+      margin-top: 4px;
     }
 
     nav a {
+      text-decoration: none;
+      font-size: 0.85rem;
       padding: 6px 10px;
       border-radius: 999px;
-      background: rgba(15, 18, 40, 0.9);
-      border: 1px solid var(--border-soft);
-      font-size: 0.8rem;
-      color: var(--text-soft);
-      transition: background 0.15s ease, color 0.15s ease, border 0.15s ease;
+      border: 1px solid #303a6b;
+      color: #dbe1ff;
+      background: rgba(8, 13, 40, 0.8);
+      backdrop-filter: blur(10px);
+      transition: background 0.15s ease, transform 0.1s ease, border-color 0.15s ease;
     }
 
     nav a:hover {
-      background: var(--accent-soft);
-      border-color: var(--accent);
-      color: var(--text-main);
-    }
-
-    main {
-      display: grid;
-      grid-template-columns: 3fr 2fr;
-      gap: 20px;
-    }
-
-    @media (max-width: 900px) {
-      main {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* Hero / pressure section */
-    .hero-card {
-      background: radial-gradient(circle at top left, #1a203d, #050713);
-      border-radius: 16px;
-      border: 1px solid var(--border-soft);
-      padding: 16px 16px 18px;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.55);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-card::before {
-      content: "";
-      position: absolute;
-      inset: -40%;
-      background:
-        radial-gradient(circle at 0% 0%, rgba(243, 156, 18, 0.2) 0, transparent 60%),
-        radial-gradient(circle at 100% 0%, rgba(116, 185, 255, 0.16) 0, transparent 60%);
-      opacity: 0.6;
-      pointer-events: none;
-    }
-
-    .hero-card-inner {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2.4fr);
-      gap: 16px;
-    }
-
-    @media (max-width: 700px) {
-      .hero-card-inner {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .hero-text h1 {
-      font-size: 1.5rem;
-      margin-bottom: 4px;
-    }
-
-    .hero-text p {
-      font-size: 0.9rem;
-      color: var(--text-soft);
-      max-width: 32rem;
-    }
-
-    .pressure-shell {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .pressure-label-row {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.8rem;
-      color: var(--text-soft);
-    }
-
-    .pressure-bar {
-      position: relative;
-      height: 16px;
-      border-radius: 999px;
-      background: rgba(5, 7, 18, 0.8);
-      overflow: hidden;
-      border: 1px solid var(--border-soft);
-    }
-
-    .pressure-fill {
-      position: absolute;
-      inset: 0;
-      transform-origin: left center;
-      transform: scaleX(1);
-      background: linear-gradient(90deg, #2ecc71, #f39c12, #e74c3c);
-      transition: transform 0.18s ease-out;
-    }
-
-    .pressure-meta {
-      display: flex;
-      justify-content: space-between;
-      gap: 8px;
-      font-size: 0.8rem;
-      color: var(--text-soft);
-    }
-
-    .btn {
-      position: relative;
-      border-radius: 999px;
-      border: 1px solid var(--accent);
-      background: radial-gradient(circle at 30% 0, #f7b733, #f39c12 55%, #e67e22 100%);
-      color: #050713;
-      padding: 7px 14px;
-      font-size: 0.85rem;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      font-weight: 600;
-      box-shadow: 0 10px 24px rgba(243, 156, 18, 0.42);
-      transition:
-        transform 0.08s ease-out,
-        box-shadow 0.08s ease-out,
-        background 0.18s ease-out,
-        border 0.18s ease-out;
-      outline: none;
-    }
-
-    .btn span {
-      font-size: 1rem;
-    }
-
-    .btn:hover {
+      background: #1b234b;
+      border-color: #5a6dff;
       transform: translateY(-1px);
-      box-shadow: 0 14px 28px rgba(243, 156, 18, 0.55);
     }
 
-    .btn:active,
-    .btn.is-clicked {
-      transform: translateY(1px) scale(0.98);
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.7);
+    nav a:active {
+      transform: translateY(0);
+      background: #141a35;
     }
 
-    .hero-charged .pressure-fill {
-      transition: transform 0.12s ease-out;
-      box-shadow: 0 0 18px rgba(243, 156, 18, 0.6);
-    }
-
-    /* Universe cards (for spinner) */
-    .universe-shell {
-      margin-top: 6px;
-      padding: 10px;
-      border-radius: 12px;
-      background: rgba(5, 7, 19, 0.85);
-      border: 1px dashed rgba(255, 255, 255, 0.06);
-    }
-
-    .universe-shell-header {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 8px;
-      font-size: 0.8rem;
-      color: var(--text-soft);
-    }
-
-    .universe-grid {
+    /* ====== Grid Layout ====== */
+    .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-      gap: 8px;
-    }
-
-    .universe-card {
-      position: relative;
-      padding: 8px;
-      border-radius: 10px;
-      background: rgba(13, 16, 36, 0.9);
-      border: 1px solid var(--border-soft);
-      font-size: 0.78rem;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      transition:
-        border 0.15s ease,
-        box-shadow 0.15s ease,
-        background 0.15s ease,
-        transform 0.15s ease;
-    }
-
-    .universe-card-title {
-      font-weight: 600;
-      font-size: 0.8rem;
-    }
-
-    .universe-card-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      padding: 2px 6px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.03);
-      color: var(--text-soft);
-    }
-
-    .universe-card-pill span {
-      font-size: 0.8rem;
-    }
-
-    .universe-card-desc {
-      color: var(--text-soft);
-    }
-
-    .universe-card.is-active {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 1px rgba(243, 156, 18, 0.5),
-        0 10px 24px rgba(0, 0, 0, 0.9);
-      background: rgba(20, 16, 4, 0.95);
-      transform: translateY(-2px);
-    }
-
-    /* Right column: spinner + guess game */
-    .side-column {
-      display: flex;
-      flex-direction: column;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.3fr);
       gap: 16px;
+    }
+
+    @media (max-width: 800px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     .card {
-      background: radial-gradient(circle at top, #191b3a 0, #050713 60%);
+      background: rgba(9, 13, 35, 0.96);
       border-radius: 16px;
-      border: 1px solid var(--border-soft);
+      border: 1px solid #283256;
       padding: 14px 14px 16px;
-      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.6);
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      position: relative;
-      overflow: hidden;
+      box-shadow: 0 18px 35px rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(12px);
     }
 
     .card-header {
       display: flex;
       justify-content: space-between;
-      align-items: baseline;
-      gap: 8px;
+      align-items: center;
+      margin-bottom: 10px;
     }
 
     .card-title {
-      font-size: 1rem;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #9da8ff;
     }
 
     .card-sub {
       font-size: 0.8rem;
-      color: var(--text-soft);
+      color: #9ca8ff;
+      opacity: 0.9;
     }
 
-    .spinner-layout {
+    /* ====== Featured Universes ====== */
+    .universes-grid {
       display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 12px;
-      align-items: center;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .universe-card {
+      border-radius: 12px;
+      border: 1px solid #303a6b;
+      padding: 10px 11px 11px;
+      background: radial-gradient(circle at top left, #1a2045 0, #070b1b 55%, #050713 100%);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    }
+
+    .universe-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.65);
+      border-color: #5f72ff;
+    }
+
+    .universe-name {
+      font-size: 0.88rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .universe-meta {
+      font-size: 0.8rem;
+      color: #b7c1ff;
+      margin-bottom: 4px;
+    }
+
+    .universe-desc {
+      font-size: 0.78rem;
+      color: #c3cbff;
+      line-height: 1.38;
+    }
+
+    /* ====== Character Archive ====== */
+    .archive-text {
+      font-size: 0.8rem;
+      color: #c7d0ff;
+      line-height: 1.45;
       margin-top: 6px;
     }
 
-    @media (max-width: 520px) {
-      .spinner-layout {
-        grid-template-columns: 1fr;
-      }
+    .archive-note {
+      font-size: 0.75rem;
+      color: #8f9cff;
+      opacity: 0.9;
+      margin-top: 4px;
     }
 
-    .spinner-wheel {
-      width: 90px;
-      height: 90px;
-      border-radius: 50%;
-      border: 3px solid rgba(255, 255, 255, 0.14);
-      position: relative;
+    /* ====== Fate Spinner ====== */
+    .spinner-layout {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      background:
-        conic-gradient(
-          from 0deg,
-          rgba(243, 156, 18, 0.9),
-          rgba(116, 185, 255, 0.85),
-          rgba(231, 76, 60, 0.85),
-          rgba(46, 204, 113, 0.9),
-          rgba(243, 156, 18, 0.9)
-        );
-      box-shadow: 0 0 18px rgba(243, 156, 18, 0.45);
+      flex-direction: column;
+      gap: 10px;
     }
 
-    .spinner-wheel::before {
-      content: "";
-      position: absolute;
-      inset: 16%;
-      border-radius: 50%;
-      background: radial-gradient(circle at top, #15162b, #050713);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+    .spinner-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
     }
 
-    .spinner-pointer {
-      position: absolute;
-      top: -8px;
-      width: 0;
-      height: 0;
-      border-left: 7px solid transparent;
-      border-right: 7px solid transparent;
-      border-bottom: 10px solid #f5f7ff;
-      filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.6));
+    .spinner-text-main {
+      font-size: 0.84rem;
+      color: #e2e6ff;
     }
 
     .spinner-label {
-      font-size: 0.86rem;
-      color: var(--text-soft);
+      font-size: 0.78rem;
+      color: #9da8ff;
+    }
+
+    .spinner-result {
+      font-size: 0.9rem;
+      color: #ffe082;
+      margin-top: 2px;
       min-height: 1.2em;
     }
 
-    .spinner-actions {
+    .spinner-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .spin-circle {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      border: 1px solid #5867ff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 30% 30%, #3c4dff 0, #11163b 60%, #070816 100%);
+      color: #f9fbff;
+      font-size: 0.9rem;
+      box-shadow: 0 0 12px rgba(95, 114, 255, 0.6);
+    }
+
+    .spin-btn {
+      border: none;
+      outline: none;
+      border-radius: 999px;
+      padding: 7px 14px;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      background: linear-gradient(135deg, #5f72ff, #9b6bff);
+      color: #f6f6ff;
+      cursor: pointer;
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.5);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: transform 0.1s ease, box-shadow 0.1s ease, filter 0.12s ease;
+    }
+
+    .spin-btn:hover {
+      filter: brightness(1.05);
+      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.6);
+    }
+
+    .spin-btn:active {
+      transform: translateY(1px);
+      box-shadow: 0 7px 16px rgba(0, 0, 0, 0.55);
+    }
+
+    .spin-btn span {
+      font-size: 1rem;
+    }
+
+    /* ====== MC Trials ====== */
+    .trials-layout {
       display: flex;
-      justify-content: flex-start;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .trials-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+    }
+
+    .trials-label {
+      font-size: 0.78rem;
+      color: #9da8ff;
+    }
+
+    .trials-streak {
+      font-size: 0.88rem;
+      color: #ffe082;
+    }
+
+    .trial-clue {
+      font-size: 0.83rem;
+      color: #d9e0ff;
+      line-height: 1.5;
+      margin-top: 4px;
+    }
+
+    .trial-options {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 8px;
       margin-top: 10px;
     }
 
-    .spinner-wheel.is-spinning {
-      animation: spin 0.9s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    @keyframes spin {
-      0% {
-        transform: rotate(0);
-      }
-      100% {
-        transform: rotate(430deg);
-      }
-    }
-
-    /* Guess game */
-    .guess-prompt {
-      font-size: 0.9rem;
-    }
-
-    .guess-options {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 8px;
-    }
-
-    .guess-option {
-      padding: 6px 10px;
-      font-size: 0.8rem;
+    .trial-btn {
       border-radius: 999px;
-      border: 1px solid var(--border-soft);
-      background: rgba(5, 7, 18, 0.9);
-      color: var(--text-main);
+      border: 1px solid #32406e;
+      background: linear-gradient(135deg, #181d3a, #0c1023);
+      color: #e3e7ff;
+      padding: 7px 10px;
+      font-size: 0.8rem;
       cursor: pointer;
-      transition:
-        background 0.15s ease,
-        border 0.15s ease,
-        transform 0.07s ease;
+      text-align: center;
+      transition: background 0.14s ease, transform 0.1s ease, border-color 0.14s ease, box-shadow 0.14s ease;
     }
 
-    .guess-option:hover {
-      background: var(--accent-soft);
-      border-color: var(--accent);
+    .trial-btn:hover {
+      background: #242a53;
+      border-color: #5f72ff;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.55);
     }
 
-    .guess-option:active {
-      transform: translateY(1px) scale(0.98);
+    .trial-btn:active {
+      transform: translateY(1px);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.5);
     }
 
-    .guess-meta-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 8px;
+    .trial-btn.correct {
+      background: linear-gradient(135deg, #3cb371, #2e8b57);
+      border-color: #76ffb6;
+      color: #02140c;
+    }
+
+    .trial-btn.wrong {
+      background: linear-gradient(135deg, #b3413c, #8b2e2e);
+      border-color: #ff7a76;
+      color: #fff4f4;
+    }
+
+    .trial-feedback {
       font-size: 0.8rem;
-      color: var(--text-soft);
-      gap: 8px;
+      color: #cdd6ff;
+      margin-top: 6px;
+      min-height: 1.2em;
     }
 
-    .guess-feedback {
-      margin-top: 4px;
-      font-size: 0.8rem;
-      min-height: 1.1em;
-    }
-
-    .guess-feedback.success {
-      color: var(--success);
-    }
-
-    .guess-feedback.error {
-      color: var(--danger);
-    }
-
-    /* Character archive */
-    .archive-card {
-      margin-top: 4px;
-    }
-
-    .character-grid {
-      margin-top: 8px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-      gap: 10px;
-    }
-
-    .character-card {
-      border-radius: 12px;
-      background: rgba(9, 10, 26, 0.95);
-      border: 1px solid var(--border-soft);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
+    .hint-link {
+      margin-top: 6px;
       font-size: 0.78rem;
-      transition:
-        transform 0.15s ease,
-        box-shadow 0.15s ease,
-        border 0.15s ease;
+      color: #9da8ff;
+      cursor: pointer;
+      text-decoration: underline;
     }
 
-    .character-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.8);
-      border-color: rgba(243, 156, 18, 0.7);
+    .hint-link:hover {
+      color: #c0cdff;
     }
 
-    .character-thumb-wrap {
-      position: relative;
-      aspect-ratio: 4 / 3;
-      background: radial-gradient(circle at top, #252a4c, #050713);
-      overflow: hidden;
-    }
-
-    .character-thumb {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .character-thumb-fallback {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.7rem;
-      color: var(--text-soft);
-      padding: 6px;
-      text-align: center;
-    }
-
-    .character-body {
-      padding: 8px 9px 9px;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .character-name-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 6px;
-      align-items: center;
-    }
-
-    .character-name {
-      font-weight: 600;
-      font-size: 0.8rem;
-    }
-
-    .character-role {
-      font-size: 0.7rem;
-      color: var(--text-soft);
-      padding: 2px 6px;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .character-anime {
-      font-size: 0.76rem;
-      color: var(--text-soft);
-    }
-
-    .stat-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 6px;
-      font-size: 0.7rem;
-      color: var(--text-soft);
-    }
-
-    .stat-pill {
-      flex: 1;
-      background: rgba(255, 255, 255, 0.02);
-      border-radius: 999px;
-      padding: 2px 6px;
-      display: flex;
-      justify-content: space-between;
-      gap: 4px;
-    }
-
+    /* ====== Footer ====== */
     footer {
-      margin-top: auto;
-      padding: 12px 16px;
-      font-size: 0.76rem;
-      color: var(--text-soft);
-      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      margin-top: 18px;
+      font-size: 0.75rem;
+      color: #838fc7;
       text-align: center;
-      background: linear-gradient(to right, #050713, #090b1b);
+    }
+
+    footer a {
+      color: #b2bfff;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
-  <div class="page-shell">
+  <div class="page">
     <header>
-      <div class="brand">
-        <div class="brand-title">Anime MC Hub</div>
-        <div class="brand-sub">Clean power. No chaos.</div>
+      <div class="title-row">
+        <div>
+          <h1>ANIME MC HUB</h1>
+          <div class="tagline">Clean power. No chaos.</div>
+        </div>
       </div>
+
+      <!-- Real clickable nav -->
       <nav>
         <a href="index.html">Home</a>
         <a href="naruto.html">Naruto</a>
@@ -625,171 +393,187 @@
       </nav>
     </header>
 
-    <main>
-      <!-- LEFT: Hero + pressure + universe cards + archive -->
-      <section class="hero-column">
-        <article class="hero-card">
-          <div class="hero-card-inner">
-            <div class="hero-text">
-              <h1>Main characters. Quiet power.</h1>
-              <p>
-                Spin fates, test instincts, and feel the pressure rise with every choice.
-              </p>
-
-              <div class="pressure-shell" style="margin-top: 10px;">
-                <div class="pressure-label-row">
-                  <span>World Pressure</span>
-                  <span id="world-pressure-value">100%</span>
-                </div>
-                <div class="pressure-bar">
-                  <div id="world-pressure-fill" class="pressure-fill"></div>
-                </div>
-                <div class="pressure-meta">
-                  <span>Charge Awakening</span>
-                  <button id="charge-btn" class="btn">
-                    <span>●</span>
-                    Release a little tension
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div class="universe-shell">
-              <div class="universe-shell-header">
-                <span>Featured MC Universes</span>
-                <span style="font-size: 0.78rem;">Tap a card via Fate Spinner</span>
-              </div>
-              <div id="universe-grid" class="universe-grid">
-                <div class="universe-card" data-universe="Naruto">
-                  <div class="universe-card-title">Naruto</div>
-                  <div class="universe-card-pill">
-                    <span>10 primary characters</span>
-                  </div>
-                  <div class="universe-card-desc">
-                    Hidden Leaf, loud heart, stubborn resolve.
-                  </div>
-                </div>
-                <div class="universe-card" data-universe="Naruto: Shippuuden">
-                  <div class="universe-card-title">Naruto: Shippuuden</div>
-                  <div class="universe-card-pill">
-                    <span>10 primary characters</span>
-                  </div>
-                  <div class="universe-card-desc">
-                    Older, heavier, but the same fire burning.
-                  </div>
-                </div>
-                <div class="universe-card" data-universe="Fullmetal Alchemist: Brotherhood">
-                  <div class="universe-card-title">Fullmetal Alchemist: Brotherhood</div>
-                  <div class="universe-card-pill">
-                    <span>10 primary characters</span>
-                  </div>
-                  <div class="universe-card-desc">
-                    Equivalent trade, impossible choices, steel bonds.
-                  </div>
-                </div>
-                <div class="universe-card" data-universe="Hunter x Hunter (2011)">
-                  <div class="universe-card-title">Hunter x Hunter (2011)</div>
-                  <div class="universe-card-pill">
-                    <span>10 primary characters</span>
-                  </div>
-                  <div class="universe-card-desc">
-                    Nen systems, cruel exams, impossible ceilings.
-                  </div>
-                </div>
-              </div>
-            </div>
+    <main class="grid">
+      <!-- Left side -->
+      <section class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Main characters. Quiet power.</div>
+            <div class="card-sub">Spin fates, test instincts, and feel the pressure rise with every choice.</div>
           </div>
-        </article>
+          <div style="text-align:right;">
+            <div class="card-sub">World Pressure</div>
+            <div style="font-size:0.9rem; color:#ffe082;">100%</div>
+            <div style="font-size:0.7rem; color:#9ca8ff; margin-top:3px;">Charge Awakening ●</div>
+            <div style="font-size:0.7rem; color:#8e9bff;">Release a little tension</div>
+          </div>
+        </div>
 
-        <!-- Character Archive -->
-        <article class="card archive-card">
+        <div class="card" style="margin-top:10px;">
           <div class="card-header">
-            <div>
-              <div class="card-title">Character Archive</div>
-              <div class="card-sub">
-                All heroes, villains, and side characters — rendered from live data, never static.
-              </div>
-            </div>
+            <div class="card-title">Featured MC Universes</div>
+            <div class="card-sub">Tap a card via Fate Spinner</div>
           </div>
-          <div style="font-size: 0.78rem; color: var(--text-soft); margin-top: 4px;">
+
+          <div class="universes-grid">
+            <article class="universe-card" data-universe="Naruto">
+              <div class="universe-name">Naruto</div>
+              <div class="universe-meta">10 primary characters</div>
+              <div class="universe-desc">Hidden Leaf, loud heart, stubborn resolve.</div>
+            </article>
+            <article class="universe-card" data-universe="Naruto: Shippuuden">
+              <div class="universe-name">Naruto: Shippuuden</div>
+              <div class="universe-meta">10 primary characters</div>
+              <div class="universe-desc">Older, heavier, but the same fire burning.</div>
+            </article>
+            <article class="universe-card" data-universe="Fullmetal Alchemist: Brotherhood">
+              <div class="universe-name">Fullmetal Alchemist: Brotherhood</div>
+              <div class="universe-meta">10 primary characters</div>
+              <div class="universe-desc">Equivalent trade, impossible choices, steel bonds.</div>
+            </article>
+            <article class="universe-card" data-universe="Hunter x Hunter (2011)">
+              <div class="universe-name">Hunter x Hunter (2011)</div>
+              <div class="universe-meta">10 primary characters</div>
+              <div class="universe-desc">Nen systems, cruel exams, impossible ceilings.</div>
+            </article>
+          </div>
+
+          <div class="archive-text">
+            Character Archive · All heroes, villains, and side characters — rendered from live data, never static.
+          </div>
+          <div class="archive-note">
             Character images loaded from <code>/images</code>. Missing files gracefully degrade.
           </div>
-          <div id="character-grid" class="character-grid"></div>
-        </article>
+        </div>
       </section>
 
-      <!-- RIGHT: Spinner + Guess game -->
-      <section class="side-column">
-        <article class="card">
+      <!-- Right side -->
+      <section class="card">
+        <!-- Fate Spinner -->
+        <div class="card">
           <div class="card-header">
-            <div>
-              <div class="card-title">Fate Spinner</div>
-              <div class="card-sub">
-                Press once. Let one clean motion decide.
-              </div>
-            </div>
-            <div style="font-size: 0.8rem; color: var(--text-soft);" id="spinner-label">
-              Awaiting spin
-            </div>
+            <div class="card-title">Fate Spinner</div>
+            <div class="card-sub">Press once. Let one clean motion decide.</div>
           </div>
 
           <div class="spinner-layout">
-            <div class="spinner-wheel" id="spinner-wheel">
-              <div class="spinner-pointer"></div>
-            </div>
             <div>
-              <p class="spinner-label">
+              <div class="spinner-label">Result</div>
+              <div id="spinner-result" class="spinner-result">Awaiting spin</div>
+              <div style="font-size:0.78rem; color:#a5b0ff; margin-top:2px;">
                 Spin to let the system choose which universe steps forward first.
-              </p>
-              <div class="spinner-actions">
-                <button id="spin-btn" class="btn">
-                  <span>⟳</span>
-                  Spin Destiny
-                </button>
               </div>
             </div>
-          </div>
-        </article>
 
-        <article class="card">
+            <div class="spinner-action">
+              <div class="spin-circle">⟳</div>
+              <button id="spin-btn" class="spin-btn">
+                <span>⟳</span> Spin Destiny
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- MC Trials -->
+        <div class="card" style="margin-top:12px;">
           <div class="card-header">
-            <div>
-              <div class="card-title">MC Trials</div>
-              <div class="card-sub">
-                Guess, commit, and see how the world responds.
-              </div>
+            <div class="card-title">MC Trials</div>
+            <div class="card-sub">Guess, commit, and see how the world responds.</div>
+          </div>
+
+          <div class="trials-layout">
+            <div class="trials-row">
+              <div class="trials-label">Streak:</div>
+              <div id="streak" class="trials-streak">0</div>
             </div>
-            <div style="font-size: 0.8rem; color: var(--text-soft);">
-              <span>Streak: </span><span id="streak-value">0</span>
+
+            <div class="trial-clue" id="trial-clue">
+              He once stole a legendary scroll and painted graffiti on faces.
             </div>
-          </div>
 
-          <p id="guess-prompt" class="guess-prompt">
-            He once stole a legendary scroll and painted graffiti on faces.
-          </p>
+            <div class="trial-options">
+              <button class="trial-btn" data-answer="Goku">Goku</button>
+              <button class="trial-btn" data-answer="Naruto">Naruto</button>
+              <button class="trial-btn" data-answer="Light">Light</button>
+              <button class="trial-btn" data-answer="Lelouch">Lelouch</button>
+            </div>
 
-          <div id="guess-options" class="guess-options">
-            <button class="guess-option" data-answer="Goku">Goku</button>
-            <button class="guess-option" data-answer="Naruto">Naruto</button>
-            <button class="guess-option" data-answer="Light">Light</button>
-            <button class="guess-option" data-answer="Lelouch">Lelouch</button>
+            <div id="trial-feedback" class="trial-feedback"></div>
+            <div id="hint" class="hint-link">Need a hint</div>
           </div>
-
-          <div class="guess-meta-row">
-            <button id="hint-btn" class="btn" style="padding-inline: 10px; font-size: 0.78rem;">
-              Need a hint
-            </button>
-            <span id="guess-feedback" class="guess-feedback"></span>
-          </div>
-        </article>
+        </div>
       </section>
     </main>
 
     <footer>
-      Anime MC Hub · Built by Your-high-lord · Balanced for desktop &amp; mobile. No wasted motion.
+      Anime MC Hub · Built by <span>Your-high-lord</span> · Balanced for desktop &amp; mobile. No wasted motion.
     </footer>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    // ===== Fate Spinner logic =====
+    const universes = [
+      "Naruto",
+      "Naruto: Shippuuden",
+      "Fullmetal Alchemist: Brotherhood",
+      "Hunter x Hunter (2011)"
+    ];
+
+    const spinnerResult = document.getElementById("spinner-result");
+    const spinBtn = document.getElementById("spin-btn");
+
+    spinBtn.addEventListener("click", () => {
+      const pick = universes[Math.floor(Math.random() * universes.length)];
+      spinnerResult.textContent = pick + " steps forward first.";
+    });
+
+    // ===== MC Trials logic =====
+    const trialClue = document.getElementById("trial-clue");
+    const trialFeedback = document.getElementById("trial-feedback");
+    const streakEl = document.getElementById("streak");
+    const hintEl = document.getElementById("hint");
+    const answerButtons = document.querySelectorAll(".trial-btn");
+
+    // Simple single-question data
+    const trial = {
+      clue: "He once stole a legendary scroll and painted graffiti on faces.",
+      answer: "Naruto",
+      hint: "Hidden Leaf knuckleheaded ninja."
+    };
+
+    let streak = 0;
+
+    function resetButtonsState() {
+      answerButtons.forEach(btn => {
+        btn.classList.remove("correct", "wrong");
+        btn.disabled = false;
+      });
+    }
+
+    answerButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const choice = btn.getAttribute("data-answer");
+        const correct = choice === trial.answer;
+
+        resetButtonsState();
+
+        if (correct) {
+          btn.classList.add("correct");
+          streak += 1;
+          trialFeedback.textContent = "Correct. The world nods, just a little.";
+        } else {
+          btn.classList.add("wrong");
+          streak = 0;
+          trialFeedback.textContent = "Wrong. The pressure spikes for a moment.";
+        }
+
+        streakEl.textContent = streak.toString();
+      });
+    });
+
+    hintEl.addEventListener("click", () => {
+      trialFeedback.textContent = "Hint: " + trial.hint;
+    });
+  </script>
 </body>
 </html>
