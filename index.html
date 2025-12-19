@@ -2,59 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Anime MC Hub</title>
+  <title>Anime MC Hub – Home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
-    /* ====== Basic Layout ====== */
     body {
       margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: radial-gradient(circle at top, #141b2f 0, #05060a 50%, #02030a 100%);
       color: #f7f7ff;
     }
-
     .page {
       max-width: 1050px;
       margin: 0 auto;
       padding: 16px 16px 40px;
     }
+    header { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+    .title-row { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }
+    h1 { font-size: 1.5rem; letter-spacing: 0.08em; text-transform: uppercase; margin: 0; }
+    .tagline { font-size: 0.9rem; color: #a6b1ff; opacity: 0.9; }
 
-    header {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-bottom: 20px;
-    }
-
-    .title-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    h1 {
-      font-size: 1.5rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin: 0;
-    }
-
-    .tagline {
-      font-size: 0.9rem;
-      color: #a6b1ff;
-      opacity: 0.9;
-    }
-
-    /* ====== Nav ====== */
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 4px;
-    }
-
+    nav { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
     nav a {
       text-decoration: none;
       font-size: 0.85rem;
@@ -66,30 +33,11 @@
       backdrop-filter: blur(10px);
       transition: background 0.15s ease, transform 0.1s ease, border-color 0.15s ease;
     }
+    nav a:hover { background: #1b234b; border-color: #5a6dff; transform: translateY(-1px); }
+    nav a:active { transform: translateY(0); background: #141a35; }
 
-    nav a:hover {
-      background: #1b234b;
-      border-color: #5a6dff;
-      transform: translateY(-1px);
-    }
-
-    nav a:active {
-      transform: translateY(0);
-      background: #141a35;
-    }
-
-    /* ====== Grid Layout ====== */
-    .grid {
-      display: grid;
-      grid-template-columns: minmax(0, 2fr) minmax(0, 1.3fr);
-      gap: 16px;
-    }
-
-    @media (max-width: 800px) {
-      .grid {
-        grid-template-columns: 1fr;
-      }
-    }
+    .grid { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1.3fr); gap: 16px; }
+    @media (max-width: 800px) { .grid { grid-template-columns: 1fr; } }
 
     .card {
       background: rgba(9, 13, 35, 0.96);
@@ -99,276 +47,92 @@
       box-shadow: 0 18px 35px rgba(0, 0, 0, 0.55);
       backdrop-filter: blur(12px);
     }
+    .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    .card-title { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.14em; color: #9da8ff; }
+    .card-sub { font-size: 0.8rem; color: #9ca8ff; opacity: 0.9; }
 
-    .card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-
-    .card-title {
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: #9da8ff;
-    }
-
-    .card-sub {
-      font-size: 0.8rem;
-      color: #9ca8ff;
-      opacity: 0.9;
-    }
-
-    /* ====== Featured Universes ====== */
     .universes-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 10px;
       margin-top: 10px;
     }
-
     .universe-card {
       border-radius: 12px;
       border: 1px solid #303a6b;
       padding: 10px 11px 11px;
       background: radial-gradient(circle at top left, #1a2045 0, #070b1b 55%, #050713 100%);
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+      transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
     }
-
     .universe-card:hover {
       transform: translateY(-2px);
       box-shadow: 0 14px 30px rgba(0, 0, 0, 0.65);
       border-color: #5f72ff;
     }
+    .universe-name { font-size: 0.88rem; font-weight: 600; margin-bottom: 2px; }
+    .universe-meta { font-size: 0.8rem; color: #b7c1ff; margin-bottom: 4px; }
+    .universe-desc { font-size: 0.78rem; color: #c3cbff; line-height: 1.38; }
 
-    .universe-name {
-      font-size: 0.88rem;
-      font-weight: 600;
-      margin-bottom: 2px;
-    }
+    .archive-text { font-size: 0.8rem; color: #c7d0ff; line-height: 1.45; margin-top: 6px; }
+    .archive-note { font-size: 0.75rem; color: #8f9cff; opacity: 0.9; margin-top: 4px; }
 
-    .universe-meta {
-      font-size: 0.8rem;
-      color: #b7c1ff;
-      margin-bottom: 4px;
-    }
-
-    .universe-desc {
-      font-size: 0.78rem;
-      color: #c3cbff;
-      line-height: 1.38;
-    }
-
-    /* ====== Character Archive ====== */
-    .archive-text {
-      font-size: 0.8rem;
-      color: #c7d0ff;
-      line-height: 1.45;
-      margin-top: 6px;
-    }
-
-    .archive-note {
-      font-size: 0.75rem;
-      color: #8f9cff;
-      opacity: 0.9;
-      margin-top: 4px;
-    }
-
-    /* ====== Fate Spinner ====== */
-    .spinner-layout {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .spinner-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 10px;
-    }
-
-    .spinner-text-main {
-      font-size: 0.84rem;
-      color: #e2e6ff;
-    }
-
-    .spinner-label {
-      font-size: 0.78rem;
-      color: #9da8ff;
-    }
-
-    .spinner-result {
-      font-size: 0.9rem;
-      color: #ffe082;
-      margin-top: 2px;
-      min-height: 1.2em;
-    }
-
-    .spinner-action {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      margin-top: 8px;
-    }
-
+    .spinner-layout { display: flex; flex-direction: column; gap: 10px; }
+    .spinner-label { font-size: 0.78rem; color: #9da8ff; }
+    .spinner-result { font-size: 0.9rem; color: #ffe082; margin-top: 2px; min-height: 1.2em; }
+    .spinner-action { display: inline-flex; align-items: center; gap: 6px; margin-top: 8px; }
     .spin-circle {
-      width: 26px;
-      height: 26px;
-      border-radius: 999px;
-      border: 1px solid #5867ff;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
+      width: 26px; height: 26px; border-radius: 999px; border: 1px solid #5867ff;
+      display: inline-flex; align-items: center; justify-content: center;
       background: radial-gradient(circle at 30% 30%, #3c4dff 0, #11163b 60%, #070816 100%);
-      color: #f9fbff;
-      font-size: 0.9rem;
-      box-shadow: 0 0 12px rgba(95, 114, 255, 0.6);
+      color: #f9fbff; font-size: 0.9rem; box-shadow: 0 0 12px rgba(95, 114, 255, 0.6);
     }
-
     .spin-btn {
-      border: none;
-      outline: none;
-      border-radius: 999px;
-      padding: 7px 14px;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      background: linear-gradient(135deg, #5f72ff, #9b6bff);
-      color: #f6f6ff;
-      cursor: pointer;
-      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.5);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: transform 0.1s ease, box-shadow 0.1s ease, filter 0.12s ease;
+      border: none; border-radius: 999px; padding: 7px 14px;
+      font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.12em;
+      background: linear-gradient(135deg, #5f72ff, #9b6bff); color: #f6f6ff;
+      cursor: pointer; box-shadow: 0 10px 22px rgba(0, 0, 0, 0.5);
+      display: inline-flex; align-items: center; gap: 6px;
+      transition: transform 0.1s, box-shadow 0.1s, filter 0.12s;
     }
+    .spin-btn:hover { filter: brightness(1.05); box-shadow: 0 12px 26px rgba(0,0,0,0.6); }
+    .spin-btn:active { transform: translateY(1px); box-shadow: 0 7px 16px rgba(0,0,0,0.55); }
 
-    .spin-btn:hover {
-      filter: brightness(1.05);
-      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.6);
-    }
-
-    .spin-btn:active {
-      transform: translateY(1px);
-      box-shadow: 0 7px 16px rgba(0, 0, 0, 0.55);
-    }
-
-    .spin-btn span {
-      font-size: 1rem;
-    }
-
-    /* ====== MC Trials ====== */
-    .trials-layout {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .trials-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 10px;
-    }
-
-    .trials-label {
-      font-size: 0.78rem;
-      color: #9da8ff;
-    }
-
-    .trials-streak {
-      font-size: 0.88rem;
-      color: #ffe082;
-    }
-
-    .trial-clue {
-      font-size: 0.83rem;
-      color: #d9e0ff;
-      line-height: 1.5;
-      margin-top: 4px;
-    }
-
+    .trials-layout { display: flex; flex-direction: column; gap: 10px; }
+    .trials-row { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+    .trials-label { font-size: 0.78rem; color: #9da8ff; }
+    .trials-streak { font-size: 0.88rem; color: #ffe082; }
+    .trial-clue { font-size: 0.83rem; color: #d9e0ff; line-height: 1.5; margin-top: 4px; }
     .trial-options {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 8px;
-      margin-top: 10px;
+      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px; margin-top: 10px;
     }
-
     .trial-btn {
-      border-radius: 999px;
-      border: 1px solid #32406e;
+      border-radius: 999px; border: 1px solid #32406e;
       background: linear-gradient(135deg, #181d3a, #0c1023);
-      color: #e3e7ff;
-      padding: 7px 10px;
-      font-size: 0.8rem;
-      cursor: pointer;
-      text-align: center;
-      transition: background 0.14s ease, transform 0.1s ease, border-color 0.14s ease, box-shadow 0.14s ease;
+      color: #e3e7ff; padding: 7px 10px; font-size: 0.8rem;
+      cursor: pointer; text-align: center;
+      transition: background 0.14s, transform 0.1s, border-color 0.14s, box-shadow 0.14s;
     }
-
     .trial-btn:hover {
-      background: #242a53;
-      border-color: #5f72ff;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.55);
+      background: #242a53; border-color: #5f72ff;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.55);
     }
-
-    .trial-btn:active {
-      transform: translateY(1px);
-      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.5);
-    }
-
+    .trial-btn:active { transform: translateY(1px); box-shadow: 0 6px 14px rgba(0,0,0,0.5); }
     .trial-btn.correct {
       background: linear-gradient(135deg, #3cb371, #2e8b57);
-      border-color: #76ffb6;
-      color: #02140c;
+      border-color: #76ffb6; color: #02140c;
     }
-
     .trial-btn.wrong {
       background: linear-gradient(135deg, #b3413c, #8b2e2e);
-      border-color: #ff7a76;
-      color: #fff4f4;
+      border-color: #ff7a76; color: #fff4f4;
     }
+    .trial-feedback { font-size: 0.8rem; color: #cdd6ff; margin-top: 6px; min-height: 1.2em; }
+    .hint-link { margin-top: 6px; font-size: 0.78rem; color: #9da8ff; cursor: pointer; text-decoration: underline; }
+    .hint-link:hover { color: #c0cdff; }
 
-    .trial-feedback {
-      font-size: 0.8rem;
-      color: #cdd6ff;
-      margin-top: 6px;
-      min-height: 1.2em;
-    }
-
-    .hint-link {
-      margin-top: 6px;
-      font-size: 0.78rem;
-      color: #9da8ff;
-      cursor: pointer;
-      text-decoration: underline;
-    }
-
-    .hint-link:hover {
-      color: #c0cdff;
-    }
-
-    /* ====== Footer ====== */
-    footer {
-      margin-top: 18px;
-      font-size: 0.75rem;
-      color: #838fc7;
-      text-align: center;
-    }
-
-    footer a {
-      color: #b2bfff;
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
+    footer { margin-top: 18px; font-size: 0.75rem; color: #838fc7; text-align: center; }
+    footer a { color: #b2bfff; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
@@ -379,9 +143,18 @@
           <h1>ANIME MC HUB</h1>
           <div class="tagline">Clean power. No chaos.</div>
         </div>
+        <div style="text-align:right;">
+          <div class="card-sub">World Pressure</div>
+          <div id="world-pressure-value" style="font-size:0.9rem; color:#ffe082;">100%</div>
+          <div id="world-pressure-state" style="font-size:0.7rem; color:#9ca8ff; margin-top:3px;">
+            Charge Awakening ●
+          </div>
+          <div id="world-pressure-tip" style="font-size:0.7rem; color:#8e9bff;">
+            Release a little tension
+          </div>
+        </div>
       </div>
 
-      <!-- Real clickable nav -->
       <nav>
         <a href="index.html">Home</a>
         <a href="naruto.html">Naruto</a>
@@ -394,18 +167,13 @@
     </header>
 
     <main class="grid">
-      <!-- Left side -->
       <section class="card">
         <div class="card-header">
           <div>
             <div class="card-title">Main characters. Quiet power.</div>
-            <div class="card-sub">Spin fates, test instincts, and feel the pressure rise with every choice.</div>
-          </div>
-          <div style="text-align:right;">
-            <div class="card-sub">World Pressure</div>
-            <div style="font-size:0.9rem; color:#ffe082;">100%</div>
-            <div style="font-size:0.7rem; color:#9ca8ff; margin-top:3px;">Charge Awakening ●</div>
-            <div style="font-size:0.7rem; color:#8e9bff;">Release a little tension</div>
+            <div class="card-sub">
+              Spin fates, test instincts, and feel the pressure rise with every choice.
+            </div>
           </div>
         </div>
 
@@ -416,22 +184,22 @@
           </div>
 
           <div class="universes-grid">
-            <article class="universe-card" data-universe="Naruto">
+            <article class="universe-card">
               <div class="universe-name">Naruto</div>
               <div class="universe-meta">10 primary characters</div>
               <div class="universe-desc">Hidden Leaf, loud heart, stubborn resolve.</div>
             </article>
-            <article class="universe-card" data-universe="Naruto: Shippuuden">
+            <article class="universe-card">
               <div class="universe-name">Naruto: Shippuuden</div>
               <div class="universe-meta">10 primary characters</div>
               <div class="universe-desc">Older, heavier, but the same fire burning.</div>
             </article>
-            <article class="universe-card" data-universe="Fullmetal Alchemist: Brotherhood">
+            <article class="universe-card">
               <div class="universe-name">Fullmetal Alchemist: Brotherhood</div>
               <div class="universe-meta">10 primary characters</div>
               <div class="universe-desc">Equivalent trade, impossible choices, steel bonds.</div>
             </article>
-            <article class="universe-card" data-universe="Hunter x Hunter (2011)">
+            <article class="universe-card">
               <div class="universe-name">Hunter x Hunter (2011)</div>
               <div class="universe-meta">10 primary characters</div>
               <div class="universe-desc">Nen systems, cruel exams, impossible ceilings.</div>
@@ -447,9 +215,7 @@
         </div>
       </section>
 
-      <!-- Right side -->
       <section class="card">
-        <!-- Fate Spinner -->
         <div class="card">
           <div class="card-header">
             <div class="card-title">Fate Spinner</div>
@@ -474,7 +240,6 @@
           </div>
         </div>
 
-        <!-- MC Trials -->
         <div class="card" style="margin-top:12px;">
           <div class="card-header">
             <div class="card-title">MC Trials</div>
@@ -511,36 +276,66 @@
   </div>
 
   <script>
-    // ===== Fate Spinner logic =====
+    // World Pressure
+    let worldPressure = 100;
+    const wpValue = document.getElementById("world-pressure-value");
+    const wpState = document.getElementById("world-pressure-state");
+    const wpTip = document.getElementById("world-pressure-tip");
+
+    function clampPressure(v) {
+      return Math.max(0, Math.min(150, v));
+    }
+    function renderWorldPressure() {
+      wpValue.textContent = worldPressure + "%";
+      if (worldPressure >= 120) {
+        wpState.textContent = "System overheating ●●●";
+        wpTip.textContent = "Stop pressing. Let it breathe.";
+        wpValue.style.color = "#ff8a80";
+      } else if (worldPressure >= 90) {
+        wpState.textContent = "Charge Awakening ●●";
+        wpTip.textContent = "You can push a little harder.";
+        wpValue.style.color = "#ffe082";
+      } else if (worldPressure >= 60) {
+        wpState.textContent = "Balanced load ●";
+        wpTip.textContent = "Good tension. Keep playing.";
+        wpValue.style.color = "#b2ff59";
+      } else {
+        wpState.textContent = "Low hum ●";
+        wpTip.textContent = "You can safely add more pressure.";
+        wpValue.style.color = "#80d8ff";
+      }
+    }
+    renderWorldPressure();
+
+    // Fate Spinner
     const universes = [
       "Naruto",
       "Naruto: Shippuuden",
       "Fullmetal Alchemist: Brotherhood",
       "Hunter x Hunter (2011)"
     ];
-
     const spinnerResult = document.getElementById("spinner-result");
     const spinBtn = document.getElementById("spin-btn");
 
     spinBtn.addEventListener("click", () => {
       const pick = universes[Math.floor(Math.random() * universes.length)];
       spinnerResult.textContent = pick + " steps forward first.";
+      worldPressure = clampPressure(worldPressure + 5);
+      renderWorldPressure();
     });
 
-    // ===== MC Trials logic =====
+    // MC Trials
     const trialClue = document.getElementById("trial-clue");
     const trialFeedback = document.getElementById("trial-feedback");
     const streakEl = document.getElementById("streak");
     const hintEl = document.getElementById("hint");
     const answerButtons = document.querySelectorAll(".trial-btn");
 
-    // Simple single-question data
     const trial = {
       clue: "He once stole a legendary scroll and painted graffiti on faces.",
       answer: "Naruto",
       hint: "Hidden Leaf knuckleheaded ninja."
     };
-
     let streak = 0;
 
     function resetButtonsState() {
@@ -554,25 +349,27 @@
       btn.addEventListener("click", () => {
         const choice = btn.getAttribute("data-answer");
         const correct = choice === trial.answer;
-
         resetButtonsState();
-
         if (correct) {
           btn.classList.add("correct");
           streak += 1;
           trialFeedback.textContent = "Correct. The world nods, just a little.";
+          worldPressure = clampPressure(worldPressure - 10);
         } else {
           btn.classList.add("wrong");
           streak = 0;
           trialFeedback.textContent = "Wrong. The pressure spikes for a moment.";
+          worldPressure = clampPressure(worldPressure + 8);
         }
-
         streakEl.textContent = streak.toString();
+        renderWorldPressure();
       });
     });
 
     hintEl.addEventListener("click", () => {
       trialFeedback.textContent = "Hint: " + trial.hint;
+      worldPressure = clampPressure(worldPressure + 2);
+      renderWorldPressure();
     });
   </script>
 </body>
