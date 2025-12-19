@@ -734,3 +734,139 @@ body {
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+/* ===== CHARACTER ARCHIVE ===== */
+
+#character-archive {
+  margin-top: 3rem;
+}
+
+#character-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.2rem;
+}
+
+.character-card {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  border-radius: var(--radius-lg);
+  background: var(--bg-soft);
+  border: 1px solid var(--border-subtle);
+  overflow: hidden;
+  transition: transform 200ms ease-out, box-shadow 200ms ease-out;
+}
+
+.character-card.depth-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+}
+
+.character-image-wrap {
+  width: 100%;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.character-image {
+  display: block;
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.character-image-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 140px;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-soft);
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.04), rgba(0, 0, 0, 0.2));
+  font-weight: 600;
+}
+
+.character-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px 8px;
+  flex-grow: 1;
+}
+
+.character-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.character-role {
+  font-size: 0.72rem;
+  color: var(--text-soft);
+  margin: 0;
+  line-height: 1.15;
+}
+
+.character-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px 4px;
+  padding: 6px 8px;
+  border-top: 1px solid var(--border-subtle);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.character-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  align-items: center;
+  text-align: center;
+}
+
+.character-stat-label {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-soft);
+  font-weight: 500;
+}
+
+.character-stat-value {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  #character-grid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+  }
+
+  .character-image {
+    height: 120px;
+  }
+
+  .character-image-fallback {
+    height: 120px;
+  }
+
+  .character-name {
+    font-size: 0.8rem;
+  }
+
+  .character-role {
+    font-size: 0.68rem;
+  }
+}
+
